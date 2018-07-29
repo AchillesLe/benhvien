@@ -1,5 +1,4 @@
 <?php 
-    session_start();
     if(isset($_POST['submit'])){
         $username = $_POST['tendangnhap'];
         $password = $_POST['matkhau'];
