@@ -20,7 +20,6 @@
                 }   
                 if(!empty($result1))
                     $_SESSION['user'] = array_merge( $result , $result1 );
-                // die(var_dump($result1 ));
                 header('Location: /',301);
             }
             connection::_close($conn);
