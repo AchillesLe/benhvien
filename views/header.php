@@ -23,9 +23,10 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
+    <link href="css/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
   </head>
 
@@ -85,8 +86,8 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <!-- <h6 class="dropdown-header">Login Screens:</h6> -->
-            <a class="dropdown-item" href="/Dangkikhambenh">Đăng kí</a>
-            <a class="dropdown-item" href="/Danhsachdangki">Xem lịch khám</a>
+            <a class="dropdown-item" href="/dangki-lichkham">Đăng kí</a>
+            <a class="dropdown-item" href="/danhsachdangki">Xem lịch khám</a>
             <!-- <div class="dropdown-divider"></div> -->
             <!-- <h6 class="dropdown-header">Other Pages:</h6>
             <a class="dropdown-item" href="404.html">404 Page</a>

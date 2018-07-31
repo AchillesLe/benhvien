@@ -1,32 +1,3 @@
-<?php 
-    if(isset($_POST['submit'])){
-        $username = $_POST['tendangnhap'];
-        $password = $_POST['matkhau'];
-        $conn = connection::_open();
-        $sql = "select * from tblDangnhap where tenDangnhap='$username' and  matKhau='$password'";
-        $result = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
-        if( empty($result)){
-            echo "<script>alert('Tên đăng nhập hoặc mặt khẩu không đúng !');</script>";
-        }else{
-            if( isset($result['quyen']) ){
-                $role = $result['quyen'];
-                $idDangnhap = $result['idDangnhap'];
-                if( $role == 1){
-                    $sql = "select * from tblbenhnhan where idDangnhap = '$idDangnhap'";
-                    $result1 = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
-                }else{
-                    $sql = "select * from tblbacsi where idDangnhap = '$idDangnhap'";
-                    $result1 = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
-                }   
-                if(!empty($result1))
-                    $_SESSION['user'] = array_merge( $result , $result1 );
-                    
-                header('Location: /',301);
-            }
-            connection::_close($conn);
-        }
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,9 +26,16 @@
 
     <div class="container">
       <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Đăng nhập</div>
+        
+		<div class="card-header">Đăng nhập</div>
+		<?php 
+			if(isset($_SESSION['message-login'])){
+				echo "<div class='alert alert-danger'>{$_SESSION['message-login']}</div>";
+				unset($_SESSION['message-login']);
+			}
+        ?>
         <div class="card-body">
-          <form action="" method="POST">
+          <form action="/p-dangnhap" method="POST">
             <div class="form-group">
               <div class="form-label-group">
                 <input type="text" id="inputEmail" name="tendangnhap" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
@@ -70,18 +48,10 @@
                 <label for="inputPassword">Mật khẩu</label>
               </div>
             </div>
-            <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" value="remember-me">
-                  Remember Password
-                </label>
-              </div>
-            </div>
             <input class="btn btn-primary btn-block" type="submit" name="submit" value="Đăng Nhập">
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="register.html">Đăng kí</a>
+            <a class="d-block small mt-3" href="/dangki">Đăng kí</a>
             <a class="d-block small" href="forgot-password.html">Quên mật khẩu !</a>
           </div>
         </div>
