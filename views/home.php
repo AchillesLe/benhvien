@@ -105,7 +105,7 @@
                     <?php 
                        while($item = mysqli_fetch_array($result)) {            
                             echo "<tr>";
-                            echo "<td>".$item['maBacsi']."</td>";
+                            echo "<td>".$item['id']."</td>";
                             echo "<td>".$item['tenBacsi']."</td>";
                             echo "<td>".$item['ngaySinh']."</td>";
                             echo "</tr>";

@@ -11,7 +11,7 @@
         }else{
             if( isset($result['quyen']) ){
                 $role = $result['quyen'];
-                $idDangnhap = $result['idDangnhap'];
+                $idDangnhap = $result['id'];
                 if( $role == 1){
                     $sql = "select * from tblbenhnhan where idDangnhap = '$idDangnhap'";
                     $result1 = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);

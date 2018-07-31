@@ -17,9 +17,9 @@
         $sql = "INSERT INTO tbldangnhap (tenDangnhap,matKhau,Email,quyen) VALUES ('{$username}','{$password}','{$email}',0)";
         $data = mysqli_query($conn,$sql);
         $id =  mysqli_insert_id($conn);
-        if( $id ){
-            
-        }
+        // if( $id ){
+        //     $sql = "INSERT INTO tblbenhnhan (tenbenhnhan,gioiTinh,Email,quyen) VALUES ('{$username}','{$password}','{$email}',0)";
+        // }
         connection::_close(conn);
     }
 ?>
