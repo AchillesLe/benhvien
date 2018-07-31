@@ -33,27 +33,31 @@
 				echo "<div class='alert alert-danger'>{$_SESSION['message-login']}</div>";
 				unset($_SESSION['message-login']);
 			}
-        ?>
+			if(isset($_SESSION['message-register'])){
+				echo "<div class='alert alert-success'>{$_SESSION['message-register']}</div>";
+				unset($_SESSION['message-register']);
+			}
+    ?>
         <div class="card-body">
-          <form action="/p-dangnhap" method="POST">
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="text" id="inputEmail" name="tendangnhap" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                <label for="inputEmail">Tên đăng nhập</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" name="matkhau" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">Mật khẩu</label>
-              </div>
-            </div>
-            <input class="btn btn-primary btn-block" type="submit" name="submit" value="Đăng Nhập">
-          </form>
-          <div class="text-center">
-            <a class="d-block small mt-3" href="/dangki">Đăng kí</a>
-            <a class="d-block small" href="forgot-password.html">Quên mật khẩu !</a>
-          </div>
+			<form action="/p-dangnhap" method="POST">
+				<div class="form-group">
+				<div class="form-label-group">
+					<input type="text" id="inputEmail" name="tendangnhap" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+					<label for="inputEmail">Tên đăng nhập</label>
+				</div>
+				</div>
+				<div class="form-group">
+				<div class="form-label-group">
+					<input type="password" id="inputPassword" name="matkhau" class="form-control" placeholder="Password" required="required">
+					<label for="inputPassword">Mật khẩu</label>
+				</div>
+				</div>
+				<input class="btn btn-primary btn-block" type="submit" name="submit" value="Đăng Nhập">
+			</form>
+			<div class="text-center">
+				<a class="d-block small mt-3" href="/dangki">Đăng kí</a>
+				<a class="d-block small" href="forgot-password.html">Quên mật khẩu !</a>
+			</div>
         </div>
       </div>
     </div>

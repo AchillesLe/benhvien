@@ -27,6 +27,12 @@
     <div class="container">
       <div class="card card-register mx-auto mt-5">
         <div class="card-header">Đăng kí tài khoản</div>
+        <?php 
+            if(isset($_SESSION['message-register'])){
+                echo "<div class='alert alert-danger'>{$_SESSION['message-register']}</div>";
+                unset($_SESSION['message-register']);
+            }
+        ?>
         <div class="card-body">
             <form id="form-dangki" method="POST" action="/p-dangki">
                 <div class="form-group">
@@ -41,15 +47,15 @@
                             <label class="mr-5">Giới tính</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="radio" name="rd_sex" value="0" checked>
+                            <input type="radio" name="rd_sex"  value="Nam">
                             <label for="rd_sex">Nam</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="radio"  name="rd_sex" value="1">
+                            <input type="radio"  name="rd_sex" value="Nu">
                             <label for="rd_sex">Nữ</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="radio"  name="rd_sex" value="2">
+                            <input type="radio"  name="rd_sex" value="Khac">
                             <label for="rd_sex">Khác</label>
                         </div>
                     </div>
@@ -64,7 +70,7 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-label-group">
-                                <input type="text" id="txt_birthday" name="txt_birthday" class="form-control" placeholder="Ngày sinh" required="required">
+                                <input type="text" id="txt_birthday" name="txt_birthday" class="form-control" placeholder="Ngày sinh dd/mm/yyyy" required="required">
                                 <label for="txt_birthday">Ngày sinh</label>
                             </div>
                         </div>
@@ -139,10 +145,9 @@
                 <input type="text" name="submit-form-dangki" id="submit-form-dangki" hidden>
                 <input type="button" class="btn btn-primary btn-block btn-dangki" value="Đăng kí">
             </form>
-          <div class="text-center">
-            <a class="d-block small mt-3" href="/">Trang đăng nhập</a>
-            <a class="d-block small" href="forgot-password.html"> Quên mật khẩu ?</a>
-          </div>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="/">Trang đăng nhập</a>
+            </div>
         </div>
       </div>
     </div>
@@ -153,6 +158,7 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
     <script src="js/custom.js"></script>
 
   </body>

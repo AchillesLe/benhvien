@@ -1,7 +1,7 @@
 <?php 
     if(isset($_POST['submit'])){
         $username = $_POST['tendangnhap'];
-        $password = $_POST['matkhau'];
+        $password = base64_encode($_POST['matkhau']);
         $conn = connection::_open();
         $sql = "select * from tblDangnhap where tenDangnhap='$username' and  matKhau='$password'";
         $result = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
