@@ -24,13 +24,11 @@ $(document).ready(function() {
                 required:true
             },
             txt_bhyt: {
-                required:true,
                 number: true,
                 maxlength : 15,
-                minlength:15
+                minlength: 15
             },
             txt_cmt: {
-                required:true,
                 number: true,
                 maxlength : 9,
                 minlength: 9
@@ -42,7 +40,8 @@ $(document).ready(function() {
             txt_sdt :{
                 required:true,
                 number: true,
-                range: [10, 11]
+                maxlength : 11,
+                minlength:10
             },
             txt_password: {
                 required:true,
@@ -68,13 +67,11 @@ $(document).ready(function() {
                 required: "Vui lòng nhập !"
             },
             txt_bhyt: {
-                required: "Vui lòng nhập !",
                 number:  "Phải là số !",
                 minlength: "Chứng minh thư phải đủ 15 số",
                 maxlength: "Chứng minh thư phải đủ 15 số"
             },
             txt_cmt: {
-                required: "Vui lòng nhập !",
                 number:  "Phải là số !",
                 minlength: "Chứng minh thư phải đủ 9 số",
                 maxlength: "Chứng minh thư phải đủ 9 số"
@@ -86,7 +83,8 @@ $(document).ready(function() {
             txt_sdt :{
                 required: "Vui lòng nhập !",
                 number:"Phải là số !",
-                range: "Phải có từ 10->11 kí tự số",
+                minlength: "Nhập ít nhất 10 kí tự",
+                maxlength: "Nhập ít nhất 11 kí tự"
             },
             txt_password: {
                 required: "Vui lòng nhập !",

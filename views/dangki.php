@@ -74,10 +74,10 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <input type="text" id="txt_cmt" name="txt_cmt" class="form-control" placeholder="Chứng minh thư" required="required">
+                            <input type="text" id="txt_cmt" name="txt_cmt" class="form-control" placeholder="Chứng minh thư" >
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="txt_dantoc" name="txt_dantoc" class="form-control" placeholder="Dân tộc" required="required">
+                            <input type="text" id="txt_dantoc" name="txt_dantoc" class="form-control" placeholder="Dân tộc" >
                         </div>
                     </div>
                 </div>
@@ -87,10 +87,10 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <input type="email" id="txt_email" name="txt_email" class="form-control" placeholder="Email" required="required">
+                            <input type="email" id="txt_email" name="txt_email" class="form-control" placeholder="Email" >
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="txt_sdt" name="txt_sdt" class="form-control" placeholder="Số điện thoại" required="required">
+                            <input type="text" id="txt_sdt" name="txt_sdt" class="form-control" placeholder="Số điện thoại" >
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2018 at 05:04 PM
+-- Generation Time: Aug 01, 2018 at 08:59 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -151,9 +151,8 @@ INSERT INTO `tblbenhnhan` (`id`, `tenBenhnhan`, `gioiTinh`, `diaChi`, `ngaySinh`
 
 CREATE TABLE `tbldangnhap` (
   `id` int(11) NOT NULL,
-  `tenDangnhap` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `matKhau` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '123',
   `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `matKhau` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '123',
   `quyen` int(1) NOT NULL DEFAULT '1' COMMENT '0: Bác sĩ ; 1: Bệnh nhân',
   `tinhTrang` int(1) NOT NULL DEFAULT '0' COMMENT '0: Còn tham gia hệ thống; 1: Hết tham gia hệ thống'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -162,48 +161,48 @@ CREATE TABLE `tbldangnhap` (
 -- Dumping data for table `tbldangnhap`
 --
 
-INSERT INTO `tbldangnhap` (`id`, `tenDangnhap`, `matKhau`, `Email`, `quyen`, `tinhTrang`) VALUES
-(1, 'hi', '123', 'thanhduan1@gmail.com', 0, 0),
-(2, 'hihi', '123', 'khacvu2@gmail.com', 0, 0),
-(3, 'ahihi', '123', 'vavinh3@gmail.com', 0, 0),
-(4, 'vanninh4', '123', 'vanninh4@gmail.com', 0, 0),
-(5, 'minhduc5', '123', 'minhduc5@gmail.com', 0, 0),
-(6, 'hongvan6', '123', 'hongvan6@gmail.com', 0, 0),
-(7, 'thevinh7', '123', 'thevinh7@gmail.com', 0, 0),
-(8, 'hailong8', '123', 'hailong8@gmail.com', 0, 0),
-(9, 'thinhanh9', '123', 'thinhanh9@gmail.com', 0, 0),
-(10, 'giaochieu10', '123', 'giaochieu10@gmail.com', 0, 0),
-(11, 'vantinh11', '123', 'vantinh11@gmail.com', 0, 0),
-(12, 'myhanh12', '123', 'myhanh12@gmail.com', 0, 0),
-(13, 'thanhhai13', '123', 'thanhhai13@gmail.com', 0, 0),
-(14, 'thanhtoan14', '123', 'thanhtoan14@gmail.com', 0, 0),
-(15, 'hongque15', '123', 'hongque15@gmail.com', 0, 0),
-(16, 'nguyentuan16', '123', 'nguyentuan16@gmail.com', 0, 0),
-(17, 'cuutung17', '123', 'cuutung17@gmail.com', 0, 0),
-(18, 'vanhien18', '123', 'vanhien18@gmail.com', 0, 0),
-(19, 'xuantai19', '123', 'xuantai19@gmail.com', 0, 0),
-(20, 'maudat20', '123', 'maudat20@gmail.com', 0, 0),
-(21, 'thuyngan21', '123', 'thuyngan21@gmail.com', 0, 0),
-(22, 'thanhson22', '123', 'thanhson22@gmail.com', 0, 0),
-(23, 'ngocvan23', '123', 'ngocvan23@gmail.com', 0, 0),
-(24, 'thithanh24', '123', 'thithanh24@gmail.com', 0, 0),
-(25, 'huongtan25', '123', 'huongtan25@gmail.com', 0, 0),
-(26, 'hongtan26', '123', 'hongtan26@gmail.com', 0, 0),
-(27, 'vanphuoc27', '123', 'vanphuoc27@gmail.com', 0, 0),
-(28, 'thithien28', '123', 'thithien28@gmail.com', 0, 0),
-(29, 'nhatphuong29', '123', 'nhatphuong29@gmail.com', 0, 0),
-(30, 'thithuy30', '123', 'thithuy30@gmail.com', 0, 0),
-(31, 'nga31', '123', 'nga31@gmail.com', 0, 0),
-(32, 'thithien32', '123', 'thithien32@gmail.com', 0, 0),
-(33, 'vanthien33', '123', 'vanthien33@gmail.com', 1, 0),
-(34, 'minhvuong34', '123', 'minhvuong34@gmail.com', 1, 0),
-(35, 'bavien35', '123', 'bavien35@gmail.com', 1, 0),
-(36, 'tantrong36', '123', 'tantrong36@gmail.com', 1, 0),
-(37, 'thinhung37', '123', 'thinhung37@gmail.com', 1, 0),
-(38, 'thuydung38', '123', 'thuydung38@gmail.com', 1, 0),
-(39, 'phuonglinh39', '123', 'phuonglinh39@gmail.com', 1, 0),
-(40, 'tonga40', '123', 'tonga40@gmail.com', 1, 0),
-(41, 'trinhnu41', '123', 'trinhnu41@gmail.com', 1, 0);
+INSERT INTO `tbldangnhap` (`id`, `Email`, `matKhau`, `quyen`, `tinhTrang`) VALUES
+(1, 'thanhduan1@gmail.com', '123', 0, 0),
+(2, 'khacvu2@gmail.com', '123', 0, 0),
+(3, 'vavinh3@gmail.com', '123', 0, 0),
+(4, 'vanninh4@gmail.com', '123', 0, 0),
+(5, 'minhduc5@gmail.com', '123', 0, 0),
+(6, 'hongvan6@gmail.com', '123', 0, 0),
+(7, 'thevinh7@gmail.com', '123', 0, 0),
+(8, 'hailong8@gmail.com', '123', 0, 0),
+(9, 'thinhanh9@gmail.com', '123', 0, 0),
+(10, 'giaochieu10@gmail.com', '123', 0, 0),
+(11, 'vantinh11@gmail.com', '123', 0, 0),
+(12, 'myhanh12@gmail.com', '123', 0, 0),
+(13, 'thanhhai13@gmail.com', '123', 0, 0),
+(14, 'thanhtoan14@gmail.com', '123', 0, 0),
+(15, 'hongque15@gmail.com', '123', 0, 0),
+(16, 'nguyentuan16@gmail.com', '123', 0, 0),
+(17, 'cuutung17@gmail.com', '123', 0, 0),
+(18, 'vanhien18@gmail.com', '123', 0, 0),
+(19, 'xuantai19@gmail.com', '123', 0, 0),
+(20, 'maudat20@gmail.com', '123', 0, 0),
+(21, 'thuyngan21@gmail.com', '123', 0, 0),
+(22, 'thanhson22@gmail.com', '123', 0, 0),
+(23, 'ngocvan23@gmail.com', '123', 0, 0),
+(24, 'thithanh24@gmail.com', '123', 0, 0),
+(25, 'huongtan25@gmail.com', '123', 0, 0),
+(26, 'hongtan26@gmail.com', '123', 0, 0),
+(27, 'vanphuoc27@gmail.com', '123', 0, 0),
+(28, 'thithien28@gmail.com', '123', 0, 0),
+(29, 'nhatphuong29@gmail.com', '123', 0, 0),
+(30, 'thithuy30@gmail.com', '123', 0, 0),
+(31, 'nga31@gmail.com', '123', 0, 0),
+(32, 'thithien32@gmail.com', '123', 0, 0),
+(33, 'vanthien33@gmail.com', '123', 1, 0),
+(34, 'minhvuong34@gmail.com', '123', 1, 0),
+(35, 'bavien35@gmail.com', '123', 1, 0),
+(36, 'tantrong36@gmail.com', '123', 1, 0),
+(37, 'thinhung37@gmail.com', '123', 1, 0),
+(38, 'thuydung38@gmail.com', '123', 1, 0),
+(39, 'phuonglinh39@gmail.com', '123', 1, 0),
+(40, 'tonga40@gmail.com', '123', 1, 0),
+(41, 'trinhnu41@gmail.com', '123', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -446,13 +445,13 @@ ALTER TABLE `tblbenhan`
 -- AUTO_INCREMENT for table `tblbenhnhan`
 --
 ALTER TABLE `tblbenhnhan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbldangnhap`
 --
 ALTER TABLE `tbldangnhap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `tbldatlichkham`
