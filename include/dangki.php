@@ -27,7 +27,7 @@
             $_SESSION['message-register'] = "Địa chỉ Email này đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
             header("Location: /dangki",301);
         }
-        $sql = "INSERT INTO tbldangnhap (tenDangnhap,matKhau,Email,quyen) VALUES ('{$username}','{$password}','{$email}',0)";
+        $sql = "INSERT INTO tbldangnhap (tenDangnhap,matKhau,Email,quyen) VALUES ('{$username}','{$password}','{$email}',1)";
         $data = mysqli_query($conn,$sql);
         $id =  mysqli_insert_id($conn);
         if( $id ){

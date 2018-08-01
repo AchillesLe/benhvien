@@ -10,7 +10,6 @@ $(function(){
 });
 $(document).ready(function() {
     $('.btn-dangki').on('click',function(){
-
         $('#form-dangki').submit();
         // $('#form-dangki').validate({
         //     rules:{
@@ -54,6 +53,10 @@ $(document).ready(function() {
         //             required:true,
         //             minlength:6
         //         },
+        //         txt_confirmPassword:{
+        //             equalTo: "#txt_password",
+        //             minlength: 6
+        //         }
         //     },
         //     messages:{
 
