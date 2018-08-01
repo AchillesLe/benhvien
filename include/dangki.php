@@ -11,7 +11,6 @@
         $dantoc = $_POST['txt_dantoc'];
         $email = $_POST['txt_email'];
         $sdt = $_POST['txt_sdt'];
-        $username = $_POST['txt_username'];
         $password = base64_encode($_POST['txt_password']);
         
         $conn = connection::_open();
@@ -27,7 +26,7 @@
             $_SESSION['message-register'] = "Địa chỉ Email này đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
             header("Location: /dangki",301);
         }
-        $sql = "INSERT INTO tbldangnhap (tenDangnhap,matKhau,Email,quyen) VALUES ('{$username}','{$password}','{$email}',1)";
+        $sql = "INSERT INTO tbldangnhap (matKhau,Email,quyen) VALUES ('{$password}','{$email}',1)";
         $data = mysqli_query($conn,$sql);
         $id =  mysqli_insert_id($conn);
         if( $id ){

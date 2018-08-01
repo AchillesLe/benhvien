@@ -19,6 +19,7 @@
     <link href="css/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
   </head>
 
@@ -36,109 +37,70 @@
         <div class="card-body">
             <form id="form-dangki" method="POST" action="/p-dangki">
                 <div class="form-group">
-                    <div class="form-label-group">
-                        <input type="text" id="txt_name" name="txt_name" class="form-control" placeholder="Họ và tên" required="required">
-                        <label for="txt_name">Họ và tên</label>
-                    </div>
+                    <input type="text" id="txt_name" name="txt_name" class="form-control" placeholder="Họ và tên">
                 </div>
                 <div class="form-group">
-                    <div class="form-row">
+                    <div class="form-row" >
                         <div class="col-md-3">
                             <label class="mr-5">Giới tính</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="radio" name="rd_sex"  value="Nam">
+                            <input type="radio" name="rd_sex" id="sex_1"  value="Nam">
                             <label for="rd_sex">Nam</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="radio"  name="rd_sex" value="Nu">
+                            <input type="radio"  name="rd_sex" id="sex_2" value="Nu">
                             <label for="rd_sex">Nữ</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="radio"  name="rd_sex" value="Khac">
+                            <input type="radio"  name="rd_sex" id="sex_3" value="Khac">
                             <label for="rd_sex">Khác</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="form-label-group">
-                        <input type="text" id="txt_address" name="txt_address" class="form-control" placeholder="Địa chỉ" required="required">
-                        <label for="txt_address">Địa chỉ</label>
-                    </div>
+                    <input type="text" id="txt_address" name="txt_address" class="form-control" placeholder="Địa chỉ" >
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <div class="form-label-group">
-                                <input type="text" id="txt_birthday" name="txt_birthday" class="form-control" placeholder="Ngày sinh dd/mm/yyyy" required="required">
-                                <label for="txt_birthday">Ngày sinh</label>
-                            </div>
+                            <input type="text" id="txt_birthday" name="txt_birthday" class="form-control" placeholder="Ngày sinh ( dd/mm/yyyy )">
                         </div>
                         <div class="col-md-6">
-                            <div class="form-label-group">
-                                <input type="text" id="txt_bhyt" name="txt_bhyt" class="form-control" placeholder="Bảo hiểm y tế" required="required">
-                                <label for="txt_bhyt">Bảo hiểm y tế</label>
-                            </div>
+                            <input type="text" id="txt_bhyt" name="txt_bhyt" class="form-control" placeholder="Bảo hiểm y tế" required="required">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <div class="form-label-group">
-                                <input type="text" id="txt_cmt" name="txt_cmt" class="form-control" placeholder="Chứng minh thư" required="required">
-                                <label for="txt_cmt">Chứng minh thư</label>
-                            </div>
+                            <input type="text" id="txt_cmt" name="txt_cmt" class="form-control" placeholder="Chứng minh thư" required="required">
                         </div>
                         <div class="col-md-6">
-                            <div class="form-label-group">
-                                <input type="text" id="txt_dantoc" name="txt_dantoc" class="form-control" placeholder="Dân tộc" required="required">
-                                <label for="txt_dantoc">Dân tộc</label>
-                            </div>
+                            <input type="text" id="txt_dantoc" name="txt_dantoc" class="form-control" placeholder="Dân tộc" required="required">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="form-label-group">
-                        <input type="text" id="txt_nghe" name="txt_nghe" class="form-control" placeholder="Nghề nghiệp" required="required">
-                        <label for="txt_nghe">Nghề nghiệp</label>
+                    <input type="text" id="txt_nghe" name="txt_nghe" class="form-control" placeholder="Nghề nghiệp">
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <input type="email" id="txt_email" name="txt_email" class="form-control" placeholder="Email" required="required">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="txt_sdt" name="txt_sdt" class="form-control" placeholder="Số điện thoại" required="required">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <div class="form-label-group">
-                                <input type="email" id="txt_email" name="txt_email" class="form-control" placeholder="Email" required="required">
-                                <label for="txt_email">Email</label>
-                            </div>
+                            <input type="password" id="txt_password" name="txt_password" class="form-control" placeholder="Password" >
                         </div>
                         <div class="col-md-6">
-                            <div class="form-label-group">
-                                <input type="text" id="txt_sdt" name="txt_sdt" class="form-control" placeholder="Số điện thoại" required="required">
-                                <label for="txt_sdt">Số điện thoại</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-label-group">
-                        <input type="email" id="txt_username" name="txt_username" class="form-control" placeholder="Tên đăng nhập" required="required">
-                        <label for="txt_username">Tên đăng nhập</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                        <div class="form-label-group">
-                            <input type="password" id="txt_password" name="txt_password" class="form-control" placeholder="Password" required="required">
-                            <label for="txt_password">Password</label>
-                        </div>
-                        </div>
-                        <div class="col-md-6">
-                        <div class="form-label-group">
-                            <input type="password" id="txt_confirmPassword"  name="txt_confirmPassword"  class="form-control" placeholder="Confirm password" required="required">
-                            <label for="txt_confirmPassword">Confirm password</label>
-                        </div>
+                            <input type="password" id="txt_confirmPassword"  name="txt_confirmPassword"  class="form-control" placeholder="Confirm password" >
                         </div>
                     </div>
                 </div>

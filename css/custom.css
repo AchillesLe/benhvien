@@ -1,0 +1,7 @@
+label.label-danger{
+    padding-left: 3px;
+    padding-right: 3px;
+    background: rgb(191, 58, 43);
+    margin-top: 3px;
+    border-radius: 3px;
+}

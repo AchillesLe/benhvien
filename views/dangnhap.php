@@ -42,8 +42,8 @@
 			<form action="/p-dangnhap" method="POST">
 				<div class="form-group">
 				<div class="form-label-group">
-					<input type="text" id="inputEmail" name="tendangnhap" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-					<label for="inputEmail">Tên đăng nhập</label>
+					<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+					<label for="inputEmail">Email</label>
 				</div>
 				</div>
 				<div class="form-group">

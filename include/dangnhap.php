@@ -1,12 +1,12 @@
 <?php 
     if(isset($_POST['submit'])){
-        $username = $_POST['tendangnhap'];
+        $email = $_POST['email'];
         $password = base64_encode($_POST['matkhau']);
         $conn = connection::_open();
-        $sql = "select * from tblDangnhap where tenDangnhap='$username' and  matKhau='$password'";
+        $sql = "select * from tblDangnhap where Email='$email' and  matKhau='$password'";
         $result = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
         if( empty($result)){
-            $_SESSION['message-login'] = "Tên đăng nhập hoặc mật khẩu không đúng ";
+            $_SESSION['message-login'] = "Email hoặc mật khẩu không đúng ";
             header('Location: /',301);
         }else{
             if( isset($result['quyen']) ){
