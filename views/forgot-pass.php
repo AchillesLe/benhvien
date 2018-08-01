@@ -32,11 +32,11 @@
 				<h4>Bạn quên mật khẩu?</h4>
 				<p>Nhập email của bạn , chúng tôi sẽ gửi lại mật khẩu cho bạn ở trong email .</p>
 			</div>
-			<form action="/p-forgotpassword" method="POST">
+			<form action="/p-forgotpassword" id="form-fogotmail" method="POST">
 				<div class="form-group">
                     <input type="email" name="txt_email" class="form-control" placeholder="Nhập địa chỉ email" >
 				</div>
-				<a class="btn btn-primary btn-block" id="sendmail-forgot" href="/p-forgotmail">Gửi email</a>
+				<a class="btn btn-primary btn-block" id="sendmail-forgot">Gửi email</a>
 			</form>
 			<div class="text-center">
                 <a class="d-block small mt-3" href="/dangki">Đăng kí</a>
@@ -73,8 +73,9 @@
                 }
 
             });
-            $('.sendmail-forgot').on('click',function(){
-                if( $('#form-dangki').valid() == false ) return;
+            $('#sendmail-forgot').on('click',function(){
+                if( $('#form-fogotmail').valid() == false ) return;
+                $('#form-fogotmail').submit();
             });
         });
     </script>
