@@ -54,8 +54,7 @@
             $password = base64_encode($password );
             $sql .= " matKhau = '{$password}' , ";
         }
-        $sql .= " Email ='{$email}' WHERE id='{$idDangnhap}'";
-        
+        $sql .= "Email ='{$email}' WHERE id='{$idDangnhap}'";
         $data = mysqli_query($conn,$sql);
         $sql = "UPDATE  tblbenhnhan SET tenBenhnhan = '{$name}',gioiTinh ='{$sex}',soDT='{$sdt}',ngaySinh ='{$birthday}',diaChi = '{$address}',CMND = '{$cmt}',danToc = '{$dantoc}',ngheNghiep = '{$job}',BHYT = '{$bhyt}' WHERE id='{$id}' ";
         $data = mysqli_query($conn,$sql);
@@ -65,7 +64,9 @@
             header("Location: /inforbasic",301);
             exit();
         }
-     
+        $sql = "SELECT * FROM tblbenhnhan A , tbldangnhap B WHERE A.idDangnhap = B.id AND A.id='{$id}'";
+        $data = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
+        $_SESSION['user'] = $data;
         connection::_close($conn);
         $_SESSION['message-update-infor'] = "Cập nhật thông tin thành công  !";
         $_SESSION['status'] = true;

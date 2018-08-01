@@ -3,18 +3,22 @@
     <div class="container-fluid">
         <div class="card mb-3 dklichkham">
             <div class="card-header">
-              <i class="fas fa-table"></i>Đăng kí lịch khám trực tuyến
+              <i class="fas fa-table"></i> Đăng kí lịch hẹn
             </div>
             <div class="card-body">
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        <label for="sel_khoa">Khoa</label>
+                        <select name="sel_khoa">
+                            <option value="1">1</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        <label for="sel_bacsi">Bác sĩ</label>
+                        <select name="sel_bacsi">
+                            <option value="1">1</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
