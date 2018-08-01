@@ -109,6 +109,7 @@
             </form>
             <div class="text-center">
                 <a class="d-block small mt-3" href="/">Trang đăng nhập</a>
+                <a class="d-block small" href="/forgot-password">Quên mật khẩu !</a>
             </div>
         </div>
       </div>
@@ -122,7 +123,20 @@
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        var options_Y_M_D = {
+            format: 'dd/mm/yyyy',
+            minViewMode: 'days',
+            todayHighlight: true,
+            autoclose: true,
+            orientation: "auto right",
+        };
+        var date = new Date();
+        var currdate =  date.getDate()+"/"+ (date.getMonth()+1) +"/"+date.getFullYear();
+        $('#txt_birthday').datepicker(options_Y_M_D);
+        $('#txt_birthday').data('datepicker').setEndDate(currdate);
 
+    </script>
   </body>
 
 </html>

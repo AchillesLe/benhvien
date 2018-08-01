@@ -1,19 +1,5 @@
-$(function(){
-    var options_Y_M_D = {
-        format: 'dd/mm/yyyy',
-        minViewMode: 'days',
-        todayHighlight: true,
-        autoclose: true,
-        orientation: "auto right",
-    };
-    var date = new Date();
-    var currdate =  date.getDate()+"/"+ (date.getMonth()+1) +"/"+date.getFullYear();
-    $('#txt_birthday , input[type=text-date] ').datepicker(options_Y_M_D);
-    $('#txt_birthday , input[type=text-date] ').data('datepicker').setEndDate(currdate);
-    $("#sel_bacsi").chosen({});
-
-});
 $(document).ready(function() {
+    
     $('#form-dangki').validate({
         rules: {
             txt_name: {
@@ -199,11 +185,12 @@ $(document).ready(function() {
             return;
         }
         $('#form-dangki').submit();
-   });
-   $('#btn-update-infor').on('click',function(){
+    });
+    $('#btn-update-infor').on('click',function(){
         if( $('#update-infor').valid() == false){
             return;
         }
         $('#update-infor').submit();
     });
+
 });

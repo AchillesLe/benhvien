@@ -56,7 +56,7 @@
 			</form>
 			<div class="text-center">
 				<a class="d-block small mt-3" href="/dangki">Đăng kí</a>
-				<a class="d-block small" href="forgot-password.html">Quên mật khẩu !</a>
+				<a class="d-block small" href="/forgot-password">Quên mật khẩu !</a>
 			</div>
         </div>
       </div>

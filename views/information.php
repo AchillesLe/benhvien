@@ -114,3 +114,16 @@
     </div>
 </div>
 <?php include('footer.php') ?>
+<script>
+    var options_Y_M_D = {
+        format: 'dd/mm/yyyy',
+        minViewMode: 'days',
+        todayHighlight: true,
+        autoclose: true,
+        orientation: "auto right",
+    };
+    var date = new Date();
+    var currdate =  date.getDate()+"/"+ (date.getMonth()+1) +"/"+date.getFullYear();
+    $('#txt_birthday').datepicker(options_Y_M_D);
+    $('#txt_birthday').data('datepicker').setEndDate(currdate);
+</script>

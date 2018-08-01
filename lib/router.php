@@ -37,6 +37,12 @@ if( isset($_SESSION['user'] ) ){
         case '/p-dangki':
             require 'include/dangki.php';
             break;
+        case '/forgot-password':
+            require 'views/forgot-pass.php';
+            break;
+        case '/p-forgotpassword':
+            require 'include/forgot-pass.php';
+            break;
         default:
             require 'views/404.php';
             break;

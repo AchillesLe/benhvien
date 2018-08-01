@@ -35,7 +35,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="sel_khoa">Ngày khám</label>
-                        <input type="text-date" class="form-control" name="txt_birthday"  placeholder="dd/mm/yyyy">
+                        <input type="text" class="form-control" name="txt_ngaykham" id="txt_ngaykham"   placeholder="dd/mm/yyyy">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="sel_bacsi">Bác sĩ</label>
@@ -75,4 +75,19 @@
         </div>
     </div>
 </div>
+
 <?php include('footer.php') ?>
+<script>
+    var options_Y_M_D = {
+        format: 'dd/mm/yyyy',
+        minViewMode: 'days',
+        todayHighlight: true,
+        autoclose: true,
+        orientation: "auto right",
+    };
+    var date = new Date();
+    var currdate =  date.getDate()+"/"+ (date.getMonth()+1) +"/"+date.getFullYear();
+    $('#txt_ngaykham').datepicker(options_Y_M_D);
+    $('#txt_ngaykham').data('datepicker').setStartDate(currdate);
+    $("#sel_bacsi").chosen({});
+</script>
