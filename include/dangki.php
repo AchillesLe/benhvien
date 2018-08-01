@@ -16,14 +16,14 @@
         
         $conn = connection::_open();
         $sql = "SELECT * FROM tblbenhnhan WHERE CMND = '{$cmt}' or BHYT='{$bhyt}'";
-        $data = mysqli_query($conn,$sql);
-        if( $data != null ){
+        $data = mysqli_query($conn,$sql)->num_rows;
+        if( $data != 0 ){
             $_SESSION['message-register'] = " Số CMND hoặc BHYT đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
             header("Location: /dangki",301);
         }
         $sql = "SELECT * FROM tbldangnhap WHERE Email = '{$email}'";
-        $data = mysqli_query($conn,$sql);
-        if( $data != null ){
+        $data = mysqli_query($conn,$sql)->num_rows;
+        if(  $data != 0 ){
             $_SESSION['message-register'] = "Địa chỉ Email này đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
             header("Location: /dangki",301);
         }
