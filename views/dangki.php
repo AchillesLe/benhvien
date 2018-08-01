@@ -67,7 +67,7 @@
                             <input type="text" id="txt_birthday" name="txt_birthday" class="form-control" placeholder="Ngày sinh ( dd/mm/yyyy )">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="txt_bhyt" name="txt_bhyt" class="form-control" placeholder="Bảo hiểm y tế" required="required">
+                            <input type="text" id="txt_bhyt" name="txt_bhyt" class="form-control" placeholder="Bảo hiểm y tế">
                         </div>
                     </div>
                 </div>
