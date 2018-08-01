@@ -12,7 +12,7 @@
         $job = $_POST['txt_nghe'];
         $dantoc = $_POST['txt_dantoc'];
         $email = $_POST['txt_email'];
-        // $sdt = $_POST['txt_sdt'];
+        $sdt = $_POST['txt_sdt'];
         $birthday = date("Y-m-d", strtotime($birthday) );
         $password = base64_encode($_POST['txt_pass']);
         
@@ -49,7 +49,7 @@
         }
         $sql = "UPDATE  tbldangnhap SET matKhau = '{$password}' , Email ='{$email}' WHERE id='{$idDangnhap}' ";
         $data = mysqli_query($conn,$sql);
-        $sql = "UPDATE  tblbenhnhan SET tenBenhnhan = '{$name}' , gioiTinh ='{$sex}' , ngaySinh ='{$birthday}',diaChi = '{$address}',CMND = '{$cmt}',danToc = '{$dantoc}',ngheNghiep = '{$job}',BHYT = '{$bhyt}' WHERE id='{$id}' ";
+        $sql = "UPDATE  tblbenhnhan SET tenBenhnhan = '{$name}' , gioiTinh ='{$sex}' ,soDT='{$sdt}' ngaySinh ='{$birthday}',diaChi = '{$address}',CMND = '{$cmt}',danToc = '{$dantoc}',ngheNghiep = '{$job}',BHYT = '{$bhyt}' WHERE id='{$id}' ";
         $data = mysqli_query($conn,$sql);
 
         if(!$data){
