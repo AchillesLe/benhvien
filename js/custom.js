@@ -6,7 +6,12 @@ $(function(){
         autoclose: true,
         orientation: "auto right",
     };
-    $('#txt_birthday').datepicker(options_Y_M_D);
+    var date = new Date();
+    var currdate =  date.getDate()+"/"+ (date.getMonth()+1) +"/"+date.getFullYear();
+    $('#txt_birthday , input[type=text-date] ').datepicker(options_Y_M_D);
+    $('#txt_birthday , input[type=text-date] ').data('datepicker').setEndDate(currdate);
+    $("#sel_bacsi").chosen({});
+
 });
 $(document).ready(function() {
     $('#form-dangki').validate({

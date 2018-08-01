@@ -11,8 +11,8 @@ if( isset($_SESSION['user'] ) ){
             require 'views/information.php';
             break;
         case '/p-inforbasic':
-                require 'include/update-infor.php';
-                break;
+            require 'include/update-infor.php';
+            break;
         case '/dangki-lichkham':
             require 'views/dangkilichkham.php';
             break;

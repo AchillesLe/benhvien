@@ -1,4 +1,10 @@
 <?php include('header.php') ?>
+<?php
+    $conn = connection::_open();
+    $sql = "SELECT * FROM tblbacsi";
+    $data = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+    connection::_close($conn);
+?>
 <div id="content-wrapper">
     <div class="container-fluid">
         <div class="card mb-3 dklichkham">
@@ -10,24 +16,33 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="sel_khoa">Khoa</label>
-                        <select name="sel_khoa">
+                        <select name="sel_khoa" class="form-control">
                             <option value="1">1</option>
                         </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="sel_bacsi">Bác sĩ</label>
+                        <select name="sel_bacsi" id="sel_bacsi" class="form-control">
+                            <option>---------------------Auto---------------------</option>
+                            <?php 
+                                foreach($data as $bacsi){
+                                    echo "<option value='{$bacsi['id']}'>{$bacsi['tenBacsi']}</option>";
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="sel_khoa">Ngày khám</label>
+                        <input type="text-date" class="form-control" name="txt_birthday"  placeholder="dd/mm/yyyy">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="sel_bacsi">Bác sĩ</label>
-                        <select name="sel_bacsi">
+                        <select name="sel_bacsi" class="form-control">
                             <option value="1">1</option>
                         </select>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputAddress">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
-                <div class="form-group">
-                    <label for="inputAddress2">Address 2</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">

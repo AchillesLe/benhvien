@@ -33,6 +33,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/jquery.validate.min.js"></script>
+    <script src="js/chosen.jquery.min.js"></script>
     <script src="js/custom.js"></script>
 
   </body>

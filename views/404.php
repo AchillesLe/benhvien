@@ -27,10 +27,10 @@
     <div class="container">
       <!-- Page Content -->
             <h1 class="display-1">404</h1>
-          <p class="lead">Page not found. You can
-            <a href="javascript:history.back()">go back</a>
-            to the previous page, or
-            <a href="/">return home</a>.</p>
+          <p class="lead">Không tìm thấy trang 
+            <a href="javascript:history.back()">quay lại</a>
+            trang trước, hoặc
+            <a href="/">quay về trang home</a>.</p>
     </div>
 
   </body>
