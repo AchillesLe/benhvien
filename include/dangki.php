@@ -4,13 +4,14 @@
         $name = $_POST['txt_name'];
         $sex = $_POST['rd_sex'];
         $address = $_POST['txt_address'];
-        $birthday = $_POST['txt_birthday'];
+        $birthday = str_replace('/', '-', $_POST['txt_birthday']);;
         $bhyt = $_POST['txt_bhyt'];
         $cmt = $_POST['txt_cmt'];
         $job = $_POST['txt_nghe'];
         $dantoc = $_POST['txt_dantoc'];
         $email = $_POST['txt_email'];
         $sdt = $_POST['txt_sdt'];
+        $birthday = date("Y-m-d", strtotime($birthday) );
         $password = base64_encode($_POST['txt_password']);
         
         $conn = connection::_open();
@@ -31,6 +32,7 @@
         $id =  mysqli_insert_id($conn);
         if( $id ){
             $sql = "INSERT INTO tblbenhnhan(tenBenhnhan,gioiTinh,diaChi,ngaySinh,CMND,danToc,ngheNghiep,BHYT,ngoaiTuyen,idDangnhap) VALUES ('{$name}','{$sex}','{$address}','{$birthday}','{$cmt}','{$dantoc}','{$job}','{$bhyt}','0','{$id}')";
+            die(var_dump($sql));
             $data = mysqli_query($conn,$sql);
             if( $data == null){
                 $_SESSION['message-register'] = "Có lỗi xuất hiện trong quá trình đăng kí vui lòng , thử lại lần nữa !";
