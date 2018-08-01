@@ -49,9 +49,8 @@
         }
         $sql = "UPDATE  tbldangnhap SET matKhau = '{$password}' , Email ='{$email}' WHERE id='{$idDangnhap}' ";
         $data = mysqli_query($conn,$sql);
-        $sql = "UPDATE  tblbenhnhan SET tenBenhnhan = '{$name}' , gioiTinh ='{$sex}' ,soDT='{$sdt}' ngaySinh ='{$birthday}',diaChi = '{$address}',CMND = '{$cmt}',danToc = '{$dantoc}',ngheNghiep = '{$job}',BHYT = '{$bhyt}' WHERE id='{$id}' ";
+        $sql = "UPDATE  tblbenhnhan SET tenBenhnhan = '{$name}',gioiTinh ='{$sex}',soDT='{$sdt}',ngaySinh ='{$birthday}',diaChi = '{$address}',CMND = '{$cmt}',danToc = '{$dantoc}',ngheNghiep = '{$job}',BHYT = '{$bhyt}' WHERE id='{$id}' ";
         $data = mysqli_query($conn,$sql);
-
         if(!$data){
             $_SESSION['message-update-infor'] = "Có lỗi xuất hiện trong quá trình cập nhật thông tin , thử lại lần nữa !";
             $_SESSION['status'] = false;

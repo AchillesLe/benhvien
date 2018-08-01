@@ -63,7 +63,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="txt_sdt">Số điện thoại</label>
-                        <!-- <input type="text" class="form-control" id="txt_sdt" value="<?php echo $user['phone'] ?>"> -->
+                        <input type="text" class="form-control" name="txt_sdt" value="<?php echo $user['soDT'] ?>">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="txt_birthday">Ngày sinh</label>
