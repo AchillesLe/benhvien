@@ -32,7 +32,6 @@
         $id =  mysqli_insert_id($conn);
         if( $id ){
             $sql = "INSERT INTO tblbenhnhan(tenBenhnhan,gioiTinh,diaChi,ngaySinh,CMND,danToc,ngheNghiep,BHYT,ngoaiTuyen,idDangnhap) VALUES ('{$name}','{$sex}','{$address}','{$birthday}','{$cmt}','{$dantoc}','{$job}','{$bhyt}','0','{$id}')";
-            die(var_dump($sql));
             $data = mysqli_query($conn,$sql);
             if( $data == null){
                 $_SESSION['message-register'] = "Có lỗi xuất hiện trong quá trình đăng kí vui lòng , thử lại lần nữa !";
