@@ -83,8 +83,8 @@ $(document).ready(function() {
             txt_sdt :{
                 required: "Vui lòng nhập !",
                 number:"Phải là số !",
-                minlength: "Nhập ít nhất 10 kí tự",
-                maxlength: "Nhập ít nhất 11 kí tự"
+                minlength: "Nhập ít nhất 10 kí tự !",
+                maxlength: "Nhập tối đa 11 kí tự !"
             },
             txt_password: {
                 required: "Vui lòng nhập !",

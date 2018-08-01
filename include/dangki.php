@@ -15,17 +15,28 @@
         $password = base64_encode($_POST['txt_password']);
         
         $conn = connection::_open();
-        $sql = "SELECT * FROM tblbenhnhan WHERE CMND = '{$cmt}' or BHYT='{$bhyt}'";
-        $data = mysqli_query($conn,$sql)->num_rows;
-        if( $data != 0 ){
-            $_SESSION['message-register'] = " Số CMND hoặc BHYT đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
-            header("Location: /dangki",301);
+        if( !empty($bhyt) || !empty($cmt) ){
+            if(!empty($bhyt) && !empty($cmt)){
+                $sql = "SELECT * FROM tblbenhnhan WHERE CMND = '{$cmt}' or BHYT='{$bhyt}'";
+            }else if( empty($cmt) && !empty($bhyt) ){
+                $sql = "SELECT * FROM tblbenhnhan WHERE  BHYT='{$bhyt}'";
+            }else {
+                $sql = "SELECT * FROM tblbenhnhan WHERE  CMND = '{$cmt}'";
+            }
+            $data = mysqli_query($conn,$sql)->num_rows;
+            if( $data != 0 ){
+                // die("1");
+                $_SESSION['message-register'] = " Số CMND hoặc BHYT đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
+                header("Location: /dangki",301);
+                exit();
+            }
         }
         $sql = "SELECT * FROM tbldangnhap WHERE Email = '{$email}'";
         $data = mysqli_query($conn,$sql)->num_rows;
         if(  $data != 0 ){
             $_SESSION['message-register'] = "Địa chỉ Email này đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
             header("Location: /dangki",301);
+            exit();
         }
         $sql = "INSERT INTO tbldangnhap (matKhau,Email,quyen) VALUES ('{$password}','{$email}',1)";
         $data = mysqli_query($conn,$sql);
@@ -41,5 +52,6 @@
         connection::_close($conn);
         $_SESSION['message-register'] = "Đăng kí thành công , xin mời đăng nhập !";
         header("Location: /",301);
+        exit();
     }
 ?>
