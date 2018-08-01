@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2018 at 08:59 AM
+-- Generation Time: Aug 01, 2018 at 10:51 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -120,6 +120,7 @@ CREATE TABLE `tblbenhnhan` (
   `gioiTinh` char(3) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Nam',
   `diaChi` varchar(100) CHARACTER SET utf8 NOT NULL,
   `ngaySinh` date NOT NULL,
+  `soDT` char(11) COLLATE utf8_unicode_ci NOT NULL,
   `CMND` char(9) COLLATE utf8_unicode_ci DEFAULT NULL,
   `danToc` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ngheNghiep` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
@@ -132,16 +133,17 @@ CREATE TABLE `tblbenhnhan` (
 -- Dumping data for table `tblbenhnhan`
 --
 
-INSERT INTO `tblbenhnhan` (`id`, `tenBenhnhan`, `gioiTinh`, `diaChi`, `ngaySinh`, `CMND`, `danToc`, `ngheNghiep`, `BHYT`, `ngoaiTuyen`, `idDangnhap`) VALUES
-(1, 'Nguyễn Văn Thiện', 'Nam', 'Quận 9, HCM', '1986-06-01', '205513136', 'Kinh', 'giáo Viên', '1234567890987', '1', 33),
-(2, 'Trịnh Minh Vương', 'Nam', 'Quận 10, HCM', '2000-02-02', '205513136', 'Kinh', NULL, '1234567890', '0', 34),
-(3, 'Huỳnh Bá Viên', 'Nam', 'Quận 5, HCM', '1996-02-02', '123456', 'Tày', NULL, '54343', '0', 35),
-(4, 'Trương Tấn Trọng', 'Nam', 'Quận 8, HCM', '1977-01-01', NULL, 'Nùng', NULL, '32438768564', '0', 36),
-(5, 'Trịnh Thị nhung', 'Nữ', 'Quận 9, HCM', '1992-05-20', '205513130', 'Kinh', 'sinh viên', '3254658798', '1', 37),
-(6, 'Trần Thụy Dung', 'Nữ', 'Quận 3, HCM', '1992-12-22', '205513137', 'Kinh', NULL, '85968486276', '0', 38),
-(7, 'Nguyễn Phương Linh', 'Nam', 'Quận 9, HCM', '2012-02-02', NULL, 'Kinh', NULL, '123456789', '0', 39),
-(8, 'Tố Nga', 'Nam', 'Quận 1, HCM', '1992-12-02', NULL, 'Kinh', NULL, '123456789123454', '0', 40),
-(9, 'Trinh Nữ', 'Nam', 'Quận 9, HCM', '2013-06-01', '121234567', 'Kinh', NULL, '1234567891', '0', 41);
+INSERT INTO `tblbenhnhan` (`id`, `tenBenhnhan`, `gioiTinh`, `diaChi`, `ngaySinh`, `soDT`, `CMND`, `danToc`, `ngheNghiep`, `BHYT`, `ngoaiTuyen`, `idDangnhap`) VALUES
+(1, 'Nguyễn Văn Thiện', 'Nam', 'Quận 9, HCM', '1986-06-01', '0911112222', '205513136', 'Kinh', 'giáo Viên', '1234567890987', '1', 33),
+(2, 'Trịnh Minh Vương', 'Nam', 'Quận 10, HCM', '2000-02-02', '0922233333', '205513135', 'Kinh', NULL, '1234567890', '0', 34),
+(3, 'Huỳnh Bá Viên', 'Nam', 'Quận 5, HCM', '1996-02-02', '0988899999', '123456', 'Tày', NULL, '54343', '0', 35),
+(4, 'Trương Tấn Trọng', 'Nam', 'Quận 8, HCM', '1977-01-01', '0911112233', NULL, 'Nùng', NULL, '32438768564', '0', 36),
+(5, 'Trịnh Thị nhung', 'Nữ', 'Quận 9, HCM', '1992-05-20', '0933344455', '205513130', 'Kinh', 'sinh viên', '3254658798', '1', 37),
+(6, 'Trần Thụy Dung', 'Nữ', 'Quận 3, HCM', '1992-12-22', '0966655577', '205513137', 'Kinh', NULL, '85968486276', '0', 38),
+(7, 'Nguyễn Phương Linh', 'Nam', 'Quận 9, HCM', '2012-02-02', '0999988899', NULL, 'Kinh', NULL, '123456789', '0', 39),
+(8, 'Tố Nga', 'Nam', 'Quận 1, HCM', '1992-12-02', '0977766655', NULL, 'Kinh', NULL, '123456789123454', '0', 40),
+(9, 'Trinh Nữ', 'Nam', 'Quận 9, HCM', '2013-06-01', '0966677777', '121234567', 'Kinh', NULL, '1234567891', '0', 41),
+(16, 'Nguyễn Thị Thu Điểm', 'Nu', '97 Man Thiện, Hiệp Phú, Quận 9, HCM', '1996-10-28', '09738568110', '231089273', 'Kinh', 'Sinh viên', '123456789098765', '0', 54);
 
 -- --------------------------------------------------------
 
@@ -202,7 +204,9 @@ INSERT INTO `tbldangnhap` (`id`, `Email`, `matKhau`, `quyen`, `tinhTrang`) VALUE
 (38, 'thuydung38@gmail.com', '123', 1, 0),
 (39, 'phuonglinh39@gmail.com', '123', 1, 0),
 (40, 'tonga40@gmail.com', '123', 1, 0),
-(41, 'trinhnu41@gmail.com', '123', 1, 0);
+(41, 'trinhnu41@gmail.com', '123', 1, 0),
+(54, 'diemnguyentt2@gmail.com', 'MTIzNDU2', 1, 0),
+(57, 'diemnguyen@gmail.com', 'MTIzNDU2', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -217,7 +221,8 @@ CREATE TABLE `tbldatlichkham` (
   `soTT` int(11) NOT NULL,
   `ngayHen` date NOT NULL,
   `gioHen` time NOT NULL,
-  `soDT` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `soDT` char(11) COLLATE utf8_unicode_ci NOT NULL,
+  `lyDo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `tinhTrang` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '0: Đã khám; 1: Chưa khám'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -225,10 +230,10 @@ CREATE TABLE `tbldatlichkham` (
 -- Dumping data for table `tbldatlichkham`
 --
 
-INSERT INTO `tbldatlichkham` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `ngayHen`, `gioHen`, `soDT`, `tinhTrang`) VALUES
-(1, 8, 12, 13, '2018-06-01', '07:00:00', '0909090909', '0'),
-(2, 9, 12, 15, '2018-06-01', '07:10:00', '11111111', '0'),
-(3, 1, 3, 13, '2018-07-02', '07:00:00', '0938568110', '0');
+INSERT INTO `tbldatlichkham` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `ngayHen`, `gioHen`, `soDT`, `lyDo`, `tinhTrang`) VALUES
+(1, 8, 12, 13, '2018-06-01', '07:00:00', '0909090909', 'Đau mắt', '0'),
+(2, 9, 12, 15, '2018-06-01', '07:10:00', '11111111', 'Cận', '0'),
+(3, 1, 3, 13, '2018-07-02', '07:00:00', '0938568110', 'Sốt', '0');
 
 -- --------------------------------------------------------
 
@@ -445,13 +450,13 @@ ALTER TABLE `tblbenhan`
 -- AUTO_INCREMENT for table `tblbenhnhan`
 --
 ALTER TABLE `tblbenhnhan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbldangnhap`
 --
 ALTER TABLE `tbldangnhap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `tbldatlichkham`

@@ -60,7 +60,7 @@
 			?>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Thông tin</a>
+            <a class="dropdown-item" href="/inforbasic">Thông tin</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Đăng xuất</a>
           </div>

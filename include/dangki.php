@@ -4,7 +4,7 @@
         $name = $_POST['txt_name'];
         $sex = $_POST['rd_sex'];
         $address = $_POST['txt_address'];
-        $birthday = str_replace('/', '-', $_POST['txt_birthday']);;
+        $birthday = str_replace('/', '-', $_POST['txt_birthday']);
         $bhyt = $_POST['txt_bhyt'];
         $cmt = $_POST['txt_cmt'];
         $job = $_POST['txt_nghe'];
@@ -25,7 +25,6 @@
             }
             $data = mysqli_query($conn,$sql)->num_rows;
             if( $data != 0 ){
-                // die("1");
                 $_SESSION['message-register'] = " Số CMND hoặc BHYT đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
                 header("Location: /dangki",301);
                 exit();
@@ -47,6 +46,7 @@
             if( $data == null){
                 $_SESSION['message-register'] = "Có lỗi xuất hiện trong quá trình đăng kí vui lòng , thử lại lần nữa !";
                 header("Location: /dangki",301);
+                exit();
             }
         }
         connection::_close($conn);

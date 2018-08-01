@@ -7,6 +7,12 @@ if( isset($_SESSION['user'] ) ){
         case '/':
             require 'views/home.php';
             break;
+        case '/inforbasic':
+            require 'views/information.php';
+            break;
+        case '/p-inforbasic':
+                require 'include/update-infor.php';
+                break;
         case '/dangki-lichkham':
             require 'views/dangkilichkham.php';
             break;
