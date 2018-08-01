@@ -14,9 +14,10 @@
         $email = $_POST['txt_email'];
         $sdt = $_POST['txt_sdt'];
         $birthday = date("Y-m-d", strtotime($birthday) );
-        $password = base64_encode($_POST['txt_pass']);
+        $password = $_POST['txt_pass'];
         
         $conn = connection::_open();
+        
         if( $cmt != $user['CMND'] && $cmt!='' ){
             $sql = "SELECT * FROM tblbenhnhan WHERE  CMND = '{$cmt}'";
             $data = mysqli_query($conn,$sql)->num_rows;
@@ -37,6 +38,7 @@
                 exit();
             }
         }
+
         if( $email != $user['Email'] ){
             $sql = "SELECT * FROM tbldangnhap WHERE Email = '{$email}'";
             $data = mysqli_query($conn,$sql)->num_rows;
@@ -47,7 +49,13 @@
                 exit();
             }
         }
-        $sql = "UPDATE  tbldangnhap SET matKhau = '{$password}' , Email ='{$email}' WHERE id='{$idDangnhap}' ";
+        $sql = "UPDATE  tbldangnhap SET ";
+        if( $password != $user['matKhau']){
+            $password = base64_encode($password );
+            $sql .= " matKhau = '{$password}' , ";
+        }
+        $sql .= " Email ='{$email}' WHERE id='{$idDangnhap}'";
+        
         $data = mysqli_query($conn,$sql);
         $sql = "UPDATE  tblbenhnhan SET tenBenhnhan = '{$name}',gioiTinh ='{$sex}',soDT='{$sdt}',ngaySinh ='{$birthday}',diaChi = '{$address}',CMND = '{$cmt}',danToc = '{$dantoc}',ngheNghiep = '{$job}',BHYT = '{$bhyt}' WHERE id='{$id}' ";
         $data = mysqli_query($conn,$sql);
