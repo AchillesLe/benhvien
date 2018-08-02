@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Forgot Password</title>
+    <title>Bệnh viện quân dân y miền đông - Quên mật khẩu</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -27,6 +27,17 @@
     <div class="container">
       <div class="card card-login mx-auto mt-5">
         <div class="card-header">Quên mật khẩu</div>
+        <?php 
+        if( isset($_SESSION['status']) && $_SESSION['status']==true ){
+            echo "<div class='alert alert-success'>{$_SESSION['message-forgotmail']}</div>";
+            unset($_SESSION['message-forgotmail']);
+            unset($_SESSION['status']);
+        }else if(isset($_SESSION['status']) && $_SESSION['status']==false){
+            echo "<div class='alert alert-danger'>{$_SESSION['message-forgotmail']}</div>";
+            unset($_SESSION['message-forgotmail']);
+            unset($_SESSION['status']);
+        }
+        ?>
         <div class="card-body">
 			<div class="text-center mb-4">
 				<h4>Bạn quên mật khẩu?</h4>
