@@ -195,6 +195,7 @@ $(document).ready(function() {
 
     $('#sel_khoa').on('change',function(){
         var id = $(this).val();
+        $('#error-sel-khoa').css("display","none");
         $("select#sel_bacsi").empty();
         $("select#sel_bacsi").append('<option value="0">------ Khoa tự sắp xếp ------</option> ');
         $.ajax({
@@ -211,6 +212,90 @@ $(document).ready(function() {
                 }
             }
         });
+    });
+    $('#txt_ngaykham').on('change',function(){
+        $('#sel_time').empty();
+        $('#sel_time').append('<option value="0">-chọn-</option>');
+        $.each(JSON.parse(array_time),function(index,element){
+            let html = '<option value="'+index+'">'+element+'</option>';
+            $('#sel_time').append(html);
+        });
+    });
+    $('#sel_time').on('change',function(){
+        $('#error-sel-time').css("display","none");
+        $('#message-lichkham').html("");
+        var indextime = $(this).val();
+        var time = $('#sel_time option:selected').text();
+        var idbacsi = $('#sel_bacsi').val();
+        var ngay = $('#txt_ngaykham').val();
+        $.ajax({
+            url:"/check-lichkham",
+            type:"POST",
+            dataType:'json',
+            data:{nameRequest:210,indextime:indextime,time:time,idbacsi:idbacsi,ngay:ngay},
+            success:function(result){
+                let html ="";
+                if(!result.status){
+                    html = "<div class='alert alert-danger'>"+result.massage+"</div>";
+                }
+                $('#message-lichkham').html(html);
+            }
+        });
+    });
+
+    $('#form-appointment-schedule').validate({
+        rules: {
+            txt_ngaykham:{
+                required:true
+            },
+            txt_reason:{
+                required:true,
+                maxlength : 300,
+                minlength:3
+            },
+            txt_sdt :{
+                required:true,
+                number: true,
+                maxlength : 11,
+                minlength:10
+            },
+        },
+        messages:{
+            txt_ngaykham:{
+                required:"Vui lòng nhập/chọn ngày hẹn !",
+            },
+            txt_reason:{
+                required:"Vui lòng nhập nguyên nhân triệu chứng !",
+                maxlength : "Nhập tối đa 300 kí tự !",
+                minlength : "Nhập tối đa 3 kí tự !",
+            },
+            txt_sdt :{
+                required: "Vui lòng nhập !",
+                number:"Phải là số !",
+                minlength: "Nhập ít nhất 10 kí tự !",
+                maxlength: "Nhập tối đa 11 kí tự !"
+            },
+        },
+        errorClass: "label-danger",
+        errorPlacement: function(error, element) {
+            error.insertAfter(element);
+        }
+    });
+    $('.bnt-appointment-schedule').on('click',function(){
+        if( $('#sel_khoa').val() == 0 ){
+            // $('#error-sel-khoa').css("display","inline-block");
+            alert("Vui lòng chọn khoa !");
+            return;
+        }
+        if( $('#sel_time').val()==0 ){
+            // $('#error-sel-time').css("display","inline-block");
+            alert("Vui lòng chọn thời gian !");
+            return;
+        }
+        if($('#form-appointment-schedule').valid() == false )
+            return;
+        
+        $('#form-appointment-schedule').submit();
     });
 
 });

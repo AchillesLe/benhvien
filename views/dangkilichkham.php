@@ -11,8 +11,20 @@
             <div class="card-header">
               <i class="fas fa-table"></i> Đăng kí lịch hẹn
             </div>
+            <div id="message-lichkham"></div>
+            <?php
+                if( isset($_SESSION['status']) && $_SESSION['status']==true ){
+                    echo "<div class='alert alert-success'>{$_SESSION['message-dklichkham']}</div>";
+                    unset($_SESSION['message-dklichkham']);
+                    unset($_SESSION['status']);
+                }else if(isset($_SESSION['status']) && $_SESSION['status']==false){
+                    echo "<div class='alert alert-danger'>{$_SESSION['message-dklichkham']}</div>";
+                    unset($_SESSION['message-dklichkham']);
+                    unset($_SESSION['status']);
+                }
+            ?>
             <div class="card-body">
-                <form id="form-appointment-schedule" method="POST" action="">
+                <form id="form-appointment-schedule" method="POST" action="/p-dangki-lichkham">
                     <div class="form-row">
                         <div class="form-group offset-md-2 col-md-8">
                             <label for="sel_khoa">Khoa</label>
@@ -24,6 +36,7 @@
                                         }
                                     ?>
                             </select>
+                            <label id="error-sel-khoa" class="label-danger" hidden>Vui lòng chọn khoa !</label>
                         </div>
                     </div>
                     <div class="form-row">
@@ -36,24 +49,25 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group offset-md-2 col-md-6">
-                            <label for="sel_khoa">Ngày khám</label>
+                            <label for="txt_ngaykham">Ngày khám</label>
                             <input type="text" class="form-control" name="txt_ngaykham" id="txt_ngaykham"   placeholder="dd/mm/yyyy">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="sel_time">Giờ khám</label>
-                            <select name="sel_time" class="form-control">
-                                <option value="0">--Chọn--</option>
-                                <?php 
-                                    foreach($array_time as $time){
-                                        echo "<option value={$time}>{$time}</option>";
+                            <select name="sel_time"  id="sel_time" class="form-control" >
+                                <!-- <option value="0">--Chọn--</option> -->
+                                <!-- <?php 
+                                    foreach($array_time as $key => $time){
+                                        echo "<option value={$key}>{$time}</option>";
                                     }
-                                ?>
+                                ?> -->
                             </select>
                         </div>
+                        <label id="error-sel-time" class="label-danger" hidden>Vui lòng chọn thời gian !</label>
                     </div>
                     <div class="form-row">
                         <div class="form-group offset-md-2 col-md-6">
-                            <label for="sel_bacsi">Số điện thoại</label>
+                            <label for="txt_sdt">Số điện thoại</label>
                             <input type="text" class="form-control" id="txt_sdt" name="txt_sdt" placeholder="Số điện thoại">
                         </div>
                     </div>
@@ -65,7 +79,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group offset-md-2 col-md-4">
-                            <input class="form-control" id="txt_sdt" name="submit" hidden>
+                            <input class="form-control" value="200" name="nameRequest" hidden>
                             <button type="button" class="btn btn-primary bnt-appointment-schedule">Tạo lịch hẹn</button>
                         </div>
                     </div>
@@ -77,6 +91,7 @@
 
 <?php include('footer.php') ?>
 <script>
+    var array_time = '<?php echo json_encode($array_time) ?>';
     var options_Y_M_D = {
         format: 'dd/mm/yyyy',
         minViewMode: 'days',
@@ -89,42 +104,5 @@
     $('#txt_ngaykham').datepicker(options_Y_M_D);
     $('#txt_ngaykham').data('datepicker').setStartDate(currdate);
     // $("#sel_bacsi").chosen({});
-        $('#form-appointment-schedule').validate({
-        rules: {
-            txt_reason:{
-                required:true,
-                maxlength : 300,
-                minlength:3
-            },
-            txt_sdt :{
-                required:true,
-                number: true,
-                maxlength : 11,
-                minlength:10
-            },
 
-        },
-        messages:{
-            txt_reason:{
-                required:"Vui lòng nhập !",
-                maxlength : "Nhập tối đa 300 kí tự !",
-                minlength : "Nhập tối đa 3 kí tự !",
-            },
-            txt_sdt :{
-                required: "Vui lòng nhập !",
-                number:"Phải là số !",
-                minlength: "Nhập ít nhất 10 kí tự !",
-                maxlength: "Nhập tối đa 11 kí tự !"
-            },
-        },
-        errorClass: "label-danger",
-        errorPlacement: function(error, element) {
-            error.insertAfter(element);
-        }
-    });
-    $('.bnt-appointment-schedule').on('click',function(){
-        if($('.form-appointment-schedule').valid() == false )
-            return;
-        $('.form-appointment-schedule').submit();
-    });
 </script>

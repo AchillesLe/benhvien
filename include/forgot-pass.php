@@ -1,7 +1,7 @@
 <?php
 if(isset( $_POST['txt_email'] )){
     ob_start();
-    include('include/sendmail.php');
+    include('lib/sendmail.php');
     $email =  $_POST['txt_email'];
     $conn = connection::_open();
     $sql = "SELECT * FROM tbldangnhap WHERE Email ='{$email}'";

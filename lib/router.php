@@ -16,6 +16,12 @@ if( isset($_SESSION['user'] ) ){
         case '/dangki-lichkham':
             require 'views/dangkilichkham.php';
             break;
+        case '/p-dangki-lichkham':
+            require 'include/lichkham.php';
+            break;
+        case '/check-lichkham':
+            require 'include/lichkham.php';
+            break;  
         case '/get-bacsi-by-idKhoa':
             require 'include/khoa.php';
             break;
