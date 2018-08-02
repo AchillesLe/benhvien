@@ -193,4 +193,24 @@ $(document).ready(function() {
         $('#update-infor').submit();
     });
 
+    $('#sel_khoa').on('change',function(){
+        var id = $(this).val();
+        $("select#sel_bacsi").empty();
+        $("select#sel_bacsi").append('<option value="0">------ Khoa tự sắp xếp ------</option> ');
+        $.ajax({
+            url:'/get-bacsi-by-idKhoa',
+            type:'POST',
+            dataType:'json',
+            data:{nameRequest:100,idkhoa:id},
+            success:function(result) {
+                if(result.success){
+                    $.each( result.data , function(index,element){
+                        var html = "<option value='"+element.id+"'>"+element.ten+"</option>";
+                        $('select#sel_bacsi').append(html);
+                    });
+                }
+            }
+        });
+    });
+
 });

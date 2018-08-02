@@ -1,3 +1,6 @@
+option:hover{
+    cursor: pointer;
+}
 label.label-danger{
     padding-left: 3px;
     padding-right: 3px;
@@ -5,12 +8,11 @@ label.label-danger{
     margin-top: 3px;
     border-radius: 3px;
 }
-.dklichkham{
-    padding-bottom:100px;
-}
 .dklichkham > .card-body{
-    width:85%;
+    padding-top:70px;
+    padding-bottom:100px;
     margin: auto;
+    
 }
 .group-cbx-sex{
     border:1px solid #ced4da;
@@ -23,4 +25,18 @@ label.label-danger{
 }
 .chosen-results{
  height: 200px;
+}
+.chosen-container-single .chosen-single{
+    height: 38px;
+    background: #fff;
+}
+.chosen-container-single .chosen-single span{
+    margin-top: 6px;
+    font-size: 1rem;
+}
+.chosen-container-active{
+    background: #fff;
+}
+li.active-result{
+    font-size: 1rem;
 }
