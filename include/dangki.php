@@ -41,7 +41,7 @@
         $data = mysqli_query($conn,$sql);
         $id =  mysqli_insert_id($conn);
         if( $id ){
-            $sql = "INSERT INTO tblbenhnhan(tenBenhnhan,gioiTinh,diaChi,ngaySinh,soDT,CMND,danToc,ngheNghiep,BHYT,ngoaiTuyen,idDangnhap) VALUES ('{$name}','{$sex}','{$address}','{$birthday}','{$sdt}','{$cmt}','{$dantoc}','{$job}','{$bhyt}','0','{$id}')";
+            $sql = "INSERT INTO tblbenhnhan(ten,gioiTinh,diaChi,ngaySinh,soDT,CMND,danToc,ngheNghiep,BHYT,ngoaiTuyen,idDangnhap) VALUES ('{$name}','{$sex}','{$address}','{$birthday}','{$sdt}','{$cmt}','{$dantoc}','{$job}','{$bhyt}','0','{$id}')";
             $data = mysqli_query($conn,$sql);
             if( $data == null){
                 $_SESSION['message-register'] = "Có lỗi xuất hiện trong quá trình đăng kí vui lòng , thử lại lần nữa !";

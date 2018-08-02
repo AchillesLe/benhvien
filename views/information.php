@@ -36,7 +36,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="txt_name">Họ và tên</label>
-                        <input type="text" class="form-control" name="txt_name" value="<?php echo $user['tenBenhnhan'] ?>" readonly>
+                        <input type="text" class="form-control" name="txt_name" value="<?php echo $user['ten'] ?>" readonly>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="mr-5">Giới tính</label>
@@ -92,12 +92,14 @@
                     <label for="txt_address">Địa chỉ</label>
                     <input type="text" class="form-control" name="txt_address" value="<?php echo $user['diaChi'] ?>">
                 </div>
+                <?php if($user['quyen']==1): ?>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="txt_nghe">Nghề nghiệp</label>
                         <input type="text" class="form-control" name="txt_nghe" value="<?php echo $user['ngheNghiep'] ?>">
                     </div>
                 </div>
+                <?php endif;?>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="txt_pass">Password</label>

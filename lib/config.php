@@ -12,8 +12,8 @@
  * config mail
  */
     define("MAIL_HOST", "smtp.gmail.com");
-    define("MAIL_SEND", "yuriboykasgu@gmail.com");
-    define("MAIL_PASSWORD", "haithanhf");
+    define("MAIL_SEND", "diemnguyentt2810@gmail.com");
+    define("MAIL_PASSWORD", "diem1234");
     define("MAIL_SMTP_SECURE", "tls");
 
     

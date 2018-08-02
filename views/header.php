@@ -53,11 +53,7 @@
             <i class="fas fa-user-circle fa-fw"></i>Xin chào
 			<?php 
 				if( isset($user['quyen']) ){
-					if ($user['quyen'] =='0'){
-						echo ", ".$user['tenBacsi']." !";
-					}else{
-						echo ", ".$user['tenBenhnhan']." !";
-					} 
+						echo ", ".$user['ten']." !";
 				}
 			?>
           </a>
