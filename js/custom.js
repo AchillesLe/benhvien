@@ -228,9 +228,15 @@ $(document).ready(function() {
     });
     $('#txt_ngaykham').on('change',function(){
         $('#sel_time').empty();
+        $ngay =  $(this).val();
         $('#message-lichkham').html("");
-        $('#sel_time').append('<option value="0">-chọn-</option>');
+        $('#sel_time').append('<option value="0">-chọn-</option>');Date.parse('01/01/2011 10:20:45') > Date.parse('01/01/2011 5:10:10')
         $.each(JSON.parse(array_time),function(index,element){
+            $date_comp = $ngay+" "+element;
+            $now = new Date();
+            $date_now = $now.getDate()+"/"+($now.getMonth()+1)+"/"+$now.getFullYear() + $now.getFullYear() ;
+            console.log($date_now);
+            console.log($date_comp);
             let html = '<option value="'+index+'">'+element+'</option>';
             $('#sel_time').append(html);
         });
@@ -308,8 +314,13 @@ $(document).ready(function() {
         }
         if($('#form-appointment-schedule').valid() == false )
             return;
+        if( $('#message-lichkham').html()==''){
+            $('#form-appointment-schedule').submit();
+        }else{
+            alert("Lịch hẹn đang bị trùng với người khác . Vui lòng chọn giờ khác !");
+            return;
+        }
         
-        $('#form-appointment-schedule').submit();
     });
 
 });

@@ -12,10 +12,20 @@
             $ngaykham = date("Y-m-d", strtotime($ngaykham) );
 
             $conn = connection::_open();
-            $sql = "INSERT INTO tbldatlichkham(idBenhnhan,idBacsi,soTT,ngayHen,gioHen,soDT,lyDo)
-                     VALUES('{$id_benhnhan}','{$id_bacsi}','{$stt}','{$ngaykham}','{$giokham}','{$sdt}','{$lido}')";
+            $sql  = "SELECT * FROM tbldatlichkham WHERE idBacsi='{$id_bacsi}' 
+            AND ngayHen='{$ngaykham}' 
+            AND soTT='{$_POST['sel_time']}'  ";
             $data = mysqli_query($conn,$sql);
-            
+            if($data){
+                $_SESSION['message-dklichkham'] = "Đăng kí thất bại ! Có thể bị trùng giờ khám trong ngày . Vui lòng kiểm tra lại !";
+                $_SESSION['status'] = false;
+                header('Location : /dangki-lichkham',301);
+                exit();
+            }
+            $sql = "INSERT INTO tbldatlichkham(idBenhnhan,idBacsi,soTT,ngayHen,gioHen,soDT,lyDo)
+                VALUES('{$id_benhnhan}','{$id_bacsi}','{$stt}','{$ngaykham}','{$giokham}','{$sdt}','{$lido}')";
+            $data = mysqli_query($conn,$sql);
+
             if($data){
                 $sql = "SELECT * FROM tblbacsi A , tblkhoa B WHERE A.idKhoa=B.id AND A.id = $id_bacsi ";
                 $data = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
