@@ -44,14 +44,14 @@
             connection::_close($conn);
             
         }else if(isset($_POST['nameRequest']) && $_POST['nameRequest'] == REQUEST_CHECKTIMELICHKHAM){
+            $id_benhnhan = $id_benhnhan = ( $_SESSION['user'] )['id'];
+            $id_bacsi =  $_POST['idbacsi'];
+            $indextime =  $_POST['indextime'];
+            $time =  $_POST['time'];
+            $ngay =  str_replace('/', '-', $_POST['ngay']);
+            $ngay =  date("Y-m-d", strtotime($ngay) );
+            $result = ['status'=>true,'massage'=>""];
             if( $_POST['idbacsi'] != 0 ){
-                $id_benhnhan = $id_benhnhan = ( $_SESSION['user'] )['id'];
-                $id_bacsi =  $_POST['idbacsi'];
-                $indextime =  $_POST['indextime'];
-                $time =  $_POST['time'];
-                $ngay =  str_replace('/', '-', $_POST['ngay']);
-                $ngay =  date("Y-m-d", strtotime($ngay) );
-                $result = ['status'=>true,'massage'=>""];
                 $conn =  connection::_open();
                 $sql  = "SELECT * FROM tbldatlichkham WHERE idBacsi='{$id_bacsi}' 
                                                         AND ngayHen='{$ngay}' 
@@ -64,7 +64,9 @@
                     echo json_encode($result);
                 }
             }else{
-
+                // $conn =  connection::_open();
+                // $sql = "SELECT";
+                // connection::_close($conn);
             }
         }        
         ob_end_flush();

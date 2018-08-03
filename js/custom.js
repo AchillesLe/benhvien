@@ -198,6 +198,8 @@ $(document).ready(function() {
         $('#error-sel-khoa').css("display","none");
         $("select#sel_bacsi").empty();
         $("select#sel_bacsi").append('<option value="0">------ Khoa tự sắp xếp ------</option> ');
+        $('#sel_time').empty();
+        $('#message-lichkham').html("");
         $.ajax({
             url:'/get-bacsi-by-idKhoa',
             type:'POST',
@@ -213,8 +215,20 @@ $(document).ready(function() {
             }
         });
     });
+    $('#sel_bacsi').on('change',function(){
+        $('#sel_time').empty();
+        if( $('#txt_ngaykham').val()){
+            $('#sel_time').append('<option value="0">-chọn-</option>');
+            $.each(JSON.parse(array_time),function(index,element){
+                let html = '<option value="'+index+'">'+element+'</option>';
+                $('#sel_time').append(html);
+            });
+            $('#message-lichkham').html("");
+        }
+    });
     $('#txt_ngaykham').on('change',function(){
         $('#sel_time').empty();
+        $('#message-lichkham').html("");
         $('#sel_time').append('<option value="0">-chọn-</option>');
         $.each(JSON.parse(array_time),function(index,element){
             let html = '<option value="'+index+'">'+element+'</option>';
