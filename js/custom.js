@@ -234,11 +234,13 @@ $(document).ready(function() {
         $.each(JSON.parse(array_time),function(index,element){
             $date_comp = $ngay+" "+element;
             $now = new Date();
-            $date_now = $now.getDate()+"/"+($now.getMonth()+1)+"/"+$now.getFullYear() + $now.getFullYear() ;
-            console.log($date_now);
-            console.log($date_comp);
-            let html = '<option value="'+index+'">'+element+'</option>';
-            $('#sel_time').append(html);
+            $date_now = $now.getDate()+"/"+($now.getMonth()+1)+"/"+$now.getFullYear() +" "+$now.getHours()+":"+$now.getMinutes();
+
+            if(Date.parse(new Date($date_comp)) > Date.parse(new Date($date_now))){
+                let html = '<option value="'+index+'">'+element+'</option>';
+                $('#sel_time').append(html);
+            }
+            
         });
     });
     $('#sel_time').on('change',function(){
