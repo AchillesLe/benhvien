@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2018 at 05:38 AM
+-- Generation Time: Aug 04, 2018 at 04:18 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -36,7 +36,9 @@ CREATE TABLE `tblbacsi` (
   `gioiTinh` char(3) COLLATE utf8_unicode_ci NOT NULL,
   `diaChi` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Quận 9, TPHCM',
   `CMND` char(9) COLLATE utf8_unicode_ci NOT NULL,
+  `danToc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `trinhDo` char(2) COLLATE utf8_unicode_ci NOT NULL,
+  `BHYT` char(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `soDT` char(11) COLLATE utf8_unicode_ci NOT NULL,
   `idDangnhap` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -45,39 +47,39 @@ CREATE TABLE `tblbacsi` (
 -- Dumping data for table `tblbacsi`
 --
 
-INSERT INTO `tblbacsi` (`id`, `ten`, `idKhoa`, `ngaySinh`, `gioiTinh`, `diaChi`, `CMND`, `trinhDo`, `soDT`, `idDangnhap`) VALUES
-(1, 'Hoàng Thanh Duân', 3, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513136', 'DH', '16577736166', 1),
-(2, ' Phùng Khắc Vũ', 4, '0000-00-00', 'Nam', 'Quận 11, HCM', '205513137', 'CH', '16577736167', 2),
-(3, ' Phạm Văn Vĩnh', 1, '0000-00-00', 'Nam', 'Quận 3, HCM', '205513135', 'CH', '16577736168', 3),
-(4, 'Chu Văn Ninh', 2, '0000-00-00', 'Nam', 'Bình Thạnh, HCM', '205513138', 'CH', '16577736169', 4),
-(5, 'Văn Minh Đức', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513567', 'DH', '0165778000', 5),
-(6, 'Thạch Hồng Vân', 5, '0000-00-00', 'Nữ', 'Quận 10, HCM', '205513147', 'CH', '16597736167', 6),
-(7, ' Lê Thế Vinh', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205514123', 'DH', '0123456756', 7),
-(8, 'Quách Hải Long', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513141', 'CH', '16577736145', 8),
-(9, 'Ngô Thị Nhanh', 3, '0000-00-00', 'Nam', 'Quận 1, HCM', '205513142', 'CH', '16577736154', 9),
-(10, 'Đặng Giao Chiêu', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513222', 'DH', '0165778002', 10),
-(11, 'Phạm Văn Tịnh', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '205513136', 'DH', '01657773616', 11),
-(12, 'Trần Thị Mỹ Hạnh', 2, '2013-06-02', 'Nữ', 'Quận 9, HCM', '205513135', 'TH', '01657773616', 12),
-(13, ' Lương Thanh Hải', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513138', 'DH', '165712345', 13),
-(14, 'Nguyễn Thanh Toàn', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513345', 'DH', '165734567', 14),
-(15, 'Phạm Hồng Quế', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '205513136', 'DH', '0165778767', 15),
-(16, 'Nguyễn Tuấn', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513324', 'DH', '0165778733', 16),
-(17, 'Vũ Cửu Tùng', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '205513189', 'DH', '0165778755', 17),
-(18, 'Trà Văn Hiên', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513309', 'DH', '0165778700', 18),
-(19, 'Nguyễn Bảo Xuân Tài', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513222', 'DH', '0165778722', 19),
-(20, 'Nguyễn Mậu Đạt', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513300', 'DH', '0165778744', 20),
-(21, 'Trần Thị Thúy Ngân', 8, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513301', 'DH', '0165778745', 21),
-(22, 'Nguyễn Thanh Sơn', 8, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513221', 'DH', '0165778003', 22),
-(23, 'Huỳnh Ngọc Vân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513229', 'DH', '0165778009', 23),
-(24, 'Đinh Thị Thảnh', 10, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513227', 'DH', '0165778005', 24),
-(25, 'Nguyễn Nhị Hương Tân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513111', 'DH', '0165777777', 25),
-(26, 'Trịnh Hồng Tân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513777', 'DH', '0165777779', 26),
-(27, 'Trần Văn Phước', 10, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513224', 'DH', '0165778006', 27),
-(28, 'Hà Thị Thiện', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513111', 'DH', '0165778111', 28),
-(29, 'Nguyễn Nhất Phương', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513112', 'DH', '0165778112', 29),
-(30, 'Lê Thị Thúy', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513110', 'DH', '0165778113', 30),
-(31, 'Nay H\' Nga', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513100', 'DH', '0165778114', 31),
-(32, 'Hà Thị Thiện', 12, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513109', 'DH', '0165778115', 32);
+INSERT INTO `tblbacsi` (`id`, `ten`, `idKhoa`, `ngaySinh`, `gioiTinh`, `diaChi`, `CMND`, `danToc`, `trinhDo`, `BHYT`, `soDT`, `idDangnhap`) VALUES
+(1, 'Hoàng Thanh Duân', 3, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513136', NULL, 'DH', NULL, '16577736166', 1),
+(2, ' Phùng Khắc Vũ', 4, '0000-00-00', 'Nam', 'Quận 11, HCM', '205513137', NULL, 'CH', NULL, '16577736167', 2),
+(3, ' Phạm Văn Vĩnh', 1, '0000-00-00', 'Nam', 'Quận 3, HCM', '205513135', NULL, 'CH', NULL, '16577736168', 3),
+(4, 'Chu Văn Ninh', 2, '0000-00-00', 'Nam', 'Bình Thạnh, HCM', '205513138', NULL, 'CH', NULL, '16577736169', 4),
+(5, 'Văn Minh Đức', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513567', NULL, 'DH', NULL, '0165778000', 5),
+(6, 'Thạch Hồng Vân', 5, '0000-00-00', 'Nữ', 'Quận 10, HCM', '205513147', NULL, 'CH', NULL, '16597736167', 6),
+(7, ' Lê Thế Vinh', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205514123', NULL, 'DH', NULL, '0123456756', 7),
+(8, 'Quách Hải Long', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513141', NULL, 'CH', NULL, '16577736145', 8),
+(9, 'Ngô Thị Nhanh', 3, '0000-00-00', 'Nam', 'Quận 1, HCM', '205513142', NULL, 'CH', NULL, '16577736154', 9),
+(10, 'Đặng Giao Chiêu', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513222', NULL, 'DH', NULL, '0165778002', 10),
+(11, 'Phạm Văn Tịnh', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '205513136', NULL, 'DH', NULL, '01657773616', 11),
+(12, 'Trần Thị Mỹ Hạnh', 2, '2013-06-02', 'Nữ', 'Quận 9, HCM', '205513135', NULL, 'TH', NULL, '01657773616', 12),
+(13, ' Lương Thanh Hải', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513138', NULL, 'DH', NULL, '165712345', 13),
+(14, 'Nguyễn Thanh Toàn', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513345', NULL, 'DH', NULL, '165734567', 14),
+(15, 'Phạm Hồng Quế', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '205513136', NULL, 'DH', NULL, '0165778767', 15),
+(16, 'Nguyễn Tuấn', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513324', NULL, 'DH', NULL, '0165778733', 16),
+(17, 'Vũ Cửu Tùng', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '205513189', NULL, 'DH', NULL, '0165778755', 17),
+(18, 'Trà Văn Hiên', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513309', NULL, 'DH', NULL, '0165778700', 18),
+(19, 'Nguyễn Bảo Xuân Tài', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513222', NULL, 'DH', NULL, '0165778722', 19),
+(20, 'Nguyễn Mậu Đạt', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513300', NULL, 'DH', NULL, '0165778744', 20),
+(21, 'Trần Thị Thúy Ngân', 8, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513301', NULL, 'DH', NULL, '0165778745', 21),
+(22, 'Nguyễn Thanh Sơn', 8, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513221', NULL, 'DH', NULL, '0165778003', 22),
+(23, 'Huỳnh Ngọc Vân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513229', NULL, 'DH', NULL, '0165778009', 23),
+(24, 'Đinh Thị Thảnh', 10, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513227', NULL, 'DH', NULL, '0165778005', 24),
+(25, 'Nguyễn Nhị Hương Tân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513111', NULL, 'DH', NULL, '0165777777', 25),
+(26, 'Trịnh Hồng Tân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513777', NULL, 'DH', NULL, '0165777779', 26),
+(27, 'Trần Văn Phước', 10, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513224', NULL, 'DH', NULL, '0165778006', 27),
+(28, 'Hà Thị Thiện', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513111', NULL, 'DH', NULL, '0165778111', 28),
+(29, 'Nguyễn Nhất Phương', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513112', NULL, 'DH', NULL, '0165778112', 29),
+(30, 'Lê Thị Thúy', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513110', NULL, 'DH', NULL, '0165778113', 30),
+(31, 'Nay H\' Nga', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513100', NULL, 'DH', NULL, '0165778114', 31),
+(32, 'Hà Thị Thiện', 12, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513109', NULL, 'DH', NULL, '0165778115', 32);
 
 -- --------------------------------------------------------
 
@@ -143,7 +145,8 @@ INSERT INTO `tblbenhnhan` (`id`, `ten`, `gioiTinh`, `diaChi`, `ngaySinh`, `soDT`
 (7, 'Nguyễn Phương Linh', 'Nam', 'Quận 9, HCM', '2012-02-02', '0999988899', NULL, 'Kinh', NULL, '123456789', '0', 39),
 (8, 'Tố Nga', 'Nam', 'Quận 1, HCM', '1992-12-02', '0977766655', NULL, 'Kinh', NULL, '123456789123454', '0', 40),
 (9, 'Trinh Nữ', 'Nam', 'Quận 9, HCM', '2013-06-01', '0966677777', '121234567', 'Kinh', NULL, '1234567891', '0', 41),
-(23, 'Nguyễn Thị Thu Điểm', 'Nu', '97 Man Thiện, Hiệp Phú, Quận 9, HCM', '1996-10-28', '0938568110', '231089273', 'Kinh', 'Sinh viên', '123456789098765', '0', 61);
+(24, 'Nguyễn Thị Thu Điểm', 'Nu', '97 Man Thiện, Hiệp Phú, Quận 9, HCM', '1996-10-28', '0938568110', '231089273', 'Kinh', 'Sinh viên', '123456789098765', '0', 62),
+(25, 'Nguyễn Thị Thu Điểm', 'Nu', '97 Man Thiện, Hiệp Phú, Quận 9, HCM', '1996-10-28', '0938568110', '', '', '', '', '0', 63);
 
 -- --------------------------------------------------------
 
@@ -166,46 +169,47 @@ CREATE TABLE `tbldangnhap` (
 INSERT INTO `tbldangnhap` (`id`, `Email`, `matKhau`, `quyen`, `tinhTrang`) VALUES
 (1, 'thanhduan1@gmail.com', 'MTIzNDU2', 0, 0),
 (2, 'khacvu2@gmail.com', 'MTIzNDU2', 0, 0),
-(3, 'vavinh3@gmail.com', '123', 0, 0),
-(4, 'vanninh4@gmail.com', '123', 0, 0),
-(5, 'minhduc5@gmail.com', '123', 0, 0),
-(6, 'hongvan6@gmail.com', '123', 0, 0),
-(7, 'thevinh7@gmail.com', '123', 0, 0),
-(8, 'hailong8@gmail.com', '123', 0, 0),
-(9, 'thinhanh9@gmail.com', '123', 0, 0),
-(10, 'giaochieu10@gmail.com', '123', 0, 0),
-(11, 'vantinh11@gmail.com', '123', 0, 0),
-(12, 'myhanh12@gmail.com', '123', 0, 0),
-(13, 'thanhhai13@gmail.com', '123', 0, 0),
-(14, 'thanhtoan14@gmail.com', '123', 0, 0),
-(15, 'hongque15@gmail.com', '123', 0, 0),
-(16, 'nguyentuan16@gmail.com', '123', 0, 0),
-(17, 'cuutung17@gmail.com', '123', 0, 0),
-(18, 'vanhien18@gmail.com', '123', 0, 0),
-(19, 'xuantai19@gmail.com', '123', 0, 0),
-(20, 'maudat20@gmail.com', '123', 0, 0),
-(21, 'thuyngan21@gmail.com', '123', 0, 0),
-(22, 'thanhson22@gmail.com', '123', 0, 0),
-(23, 'ngocvan23@gmail.com', '123', 0, 0),
-(24, 'thithanh24@gmail.com', '123', 0, 0),
-(25, 'huongtan25@gmail.com', '123', 0, 0),
-(26, 'hongtan26@gmail.com', '123', 0, 0),
-(27, 'vanphuoc27@gmail.com', '123', 0, 0),
-(28, 'thithien28@gmail.com', '123', 0, 0),
-(29, 'nhatphuong29@gmail.com', '123', 0, 0),
-(30, 'thithuy30@gmail.com', '123', 0, 0),
-(31, 'nga31@gmail.com', '123', 0, 0),
-(32, 'thithien32@gmail.com', '123', 0, 0),
-(33, 'vanthien33@gmail.com', '123', 1, 0),
-(34, 'minhvuong34@gmail.com', '123', 1, 0),
-(35, 'bavien35@gmail.com', '123', 1, 0),
-(36, 'tantrong36@gmail.com', '123', 1, 0),
-(37, 'thinhung37@gmail.com', '123', 1, 0),
-(38, 'thuydung38@gmail.com', '123', 1, 0),
-(39, 'phuonglinh39@gmail.com', '123', 1, 0),
-(40, 'tonga40@gmail.com', '123', 1, 0),
-(41, 'trinhnu41@gmail.com', '123', 1, 0),
-(61, 'diemnguyentt2@gmail.com', 'MTIzNDU2', 1, 0);
+(3, 'vavinh3@gmail.com', 'MTIzNDU2', 0, 0),
+(4, 'vanninh4@gmail.com', 'MTIzNDU2', 0, 0),
+(5, 'minhduc5@gmail.com', 'MTIzNDU2', 0, 0),
+(6, 'hongvan6@gmail.com', 'MTIzNDU2', 0, 0),
+(7, 'thevinh7@gmail.com', 'MTIzNDU2', 0, 0),
+(8, 'hailong8@gmail.com', 'MTIzNDU2', 0, 0),
+(9, 'thinhanh9@gmail.com', 'MTIzNDU2', 0, 0),
+(10, 'giaochieu10@gmail.com', 'MTIzNDU2', 0, 0),
+(11, 'vantinh11@gmail.com', 'MTIzNDU2', 0, 0),
+(12, 'myhanh12@gmail.com', 'MTIzNDU2', 0, 0),
+(13, 'thanhhai13@gmail.com', 'MTIzNDU2', 0, 0),
+(14, 'thanhtoan14@gmail.com', 'MTIzNDU2', 0, 0),
+(15, 'hongque15@gmail.com', 'MTIzNDU2', 0, 0),
+(16, 'nguyentuan16@gmail.com', 'MTIzNDU2', 0, 0),
+(17, 'cuutung17@gmail.com', 'MTIzNDU2', 0, 0),
+(18, 'vanhien18@gmail.com', 'MTIzNDU2', 0, 0),
+(19, 'xuantai19@gmail.com', 'MTIzNDU2', 0, 0),
+(20, 'maudat20@gmail.com', 'MTIzNDU2', 0, 0),
+(21, 'thuyngan21@gmail.com', 'MTIzNDU2', 0, 0),
+(22, 'thanhson22@gmail.com', 'MTIzNDU2', 0, 0),
+(23, 'ngocvan23@gmail.com', 'MTIzNDU2', 0, 0),
+(24, 'thithanh24@gmail.com', 'MTIzNDU2', 0, 0),
+(25, 'huongtan25@gmail.com', 'MTIzNDU2', 0, 0),
+(26, 'hongtan26@gmail.com', 'MTIzNDU2', 0, 0),
+(27, 'vanphuoc27@gmail.com', 'MTIzNDU2', 0, 0),
+(28, 'thithien28@gmail.com', 'MTIzNDU2', 0, 0),
+(29, 'nhatphuong29@gmail.com', 'MTIzNDU2', 0, 0),
+(30, 'thithuy30@gmail.com', 'MTIzNDU2', 0, 0),
+(31, 'nga31@gmail.com', 'MTIzNDU2', 0, 0),
+(32, 'thithien32@gmail.com', 'MTIzNDU2', 0, 0),
+(33, 'vanthien33@gmail.com', 'MTIzNDU2', 1, 0),
+(34, 'minhvuong34@gmail.com', 'MTIzNDU2', 1, 0),
+(35, 'bavien35@gmail.com', 'MTIzNDU2', 1, 0),
+(36, 'tantrong36@gmail.com', 'MTIzNDU2', 1, 0),
+(37, 'thinhung37@gmail.com', 'MTIzNDU2', 1, 0),
+(38, 'thuydung38@gmail.com', 'MTIzNDU2', 1, 0),
+(39, 'phuonglinh39@gmail.com', 'MTIzNDU2', 1, 0),
+(40, 'tonga40@gmail.com', 'MTIzNDU2', 1, 0),
+(41, 'trinhnu41@gmail.com', 'MTIzNDU2', 1, 0),
+(62, 'diemnguyentt2810@gmail.com', 'MTIzNDU2', 1, 0),
+(63, 'diemnguyentt2@gmail.com', 'MTIzNDU2', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -232,7 +236,24 @@ CREATE TABLE `tbldatlichkham` (
 INSERT INTO `tbldatlichkham` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `ngayHen`, `gioHen`, `soDT`, `lyDo`, `tinhTrang`) VALUES
 (1, 8, 12, 13, '2018-06-01', '07:00:00', '0909090909', 'Đau mắt', '0'),
 (2, 9, 12, 15, '2018-06-01', '07:10:00', '11111111', 'Cận', '0'),
-(3, 1, 3, 13, '2018-07-02', '07:00:00', '0938568110', 'Sốt', '0');
+(3, 1, 3, 13, '2018-07-02', '07:00:00', '0938568110', 'Sốt', '0'),
+(4, 25, 3, 13, '2018-08-03', '11:00:00', '0938568110', 'cảm cúm', '1'),
+(5, 24, 7, 27, '2018-08-03', '14:30:00', '0938568110', 'sốt', '1'),
+(6, 24, 21, 33, '2018-08-03', '16:00:00', '0938568110', 'Đau mắt', '1'),
+(7, 24, 18, 33, '2018-08-03', '16:00:00', '0938568110', 'Đau họng', '1'),
+(8, 9, 24, 1, '2018-08-03', '08:00:00', '0938568110', 'Đau', '1'),
+(9, 9, 32, 35, '2018-08-03', '16:30:00', '0938568110', 'Tiêm ngừa', '1'),
+(10, 24, 3, 31, '2018-08-03', '15:30:00', '0938568110', 'Đau đầu', '1'),
+(15, 25, 10, 1, '2018-08-03', '08:00:00', '0938568110', 'Đau răng', '1'),
+(16, 3, 25, 30, '2018-08-03', '15:15:00', '0938568110', 'Đông y', '1'),
+(17, 3, 1, 17, '2018-08-03', '12:00:00', '0938568110', 'Nấm da', '1'),
+(18, 3, 18, 33, '2018-08-03', '16:00:00', '0938568110', 'Đau họng', '1'),
+(19, 7, 18, 33, '2018-08-03', '16:00:00', '0938568110', 'Đau họng', '1'),
+(20, 7, 7, 5, '2018-08-03', '09:00:00', '0938568110', 'Chấn thương', '1'),
+(21, 7, 11, 31, '2018-08-03', '15:30:00', '0938568110', 'Bứu', '1'),
+(22, 3, 21, 3, '2018-08-05', '08:30:00', '0938568110', 'Đau mắt', '1'),
+(23, 6, 5, 10, '2018-08-04', '10:15:00', '0938568111', 'Đau răng', '1'),
+(24, 6, 32, 5, '2018-08-04', '09:00:00', '0938568111', 'Tiêm ngừa', '1');
 
 -- --------------------------------------------------------
 
@@ -323,7 +344,7 @@ INSERT INTO `tblthanhtoandot` (`id`, `idBenhan`, `soTT`, `ngayTra`, `soTien`) VA
 CREATE TABLE `tblthuoc` (
   `id` int(11) NOT NULL,
   `tenThuoc` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `soLuong` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `soLuong` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cachDung` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -449,19 +470,19 @@ ALTER TABLE `tblbenhan`
 -- AUTO_INCREMENT for table `tblbenhnhan`
 --
 ALTER TABLE `tblbenhnhan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tbldangnhap`
 --
 ALTER TABLE `tbldangnhap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `tbldatlichkham`
 --
 ALTER TABLE `tbldatlichkham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tblkhoa`

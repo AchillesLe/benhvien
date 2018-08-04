@@ -58,13 +58,13 @@ $(document).ready(function() {
             },
             txt_bhyt: {
                 number:  "Phải là số !",
-                minlength: "Chứng minh thư phải đủ 15 số",
-                maxlength: "Chứng minh thư phải đủ 15 số"
+                minlength: "Không hợp lệ !",
+                maxlength: "Không hợp lệ !"
             },
             txt_cmt: {
                 number:  "Phải là số !",
-                minlength: "Chứng minh thư phải đủ 9 số",
-                maxlength: "Chứng minh thư phải đủ 9 số"
+                minlength: "Không hợp lệ !",
+                maxlength: "Không hợp lệ !"
             },
             txt_email: {
                 required: "Vui lòng nhập !",
@@ -73,8 +73,8 @@ $(document).ready(function() {
             txt_sdt :{
                 required: "Vui lòng nhập !",
                 number:"Phải là số !",
-                minlength: "Nhập ít nhất 10 kí tự !",
-                maxlength: "Nhập tối đa 11 kí tự !"
+                minlength: "Không hợp lệ !",
+                maxlength: "Không hợp lệ !"
             },
             txt_password: {
                 required: "Vui lòng nhập !",
@@ -148,27 +148,27 @@ $(document).ready(function() {
             },
             txt_bhyt: {
                 number:  "Phải là số !",
-                minlength: "Chứng minh thư phải đủ 15 số",
-                maxlength: "Chứng minh thư phải đủ 15 số"
+                minlength: "Không hợp lệ !",
+                maxlength: "Không hợp lệ !"
             },
             txt_cmt: {
                 number:  "Phải là số !",
-                minlength: "Chứng minh thư phải đủ 9 số",
-                maxlength: "Chứng minh thư phải đủ 9 số"
+                minlength: "Không hợp lệ !",
+                maxlength: "Không hợp lệ !"
             },
             txt_email: {
                 required: "Vui lòng nhập !",
-                email:"Email không hợp lệ !"
+                email:"Không hợp lệ !"
             },
             txt_sdt :{
                 required: "Vui lòng nhập !",
                 number:"Phải là số !",
-                minlength: "Nhập ít nhất 10 kí tự !",
-                maxlength: "Nhập tối đa 11 kí tự !"
+                minlength: "Không hợp lệ !",
+                maxlength: "Không hợp lệ !"
             },
             txt_pass: {
                 required: "Vui lòng nhập !",
-                minlength: "Nhập ít nhất 6 kí tự"
+                minlength: "Không hợp lệ !"
             },
         },
         errorClass: "label-danger",

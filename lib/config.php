@@ -15,6 +15,7 @@
     define("MAIL_SEND", "diemnguyentt2810@gmail.com");
     define("MAIL_PASSWORD", "diem1234");
     define("MAIL_SMTP_SECURE", "tls");
+    
     define("REQUEST_GET_BACSI_BY_KHOA", 100);
     define("REQUEST_DANGKILICHKHAM", 200);
     define("REQUEST_CHECKTIMELICHKHAM", 210);

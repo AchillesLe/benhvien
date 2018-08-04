@@ -9,17 +9,17 @@
         $birthday = str_replace('/', '-', $_POST['txt_birthday']);
         $bhyt = $_POST['txt_bhyt'];
         $cmt = $_POST['txt_cmt'];
-        $job = $_POST['txt_nghe'];
+        $job = $user['quyen']==1 ? $_POST['txt_nghe'] : "";
         $dantoc = $_POST['txt_dantoc'];
         $email = $_POST['txt_email'];
         $sdt = $_POST['txt_sdt'];
         $birthday = date("Y-m-d", strtotime($birthday) );
         $password = $_POST['txt_pass'];
-        
+        $table = $user['quyen']==1?"tblbenhnhan":"tblbacsi";
         $conn = connection::_open();
         
         if( $cmt != $user['CMND'] && $cmt!='' ){
-            $sql = "SELECT * FROM tblbenhnhan WHERE  CMND = '{$cmt}'";
+            $sql = "SELECT * FROM {$table}  WHERE  CMND = '{$cmt}'";
             $data = mysqli_query($conn,$sql)->num_rows;
             if( $data != 0 ){
                 $_SESSION['message-update-infor'] = " Số CMND  đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
@@ -29,7 +29,7 @@
             }
         }
         if( $bhyt != $user['BHYT'] && $bhyt!='' ){
-            $sql = "SELECT * FROM tblbenhnhan WHERE  BHYT='{$bhyt}'";
+            $sql = "SELECT * FROM {$table}  WHERE  BHYT='{$bhyt}'";
             $data = mysqli_query($conn,$sql)->num_rows;
             if( $data != 0 ){
                 $_SESSION['message-update-infor'] = " Số  BHYT đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
@@ -56,7 +56,11 @@
         }
         $sql .= "Email ='{$email}' WHERE id='{$idDangnhap}'";
         $data = mysqli_query($conn,$sql);
-        $sql = "UPDATE  tblbenhnhan SET tenBenhnhan = '{$name}',gioiTinh ='{$sex}',soDT='{$sdt}',ngaySinh ='{$birthday}',diaChi = '{$address}',CMND = '{$cmt}',danToc = '{$dantoc}',ngheNghiep = '{$job}',BHYT = '{$bhyt}' WHERE id='{$id}' ";
+        $sql = "UPDATE {$table}  SET ten = '{$name}', gioiTinh ='{$sex}',soDT='{$sdt}',ngaySinh ='{$birthday}',diaChi = '{$address}',CMND = '{$cmt}',danToc = '{$dantoc}', BHYT = '{$bhyt}'";
+        if( $user['quyen'] == 1 ){
+            $sql .=", ngheNghiep = '{$job}' " ;
+        } 
+        $sql .= " WHERE id='{$id}' ";
         $data = mysqli_query($conn,$sql);
         if(!$data){
             $_SESSION['message-update-infor'] = "Có lỗi xuất hiện trong quá trình cập nhật thông tin , thử lại lần nữa !";
@@ -64,7 +68,7 @@
             header("Location: /inforbasic",301);
             exit();
         }
-        $sql = "SELECT * FROM tblbenhnhan A , tbldangnhap B WHERE A.idDangnhap = B.id AND A.id='{$id}'";
+        $sql = "SELECT * FROM {$table}  A , tbldangnhap B WHERE A.idDangnhap = B.id AND A.id='{$id}'";
         $data = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
         $_SESSION['user'] = $data;
         connection::_close($conn);
