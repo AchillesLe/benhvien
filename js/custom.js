@@ -276,7 +276,6 @@ $(document).ready(function() {
                 minlength:3
             },
             txt_sdt :{
-                required:true,
                 number: true,
                 maxlength : 11,
                 minlength:10
@@ -292,7 +291,6 @@ $(document).ready(function() {
                 minlength : "Nhập tối đa 3 kí tự !",
             },
             txt_sdt :{
-                required: "Vui lòng nhập !",
                 number:"Phải là số !",
                 minlength: "Nhập ít nhất 10 kí tự !",
                 maxlength: "Nhập tối đa 11 kí tự !"

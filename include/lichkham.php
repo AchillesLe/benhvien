@@ -4,6 +4,7 @@
         if( isset($_POST['nameRequest']) && $_POST['nameRequest'] == REQUEST_DANGKILICHKHAM ){
             $id_bacsi = $_POST['sel_bacsi'];
             $id_benhnhan = ( $_SESSION['user'] )['id'];
+            $idkhoa = $_POST['sel_khoa'];
             $ngaykham = str_replace('/', '-', $_POST['txt_ngaykham']);
             $stt = $_POST['sel_time'];
             $giokham = $array_time[$_POST['sel_time']];
@@ -12,21 +13,32 @@
             $ngaykham = date("Y-m-d", strtotime($ngaykham) );
 
             $conn = connection::_open();
-            $sql  = "SELECT * FROM tbldatlichkham WHERE idBacsi='{$id_bacsi}' 
-            AND ngayHen='{$ngaykham}' 
-            AND soTT='{$stt}'  ";
+            //Kiểm tra lịch hẹn  có trùng ngày giờ 
+            $sql  = "SELECT * FROM tbldatlichkham WHERE idBenhnhan='{$id_benhnhan}' AND ngayHen='{$ngaykham}' AND soTT='{$stt}'  ";
             $data = mysqli_query($conn,$sql);
             if($data){
-                $_SESSION['message-dklichkham'] = "Đăng kí thất bại ! Có thể bị trùng giờ khám trong ngày . Vui lòng kiểm tra lại !";
+                $_SESSION['message-dklichkham'] = "Đăng kí thất bại ! Bạn đã có sẵn 1 lịch hẹn lúc {$giokham} trong ngày {$_POST['txt_ngaykham']} . Vui lòng kiểm tra lại !";
                 $_SESSION['status'] = false;
                 header('Location : /dangki-lichkham',301);
                 exit();
             }
+            //Kiểm tra lịch hẹn có trùng ngày giờ và bác sĩ với người khác hay không
+            $sql  = "SELECT * FROM tbldatlichkham WHERE idBacsi='{$id_bacsi}'
+            AND ngayHen='{$ngaykham}' 
+            AND soTT='{$stt}'  ";
+            $data = mysqli_query($conn,$sql);
+            if($data){
+                $_SESSION['message-dklichkham'] = "Đăng kí thất bại ! Có người đã đặt lịch hẹn lúc {$giokham} trong ngày {$_POST['txt_ngaykham']} trước bạn . Vui lòng chọn giờ khác !";
+                $_SESSION['status'] = false;
+                header('Location : /dangki-lichkham',301);
+                exit();
+            }
+            // Tạo lịch hẹn không bị trùng
             $sql = "INSERT INTO tbldatlichkham(idBenhnhan,idBacsi,soTT,ngayHen,gioHen,soDT,lyDo)
                 VALUES('{$id_benhnhan}','{$id_bacsi}','{$stt}','{$ngaykham}','{$giokham}','{$sdt}','{$lido}')";
             $data = mysqli_query($conn,$sql);
-
             if($data){
+                 //lấy thông tin bac sĩ và khoa đểgửi mail
                 $sql = "SELECT * FROM tblbacsi A , tblkhoa B WHERE A.idKhoa=B.id AND A.id = $id_bacsi ";
                 $data = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
                 connection::_close($conn);

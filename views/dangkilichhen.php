@@ -103,6 +103,5 @@
     var currdate =  date.getDate()+"/"+ (date.getMonth()+1) +"/"+date.getFullYear();
     $('#txt_ngaykham').datepicker(options_Y_M_D);
     $('#txt_ngaykham').data('datepicker').setStartDate(currdate);
-    // $("#sel_bacsi").chosen({});
 
 </script>

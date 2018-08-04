@@ -83,9 +83,11 @@
             <span>Khám trực tuyến</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <!-- <h6 class="dropdown-header">Login Screens:</h6> -->
-            <a class="dropdown-item" href="/dangki-lichkham">Đặt lịch hẹn</a>
-            <a class="dropdown-item" href="/danhsachdangki">Xem lịch khám</a>
+            <?php if($user['quyen'] == 1) :?>
+              	<a class="dropdown-item" href="/dangki-lichkham">Đặt lịch khám</a>
+				<!-- <a class="dropdown-item" href="/dangki-lichkham">Đặt lịch hẹn</a> -->
+            <?php endif;?>
+			<a class="dropdown-item" href="/danhsachdangki">Xem lịch khám</a>
             <!-- <div class="dropdown-divider"></div> -->
             <!-- <h6 class="dropdown-header">Other Pages:</h6>
             <a class="dropdown-item" href="404.html">404 Page</a>
