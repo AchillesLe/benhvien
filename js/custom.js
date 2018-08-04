@@ -267,7 +267,6 @@ $(document).ready(function() {
             }
         });
     });
-
     $('#form-appointment-schedule').validate({
         rules: {
             txt_ngaykham:{
@@ -325,5 +324,6 @@ $(document).ready(function() {
         }
         
     });
+    $('#table-benh-an').dataTable();
 
 });
