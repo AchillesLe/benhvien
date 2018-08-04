@@ -11,18 +11,19 @@
             <div class="card-header">
               <i class="fas fa-table"></i><?php echo $user['quyen'] == 1 ? " Đăng kí lịch khám":" Đăng kí lịch hẹn"; ?> 
             </div>
-            <div id="message-lichkham"></div>
-            <?php
-                if( isset($_SESSION['status']) && $_SESSION['status']==true ){
-                    echo "<div class='alert alert-success alert-massage'>{$_SESSION['message-dklichkham']}</div>";
-                    unset($_SESSION['message-dklichkham']);
-                    unset($_SESSION['status']);
-                }else if(isset($_SESSION['status']) && $_SESSION['status']==false){
-                    echo "<div class='alert alert-danger alert-massage'>{$_SESSION['message-dklichkham']}</div>";
-                    unset($_SESSION['message-dklichkham']);
-                    unset($_SESSION['status']);
-                }
-            ?>
+            <div id="message-lichkham">
+                <?php
+                    if( isset($_SESSION['status']) && $_SESSION['status']==true ){
+                        echo "<div class='alert alert-success alert-massage'>{$_SESSION['message-dklichkham']}</div>";
+                        unset($_SESSION['message-dklichkham']);
+                        unset($_SESSION['status']);
+                    }else if(isset($_SESSION['status']) && $_SESSION['status']==false){
+                        echo "<div class='alert alert-danger alert-massage'>{$_SESSION['message-dklichkham']}</div>";
+                        unset($_SESSION['message-dklichkham']);
+                        unset($_SESSION['status']);
+                    }
+                ?>
+            </div>
             <div class="card-body">
                 <form id="form-appointment-schedule" method="POST" action="/p-dangki-lichkham">
                     <div class="form-row">

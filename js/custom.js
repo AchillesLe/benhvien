@@ -192,15 +192,23 @@ $(document).ready(function() {
         }
         $('#update-infor').submit();
     });
-
-    $('#sel_khoa').on('change',function(){
-        var id = $(this).val();
-        $('#error-sel-khoa').css("display","none");
-        $("select#sel_bacsi").empty();
-        $("select#sel_bacsi").append('<option value="0">------ Khoa tự sắp xếp ------</option> ');
-        $('#txt_ngaykham').val('');
-        $('#sel_time').empty();
+    function resetUI_lichkham(element){
         $('#message-lichkham').html("");
+        $('#sel_time').empty();
+        $('#sel_time').append('<option value="0">-chọn-</option>');
+        if(element.id =='sel_khoa'){
+            $('#txt_ngaykham').val('');
+            $('select#sel_bacsi').empty();
+            $('select#sel_bacsi').append('<option value="0">------ Khoa tự sắp xếp ------</option> ');
+        }else if( element.id =='sel_bacsi' ){
+            $('#txt_ngaykham').val('');
+            $('#sel_time').empty();
+            $('#sel_time').append('<option value="0">-chọn-</option>');
+        }
+    }
+    $('#sel_khoa').on('change',function(){
+        resetUI_lichkham(this);
+        var id = $(this).val();
         $.ajax({
             url:'/get-bacsi-by-idKhoa',
             type:'POST',
@@ -217,32 +225,20 @@ $(document).ready(function() {
         });
     });
     $('#sel_bacsi').on('change',function(){
-        $('#txt_ngaykham').val('');
-        $('#sel_time').empty();
-        if( $('#txt_ngaykham').val()){
-            $('#sel_time').append('<option value="0">-chọn-</option>');
-            $.each(JSON.parse(array_time),function(index,element){
-                let html = '<option value="'+index+'">'+element+'</option>';
-                $('#sel_time').append(html);
-            });
-            $('#message-lichkham').html("");
-        }
+        resetUI_lichkham(this);
     });
-    $('#txt_ngaykham').on('change',function(e){
+    $('#txt_ngaykham').on('change',function(){
+        resetUI_lichkham(this);
         if($('#sel_khoa').val() == 0){
             alert("Vui lòng chọn khoa");
             $('#txt_ngaykham').val("");
             return;
         }
-        $('#sel_time').empty();
-        $('#message-lichkham').html("");
-        $('#sel_time').append('<option value="0">-chọn-</option>');
         $ngay =  $(this).val();
         var res = $ngay.split('/');
         $newngay = res[1]+"/"+res[0]+"/"+res[2];
         $now = new Date();
         $date_now = ($now.getMonth()+1)+"/"+$now.getDate()+"/"+$now.getFullYear() +" "+$now.getHours()+":"+$now.getMinutes();
-        
         $.each(JSON.parse(array_time),function(index,element){
             $date_comp = $newngay+" "+element;
             if(Date.parse(new Date($date_comp)) > Date.parse(new Date($date_now))){
@@ -252,9 +248,7 @@ $(document).ready(function() {
         });
     });
     $('#sel_time').on('change',function(){
-        $('#error-sel-time').css("display","none");
         $('#message-lichkham').html("");
-        $('.alert-massage').html("");
         var indextime = $(this).val();
         var time = $('#sel_time option:selected').text();
         var idbacsi = $('#sel_bacsi').val();
