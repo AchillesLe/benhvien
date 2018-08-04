@@ -16,7 +16,7 @@
             //Kiểm tra lịch hẹn  có trùng ngày giờ 
             $sql  = "SELECT * FROM tbldatlichkham WHERE idBenhnhan='{$id_benhnhan}' AND ngayHen='{$ngaykham}' AND soTT='{$stt}'  ";
             $data = mysqli_query($conn,$sql);
-            if($data){
+            if($data->num_rows !=0 ){
                 $_SESSION['message-dklichkham'] = "Đăng kí thất bại ! Bạn đã có sẵn 1 lịch hẹn lúc {$giokham} trong ngày {$_POST['txt_ngaykham']} . Vui lòng kiểm tra lại !";
                 $_SESSION['status'] = false;
                 header('Location : /dangki-lichkham',301);
@@ -27,7 +27,7 @@
             AND ngayHen='{$ngaykham}' 
             AND soTT='{$stt}'  ";
             $data = mysqli_query($conn,$sql);
-            if($data){
+            if($data->num_rows !=0 ){
                 $_SESSION['message-dklichkham'] = "Đăng kí thất bại ! Có người đã đặt lịch hẹn lúc {$giokham} trong ngày {$_POST['txt_ngaykham']} trước bạn . Vui lòng chọn giờ khác !";
                 $_SESSION['status'] = false;
                 header('Location : /dangki-lichkham',301);
@@ -37,7 +37,7 @@
             $sql = "INSERT INTO tbldatlichkham(idBenhnhan,idBacsi,soTT,ngayHen,gioHen,soDT,lyDo)
                 VALUES('{$id_benhnhan}','{$id_bacsi}','{$stt}','{$ngaykham}','{$giokham}','{$sdt}','{$lido}')";
             $data = mysqli_query($conn,$sql);
-            if($data){
+            if($data->num_rows){
                  //lấy thông tin bac sĩ và khoa đểgửi mail
                 $sql = "SELECT * FROM tblbacsi A , tblkhoa B WHERE A.idKhoa=B.id AND A.id = $id_bacsi ";
                 $data = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
@@ -54,15 +54,9 @@
                 $_SESSION['message-dklichkham'] = "Đăng kí thành công ! Vui lòng kiểm tra email .";
                 $_SESSION['status'] = true;
                 
-                header('Location : /dangki-lichkham',301);
-                exit();
-                
-            }else{
-                $_SESSION['message-dklichkham'] = "Xuất hiện lỗi trong quá trình đăng kí , vui lòng thử lại sau.";
-                $_SESSION['status'] = false;
-                header('Location : /dangki-lichkham',301);
-                exit();
             }
+            header('Location : /dangki-lichkham',301);
+            exit();
             connection::_close($conn);
             
         }else if(isset($_POST['nameRequest']) && $_POST['nameRequest'] == REQUEST_CHECKTIMELICHKHAM){
@@ -82,15 +76,15 @@
                 connection::_close($conn);
                 if($data->num_rows != 0 ){
                     $result['status'] = false;
-                    $result['massage'] = "Đã có người đặt lúc {$time} . Vui lòng chọn thời gian khác !";
+                    $result['massage'] = "Đã có người đặt lúc {$time}  trong ngày {$_POST['ngay']}. Vui lòng chọn thời gian khác !";
                     echo json_encode($result);
-                }
-            }else{
-                // $conn =  connection::_open();
-                // $sql = "SELECT";
-                // connection::_close($conn);
-            }
-        }        
+                } 
+            } 
+        }else if($a ==1){
+            // $conn =  connection::_open();
+            // $sql = "SELECT";
+            // connection::_close($conn);
+        }       
         ob_end_flush();
     }
 ?>

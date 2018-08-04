@@ -1,7 +1,7 @@
 <?php 
 
 $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
-
+// die(var_dump($_SERVER));
 if( isset($_SESSION['user'] ) ){
     switch( $request_uri[0] ){
         case '/':
@@ -29,6 +29,11 @@ if( isset($_SESSION['user'] ) ){
             require 'include/dangxuat.php';
             break;
         default:
+            var_dump($_POST);
+            var_dump("================================================================");
+            var_dump($request_uri[0]);
+            var_dump("================================================================");
+            die(var_dump($_GET));
             require 'views/404.php';
             break;
     }
@@ -52,12 +57,15 @@ if( isset($_SESSION['user'] ) ){
         case '/p-forgotpassword':
             require 'include/forgot-pass.php';
             break;
+
         default:
+            var_dump($_POST);
+            var_dump("================================================================");
+            var_dump($request_uri[0]);
+            var_dump("================================================================");
+            die(var_dump($_GET));
             require 'views/404.php';
             break;
     }
 }
-
-
-
 ?>
