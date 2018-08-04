@@ -10,6 +10,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 $_SESSION['LAST_ACTIVITY'] = time();
 
 include('lib/config.php');
+include('lib/sendmail.php');
 include('lib/database.php');
 include('lib/router.php');
 

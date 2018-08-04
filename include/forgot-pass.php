@@ -1,7 +1,6 @@
 <?php
 if(isset( $_POST['txt_email'] )){
     ob_start();
-    include('lib/sendmail.php');
     $email =  $_POST['txt_email'];
     $conn = connection::_open();
     $sql = "SELECT * FROM tbldangnhap WHERE Email ='{$email}'";
@@ -13,7 +12,7 @@ if(isset( $_POST['txt_email'] )){
         $inforMail = array(
             'emailTo'=>$email,
             'subject'=>"Send mail forgot password",
-            'body'=>"Mật khẩu của bạn là <b>{$pass} !</b><h3>Đi tới <a href='{$url_login}'>trang đăng nhập</a>!</h2>"
+            'body'=>"Mật khẩu của bạn là <b>{$pass} !</b><h3>Đi tới <a href='{$url_login}' target='_blank'>trang đăng nhập</a>!</h2>"
         );
         $mail = new Mail();
         $result = $mail->send($inforMail);

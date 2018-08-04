@@ -198,6 +198,7 @@ $(document).ready(function() {
         $('#error-sel-khoa').css("display","none");
         $("select#sel_bacsi").empty();
         $("select#sel_bacsi").append('<option value="0">------ Khoa tự sắp xếp ------</option> ');
+        $('#txt_ngaykham').val('');
         $('#sel_time').empty();
         $('#message-lichkham').html("");
         $.ajax({
@@ -216,6 +217,7 @@ $(document).ready(function() {
         });
     });
     $('#sel_bacsi').on('change',function(){
+        $('#txt_ngaykham').val('');
         $('#sel_time').empty();
         if( $('#txt_ngaykham').val()){
             $('#sel_time').append('<option value="0">-chọn-</option>');
