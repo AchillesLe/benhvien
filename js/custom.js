@@ -228,26 +228,33 @@ $(document).ready(function() {
             $('#message-lichkham').html("");
         }
     });
-    $('#txt_ngaykham').on('change',function(){
+    $('#txt_ngaykham').on('change',function(e){
+        if($('#sel_khoa').val() == 0){
+            alert("Vui lòng chọn khoa");
+            $('#txt_ngaykham').val("");
+            return;
+        }
         $('#sel_time').empty();
-        $ngay =  $(this).val();
         $('#message-lichkham').html("");
-        $('#sel_time').append('<option value="0">-chọn-</option>');Date.parse('01/01/2011 10:20:45') > Date.parse('01/01/2011 5:10:10')
+        $('#sel_time').append('<option value="0">-chọn-</option>');
+        $ngay =  $(this).val();
+        var res = $ngay.split('/');
+        $newngay = res[1]+"/"+res[0]+"/"+res[2];
+        $now = new Date();
+        $date_now = ($now.getMonth()+1)+"/"+$now.getDate()+"/"+$now.getFullYear() +" "+$now.getHours()+":"+$now.getMinutes();
+        
         $.each(JSON.parse(array_time),function(index,element){
-            $date_comp = $ngay+" "+element;
-            $now = new Date();
-            $date_now = $now.getDate()+"/"+($now.getMonth()+1)+"/"+$now.getFullYear() +" "+$now.getHours()+":"+$now.getMinutes();
-
+            $date_comp = $newngay+" "+element;
             if(Date.parse(new Date($date_comp)) > Date.parse(new Date($date_now))){
                 let html = '<option value="'+index+'">'+element+'</option>';
                 $('#sel_time').append(html);
             }
-            
         });
     });
     $('#sel_time').on('change',function(){
         $('#error-sel-time').css("display","none");
         $('#message-lichkham').html("");
+        $('.alert-massage').html("");
         var indextime = $(this).val();
         var time = $('#sel_time option:selected').text();
         var idbacsi = $('#sel_bacsi').val();

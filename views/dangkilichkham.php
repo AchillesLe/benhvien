@@ -14,11 +14,11 @@
             <div id="message-lichkham"></div>
             <?php
                 if( isset($_SESSION['status']) && $_SESSION['status']==true ){
-                    echo "<div class='alert alert-success'>{$_SESSION['message-dklichkham']}</div>";
+                    echo "<div class='alert alert-success alert-massage'>{$_SESSION['message-dklichkham']}</div>";
                     unset($_SESSION['message-dklichkham']);
                     unset($_SESSION['status']);
                 }else if(isset($_SESSION['status']) && $_SESSION['status']==false){
-                    echo "<div class='alert alert-danger'>{$_SESSION['message-dklichkham']}</div>";
+                    echo "<div class='alert alert-danger alert-massage'>{$_SESSION['message-dklichkham']}</div>";
                     unset($_SESSION['message-dklichkham']);
                     unset($_SESSION['status']);
                 }

@@ -100,7 +100,7 @@
             <span>Hồ sơ Bệnh án</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="/danhsachbenhan">Danh sách bệnh án</a>
+            <a class="dropdown-item" href="/ho-so-benh-an">Hồ sơ bệnh án</a>
           </div>
         </li>
         <!-- <li class="nav-item">

@@ -10,7 +10,7 @@ require 'lib/PHPMailer/vendor/autoload.php';
         public $mail;
         public function __construct(){
             $this->mail = new PHPMailer(true);
-            $this->mail->SMTPDebug = 2;                                 
+            $this->mail->SMTPDebug = 0;                                 
             $this->mail->isSMTP();                                      
             $this->mail->Host = MAIL_HOST;  
             $this->mail->SMTPAuth = true;                               

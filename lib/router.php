@@ -21,6 +21,9 @@ if( isset($_SESSION['user'] ) ){
         case '/check-lichkham':
             require 'include/lichkham.php';
             break;  
+        case '/ho-so-benh-an':
+            require 'views/benhan.php';
+            break;  
         case '/get-bacsi-by-idKhoa':
             require 'include/khoa.php';
             break;
@@ -28,16 +31,6 @@ if( isset($_SESSION['user'] ) ){
             require 'include/dangxuat.php';
             break;
         default:
-            var_dump($_SESSION['user']);
-            var_dump("=============================END_SESSION===================================");
-            var_dump($_REQUEST);
-            var_dump("===============================END_REQUEST=================================");
-            var_dump($_POST);
-            var_dump("===============================END_POST=================================");
-            var_dump($request_uri[0]);
-            var_dump("================================END_request_uri================================");
-            die(var_dump($_GET));
-            var_dump("================================END_GET================================");
             require 'views/404.php';
             break;
     }
@@ -63,14 +56,6 @@ if( isset($_SESSION['user'] ) ){
             break;
 
         default:
-            var_dump($_REQUEST);
-            var_dump("===============================END_REQUEST=================================");
-            var_dump($_POST);
-            var_dump("===============================END_POST=================================");
-            var_dump($request_uri[0]);
-            var_dump("================================END_request_uri================================");
-            die(var_dump($_GET));
-            var_dump("================================END_GET================================");
             require 'views/404.php';
             break;
     }

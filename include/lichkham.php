@@ -28,7 +28,7 @@
                 $inforMail = array(
                     'emailTo'=>( $_SESSION['user'] )['Email'],
                     'subject'=>"Mail đăng kí lịch hẹn",
-                    'body'=>"Bạn đã đặt lịch hẹn khám bệnh với bác sĩ <b>{$data['ten']}</b> lúc <b>{$giokham}</b> tại khoa <b>{$data['tenKhoa']}</b> , số thứ thự của bạn là <b>{$stt}</b>.<p>Mong bạn tới đúng giờ , xin cảm ơn !</p>",
+                    'body'=>"Bạn đã đặt lịch hẹn khám bệnh với bác sĩ <b>{$data['ten']}</b> lúc <b>{$giokham}</b> ngày <b>{$_POST['txt_ngaykham']}</b> tại khoa <b>{$data['tenKhoa']}</b> , số thứ thự của bạn là <b>{$stt}</b>.<p>Mong bạn tới đúng giờ , xin cảm ơn !</p>",
                 );
                 $mail = new Mail();
                 $result = $mail->send($inforMail);
