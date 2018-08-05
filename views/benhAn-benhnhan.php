@@ -25,6 +25,7 @@
 							<th>Chuẩn đoán</th>
 							<th>Ngày</th>
 						</tr>
+					</tfoot>
 					<tbody>
 						<tr>
 							<td>1</td>

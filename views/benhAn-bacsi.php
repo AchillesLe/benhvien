@@ -34,6 +34,7 @@
 							<th></th>
 							<th></th>
 						</tr>
+					</tfoot>
 					<tbody>
 						<tr>
 							<td>1</td>

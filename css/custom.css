@@ -91,6 +91,44 @@ input[type=search]{
 /* .form-control[read-only]{
     background: #eeeded!important;
 } */
+.hr_tag_warning{
+    border: 1px solid #ffc107;
+}
+.hr_tag_dark{
+    border: 1px solid #343a40;
+}
 
-
-
+#table_xet_nghiem thead tr th:nth-child(1){
+    width:5%;
+}
+#table_xet_nghiem thead tr th:nth-child(2){
+    width:30%;
+}
+#table_xet_nghiem thead tr th:nth-child(3){
+    width:7%;
+}
+#table_xet_nghiem thead tr th:nth-child(4){
+    width:8%;
+}
+#table_xet_nghiem thead tr th:nth-child(6){
+    width:5%;
+}
+#table_xet_nghiem thead tr th:last-child{
+    width:5%;
+}
+#table_thuoc{
+    width: 80%;
+    margin: auto;
+}
+#table_thuoc thead tr th:nth-child(1){
+    width:5%;
+}
+#table_thuoc thead tr th:nth-child(3){
+    width:10%;
+}#table_thuoc thead tr th:nth-child(4){
+    width:15%;
+}#table_thuoc thead tr th:nth-child(5){
+    width:5%;
+}#table_thuoc thead tr th:last-child{
+    width:5%;
+}

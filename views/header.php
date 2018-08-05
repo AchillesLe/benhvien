@@ -24,6 +24,7 @@
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css">
     <link href="css/chosen.min.css" rel="stylesheet" type="text/css">
     <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->

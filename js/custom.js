@@ -324,8 +324,17 @@ $(document).ready(function() {
         }
         
     });
-    $('#table-benh-an-bacsi').dataTable({
-        
+    $('#table-benh-an-bacsi').dataTable({});
+    $('#txt_gio').timepicker({
+        minuteStep: 5,
+        showInputs: false,
+        defaultTime:"current",
+        mode:'24h',
+        disableFocus: true,
+        showMeridian: false  
+    });
+    $('#txt_gio').on('change',function(){
+        console.log($(this).val());
     });
 
 });
