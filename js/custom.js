@@ -324,6 +324,8 @@ $(document).ready(function() {
         }
         
     });
-    $('#table-benh-an').dataTable();
+    $('#table-benh-an-bacsi').dataTable({
+        
+    });
 
 });

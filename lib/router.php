@@ -21,11 +21,20 @@ if( isset($_SESSION['user'] ) ){
         case '/check-lichkham':
             require 'include/lichkham.php';
             break;  
-        case '/ho-so-benh-an':
-            require 'views/benhan.php';
-            break;  
         case '/get-bacsi-by-idKhoa':
             require 'include/khoa.php';
+            break;
+        case '/ho-so-benh-an':
+            if($_SESSION['user']['quyen'] == 1)
+                require 'views/benhAn-benhnhan.php';
+            else
+                require 'views/benhAn-bacsi.php';
+            break;
+        case '/them-ho-so-benh-an':
+            if($_SESSION['user']['quyen'] == 1)
+                require 'views/404.php';
+            else
+                require 'views/thembenhAn.php';
             break;
         case '/dangxuat':
             require 'include/dangxuat.php';

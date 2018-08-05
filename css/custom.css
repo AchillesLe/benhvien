@@ -41,7 +41,10 @@ label.label-danger{
 li.active-result{
     font-size: 1rem;
 }
-select[name=table-benh-an_length]{
+select[name=table-benh-an-benhnhan_length]{
+    border-radius: 5px;
+}
+select[name=table-benh-an-bacsi_length]{
     border-radius: 5px;
 }
 input[type=search]{
@@ -54,3 +57,33 @@ input[type=search]{
     background: #7cb7f3!important;
     border: 0.5px solid #7cb7f3!important;
 }
+#table-benh-an-bacsi thead tr th:nth-child(6){
+    width: 9%!important;
+}
+#table-benh-an-bacsi thead tr th:nth-child(7){
+    width: 7%!important;
+}
+#table-benh-an-benhnhan thead tr th:nth-child(1){
+    width:5%;
+}
+#table-benh-an-benhnhan thead tr th:nth-child(2){
+    width:7%;
+}
+#table-benh-an-benhnhan thead tr th:nth-child(3){
+    width:22%;
+}
+#table-benh-an-benhnhan thead tr th:last-child{
+    width:17%;
+}
+.bg-info{
+    background: #17a2b8;
+}
+.bg-warning{
+    background: #ffc107;
+}
+.bg-dark{
+    background: #343a40;    
+}
+
+
+
