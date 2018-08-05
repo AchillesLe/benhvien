@@ -1,5 +1,5 @@
 <?php 
-    if(isset($_POST['submit'])){
+    if( isset($_POST['submit']) ){
         $email = $_POST['email'];
         $password = base64_encode($_POST['matkhau']);
         $conn = connection::_open();

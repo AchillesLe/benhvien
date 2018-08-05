@@ -15,10 +15,13 @@
     define("MAIL_SEND", "yuriboykasgu@gmail.com");//diemnguyentt2810@gmail.com
     define("MAIL_PASSWORD", "haithanhf");//diem1234
     define("MAIL_SMTP_SECURE", "tls");
-    
+/**
+ * config constant
+ */
     define("REQUEST_GET_BACSI_BY_KHOA", 100);
     define("REQUEST_DANGKILICHKHAM", 200);
     define("REQUEST_CHECKTIMELICHKHAM", 210);
+    
     $array_time = array(   
         1=>"8:00",2=>"8:15",3=>"8:30",4=>"8:45",5=>"9:00",6=>"9:15",7=>"9:30",8=>"9:45",9=>"10:00",10=>"10:15",11=>"10:30",12=>"10:45",
         13=>"11:00",14=>"11:15",15=>"11:30",16=>"11:45",17=>"12:00",18=>"12:15",19=>"12:30",20=>"12:45",21=>"13:00",22=>"13:15",23=>"13:30",24=>"13:45",

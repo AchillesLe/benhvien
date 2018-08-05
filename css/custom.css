@@ -84,6 +84,13 @@ input[type=search]{
 .bg-dark{
     background: #343a40;    
 }
+.form-row label{
+    margin-bottom: unset;
+    margin-top: 12px;
+}
+/* .form-control[read-only]{
+    background: #eeeded!important;
+} */
 
 
 

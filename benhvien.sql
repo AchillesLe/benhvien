@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2018 at 07:43 PM
+-- Generation Time: Aug 05, 2018 at 06:31 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -382,9 +382,9 @@ CREATE TABLE `tblthuoc` (
   `id` int(11) NOT NULL,
   `tenThuoc` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `donVi` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `xuatXu` varchar(255) DEFAULT NULL,
+  `xuatXu` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `donGia` decimal(10,0) NOT NULL,
-  `tinhTrang` char(1) NOT NULL DEFAULT '0' COMMENT '0 là dang sử dụng; 1 là không sử dụng'
+  `tinhTrang` char(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 là dang sử dụng; 1 là không sử dụng'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -392,8 +392,21 @@ CREATE TABLE `tblthuoc` (
 --
 
 INSERT INTO `tblthuoc` (`id`, `tenThuoc`, `donVi`, `xuatXu`, `donGia`, `tinhTrang`) VALUES
-(1, 'paracetamol', 'Mỗi sáng 1 viên', NULL, '0', '0'),
-(2, 'HAGINAT 125mg', 'Mỗi ngày 3 viên', NULL, '0', '0');
+(1, 'paracetamol', 'viên', 'Việt Nam', '100000', '0'),
+(2, 'HAGINAT 125mg', 'hộp', 'Việt Nam', '200000', '0'),
+(3, '	Vitamin D', 'viên', 'Việt Nam', '300000', '0'),
+(4, '	Phenytoin', 'hộp', 'Việt Nam', '300000', '0'),
+(5, 'Meclizine', 'hộp', 'Việt Nam', '250000', '0'),
+(6, 'Cetirizine', 'hộp', 'Đức', '250000', '0'),
+(7, '	Irbesartan', 'hộp', 'Mỹ', '250000', '0'),
+(8, '	Quinapril', 'viên', 'Ý', '100000', '0'),
+(9, 'Valsartan', 'viên', 'Ba Lan', '100000', '0'),
+(10, '	Fentanyl', 'viên', 'Pháp', '350000', '0'),
+(11, '	Levonorgestrel', 'Hộp', 'Mỹ', '350000', '0'),
+(12, '	Omega 3', 'Viên', 'Mỹ', '150000', '0'),
+(13, '	Dutasteride', 'Hộp\r\n', 'Mỹ', '150000', '0'),
+(14, 'Furosemide', 'Hộp\r\n', 'Mỹ', '100000', '0'),
+(15, '	Amoxycillin + Clavulanate potassium', 'Viên', 'Đức\r\n', '400000', '0');
 
 -- --------------------------------------------------------
 
@@ -435,7 +448,14 @@ CREATE TABLE `tblxetnghiem` (
 
 INSERT INTO `tblxetnghiem` (`id`, `tenXetNghiem`, `phongXetNghiem`, `DonGia`) VALUES
 (1, 'Chụp X-quang', 1, '20000'),
-(2, 'Xét nghiệm Máu', 3, '50000');
+(2, 'Xét nghiệm Máu', 3, '50000'),
+(3, 'Xét nghiệm Nước tiểu', 5, '25000'),
+(4, 'Xét nghiệm chuẩn đoán hình ảnh', 2, '45000'),
+(5, 'Xét nghiệm tủy', 4, '100000'),
+(6, 'Xét nghiệm viêm gan', 6, '200000'),
+(7, 'Xét nghiệm chuẩn đoán tâm thần', 2, '50000'),
+(8, 'Xét nghiệm da\r\n', 2, '50000'),
+(9, 'Nội soi\r\n', 7, '200000');
 
 --
 -- Indexes for dumped tables
@@ -564,7 +584,7 @@ ALTER TABLE `tbldangnhap`
 -- AUTO_INCREMENT for table `tbldatlichkham`
 --
 ALTER TABLE `tbldatlichkham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tblkhoa`
@@ -588,7 +608,7 @@ ALTER TABLE `tblthanhtoandot`
 -- AUTO_INCREMENT for table `tblthuoc`
 --
 ALTER TABLE `tblthuoc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tbltoathuoc`
@@ -600,7 +620,7 @@ ALTER TABLE `tbltoathuoc`
 -- AUTO_INCREMENT for table `tblxetnghiem`
 --
 ALTER TABLE `tblxetnghiem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

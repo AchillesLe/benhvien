@@ -42,14 +42,14 @@
 			<form action="/p-dangnhap" method="POST">
 				<div class="form-group">
 				<div class="form-label-group">
-					<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+					<input type="email" id="email" name="email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
 					<label for="inputEmail">Email</label>
 				</div>
 				</div>
 				<div class="form-group">
 				<div class="form-label-group">
 					<input type="password" id="inputPassword" name="matkhau" class="form-control" placeholder="Password" required="required">
-					<label for="inputPassword">Mật khẩu</label>
+					<label for="password">Mật khẩu</label>
 				</div>
 				</div>
 				<input class="btn btn-primary btn-block" type="submit" name="submit" value="Đăng Nhập">
