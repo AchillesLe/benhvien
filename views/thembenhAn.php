@@ -201,7 +201,7 @@
 							<td>1</td>
 							<td>Panadol</td>
 							<td>vỉ</td>
-							<td>2</td>
+							<td><input type="number" class="form-control" value="2"></td>
 							<td><input type="button" class="btn btn-info btn-detail" value="Sửa"></td>
 							<td><input type="button" class="btn btn-warning btn-edit" value="Xóa"></td>
 						</tr>
