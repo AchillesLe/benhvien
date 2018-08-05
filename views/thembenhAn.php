@@ -210,7 +210,12 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="row row-end">
+		<div class="offset-md-5 col-md-4">
+			<input name="nameRequest" value="300" hidden>
+			<button class="btn btn-info" name="btn_save" id="btn_save"><i class="fas fa-save"></i> Lưu bệnh án</button>
+		</div>
+	</div>
 </div>
 <?php include('footer.php') ?>
 <script>

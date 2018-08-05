@@ -132,3 +132,9 @@ input[type=search]{
 }#table_thuoc thead tr th:last-child{
     width:5%;
 }
+.row-end{
+    margin:30px;
+}
+#btn_save{
+    width: 200px;
+}
