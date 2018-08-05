@@ -138,3 +138,33 @@ input[type=search]{
 #btn_save{
     width: 200px;
 }
+.card-ds-lich-kham{
+    margin-top: 50px;
+}
+select[name=table-ds-lich-kham_length]{
+    border-radius: 5px;
+}
+#table-ds-lich-kham{
+
+}
+#table-ds-lich-kham thead tr th:nth-child(1){
+    width:5%;
+}
+#table-ds-lich-kham thead tr th:nth-child(2){
+    width:12%;
+}
+#table-ds-lich-kham thead tr th:nth-child(3){
+    width:10%;
+}
+#table-ds-lich-kham thead tr th:nth-child(4){
+    width:10%;
+}
+#table-ds-lich-kham thead tr th:nth-child(5){
+    width:22%;
+}
+#table-ds-lich-kham thead tr th:nth-child(6){
+    width:12%;
+}
+#table-ds-lich-kham thead tr th:last-child{
+    width:7%;
+}

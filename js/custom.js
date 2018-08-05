@@ -325,6 +325,8 @@ $(document).ready(function() {
         
     });
     $('#table-benh-an-bacsi').dataTable({});
+    $('#table-ds-benh-nhan').dataTable({});
+    $('#table-ds-lich-kham').dataTable({});
     $('#txt_gio').timepicker({
         minuteStep: 5,
         showInputs: false,

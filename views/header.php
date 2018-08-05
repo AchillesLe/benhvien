@@ -89,17 +89,28 @@
 					<a class="dropdown-item" href="/dangki-lichkham">Đặt lịch khám</a>
 					<!-- <a class="dropdown-item" href="/dangki-lichkham">Đặt lịch hẹn</a> -->
 				<?php endif;?>
-					<a class="dropdown-item" href="/danhsachdangki">Xem lịch khám</a>
+					<a class="dropdown-item" href="/danh-sach-lich-kham">Xem lịch khám</a>
 				<!-- <div class="dropdown-divider"></div> -->
 				<!-- <h6 class="dropdown-header">Other Pages:</h6>
 				<a class="dropdown-item" href="404.html">404 Page</a>
 				<a class="dropdown-item" href="blank.html">Blank Page</a> -->
 			</div>
-        </li>
+		</li>
+		<?php if($user['quyen'] == 0) :?>
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fas fa-fw fa-folder"></i>
+				<span>Bệnh nhân</span>
+			</a>
+			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+				<a class="dropdown-item" href="/danh-sach-benh-nhan">Danh sách</a>
+			</div>
+		</li>
+		<?php endif;?>
         <li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<i class="fas fa-fw fa-folder"></i>
-				<span>Hồ sơ Bệnh án</span>
+				<span>Bệnh án</span>
 			</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 				<?php if($user['quyen'] == 1) :?>
@@ -108,7 +119,7 @@
 					<a class="dropdown-item" href="/ho-so-benh-an">Danh sách Hồ sơ</a>
 				<?php endif;?>
 			</div>
-        </li>
+		</li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
