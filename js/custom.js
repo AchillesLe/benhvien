@@ -339,12 +339,12 @@ $(document).ready(function() {
     });
     $('#table-ds-lich-kham-2').dataTable({
         "language": {
-            "emptyTable": "<h4><i>Không có bác sĩ nào đặt lịch hẹn khám bệnh với bạn .</i></h4>"
+            "emptyTable": "<h4><i>Không có lịch khám với bác sĩ nào .</i></h4>"
         }
     });
     $('#table-ds-lich-hen-1').dataTable({
         "language": {
-            "emptyTable": "<h4><i>Không có lịch khám với bác sĩ nào .</i></h4>"
+            "emptyTable": "<h4><i>Không có lịch hẹn với bệnh nhân nào.</i></h4>"
           }
     });
     $('#table-ds-lich-hen-2').dataTable({

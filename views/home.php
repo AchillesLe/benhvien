@@ -80,7 +80,7 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="table-ds-lich-hen" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="table-ds-lich-hen-1" width="100%" cellspacing="0">
 					<thead>
 						<tr>
                             <th>#</th>
@@ -147,14 +147,14 @@
 	connection::_close($conn);
 ?>
 <div class="container-fluid">
-	<div class="card mb-2 card-ds-lich-kham-2">
+	<div class="card mb-2 card-ds-lich-kham">
 		<div class="card-header bg-info">
 			<i class="fas fa-table"></i>
 			Danh sách lịch hẹn - Bạn hẹn bác sĩ
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="table-ds-lich-kham" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="table-ds-lich-kham-2" width="100%" cellspacing="0">
 					<thead>
 						<tr>
                             <th>#</th>
@@ -212,14 +212,14 @@
 		?>
 	</div>
 
-	<div class="card mb-3 card-ds-lich-hen-2">
+	<div class="card mb-3 card-ds-lich-hen">
 		<div class="card-header bg-secondary text-white">
 			<i class="fas fa-table"></i>
 			Danh sách lịch khám - Bác sĩ hẹn bạn
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="table-ds-lich-hen" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="table-ds-lich-hen-2" width="100%" cellspacing="0">
 					<thead>
 						<tr>
                             <th>#</th>
