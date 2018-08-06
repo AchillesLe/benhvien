@@ -325,21 +325,31 @@ $(document).ready(function() {
         
     });
     $('#table-benh-an-bacsi').dataTable({
+        "language": {
+            "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
+            "lengthMenu":"Hiển thị _MENU_ kết quả"
+        }
         // "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
         // "lengthMenu":"Hiển thị _MENU_ kết quả"
     });
     $('#table-ds-benh-nhan').dataTable({
-        // "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
-        // "lengthMenu":"Hiển thị _MENU_ kết quả"
+        "language": {
+            "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
+            "lengthMenu":"Hiển thị _MENU_ kết quả"
+        }
     });	
     $('#table-ds-lich-kham-1').dataTable({
         "language": {
-            "emptyTable": "<h4><i>Không có lịch khám với bệnh nhân nào .</i></h4>"
+            "emptyTable": "<h4><i>Không có lịch khám với bệnh nhân nào .</i></h4>",
+            "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
+            "lengthMenu":"Hiển thị _MENU_ kết quả"
         }
     });
     $('#table-ds-lich-kham-2').dataTable({
         "language": {
-            "emptyTable": "<h4><i>Không có lịch khám với bác sĩ nào .</i></h4>"
+            "emptyTable": "<h4><i>Không có lịch khám với bác sĩ nào .</i></h4>",
+            "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
+            "lengthMenu":"Hiển thị _MENU_ kết quả"
         }
     });
     $('#table-ds-lich-hen-1').dataTable({
