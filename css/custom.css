@@ -84,6 +84,9 @@ input[type=search]{
 .bg-dark{
     background: #343a40;    
 }
+.bg-secondary {
+    background-color: #e2e3e5;
+}
 .form-row label{
     margin-bottom: unset;
     margin-top: 12px;

@@ -18,14 +18,12 @@ if( isset($_SESSION['user'] ) ){
                 exit();
             case '/ho-so-benh-an':
                 require 'views/benhAn-benhnhan.php';
+                exit();
             default:
                 break;
         }
     }else{
         switch( $request_uri[0] ){  
-            case '/danh-sach-lich-kham':
-                require 'views/danh-sach-lich-kham.php';
-                exit();
             case '/ho-so-benh-an':
                 require 'views/benhAn-bacsi.php';
                 exit();
