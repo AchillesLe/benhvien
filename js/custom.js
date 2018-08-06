@@ -324,9 +324,34 @@ $(document).ready(function() {
         }
         
     });
-    $('#table-benh-an-bacsi').dataTable({});
-    $('#table-ds-benh-nhan').dataTable({});
-    $('#table-ds-lich-kham').dataTable({});
+    $('#table-benh-an-bacsi').dataTable({
+        // "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
+        // "lengthMenu":"Hiển thị _MENU_ kết quả"
+    });
+    $('#table-ds-benh-nhan').dataTable({
+        // "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
+        // "lengthMenu":"Hiển thị _MENU_ kết quả"
+    });	
+    $('#table-ds-lich-kham-1').dataTable({
+        "language": {
+            "emptyTable": "<h4><i>Không có lịch khám với bệnh nhân nào .</i></h4>"
+        }
+    });
+    $('#table-ds-lich-kham-2').dataTable({
+        "language": {
+            "emptyTable": "<h4><i>Không có bác sĩ nào đặt lịch hẹn khám bệnh với bạn .</i></h4>"
+        }
+    });
+    $('#table-ds-lich-hen-1').dataTable({
+        "language": {
+            "emptyTable": "<h4><i>Không có lịch khám với bác sĩ nào .</i></h4>"
+          }
+    });
+    $('#table-ds-lich-hen-2').dataTable({
+        "language": {
+            "emptyTable": "<h4><i>Không có lịch hẹn nào từ  phía bác sĩ</i></h4>"
+          }
+    });
     $('#txt_gio').timepicker({
         minuteStep: 5,
         showInputs: false,
@@ -337,6 +362,25 @@ $(document).ready(function() {
     });
     $('#txt_gio').on('change',function(){
         console.log($(this).val());
+    });
+    $('.btn-confirm-done').on('click',function(){
+        if( $(this).hasClass('btn-warning') ){
+            var id = $(this).data('id');
+            console.log($(this));
+            $.ajax({
+                url:'/comfirm-done',
+                type:'POST',
+                data:{nameRequest:250,id:id},
+                success:function(result){
+                    if(result.status){
+                        $(this).removeClass('btn-warning');
+                        $(this).addClass('btn-success');
+                        $(this).prop('dissabled',true);
+    
+                    }
+                }
+            });
+        }
     });
 
 });

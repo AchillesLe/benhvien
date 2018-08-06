@@ -102,7 +102,21 @@
                     exit();
                 } 
             } 
-        }    
+        }else if(isset($_POST['nameRequest']) && $_POST['nameRequest'] == REQUEST_CONFIRM_DONE){
+            if( isset( $_POST['id'] ) ){
+                $id = $_POST['id'];
+                $conn = connection::_open();
+                $sql = "UPDATE tbldatlichkham SET tinhTrang = '0' WHERE id='{$id}'" ;
+                $data = mysqli_query($conn,$sql);
+                if($data){
+                    echo json_encode(['status'=>true]);exit();
+                }
+                else{
+                    echo json_encode(['status'=>false]);exit();
+                }
+            }
+            
+        }
         ob_end_flush();
     }
 ?>

@@ -49,6 +49,9 @@ if( isset($_SESSION['user'] ) ){
         case '/p-inforbasic':
             require 'include/update-infor.php';
             exit();
+        case '/comfirm-done':
+            require 'include/lichkham.php';
+            exit();
         case '/dangxuat':
             require 'include/dangxuat.php';
             exit();
