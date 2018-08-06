@@ -16,13 +16,18 @@
         $birthday = date("Y-m-d", strtotime($birthday) );
         $password = $_POST['txt_pass'];
         $table = $user['quyen']==1?"tblbenhnhan":"tblbacsi";
+        $table2 = $table=='tblbacsi'?'tblbenhnhan':'tblbacsi';
         // kiểm tra cmt đã tồn tại hay chưa
+        $conn = connection::_open();
         if( $cmt != $user['CMND'] && $cmt!='' ){
-            $conn = connection::_open();
             $sql = "SELECT * FROM {$table}  WHERE  CMND = '{$cmt}'";
             $data = mysqli_query($conn,$sql)->num_rows;
-            connection::_close($conn);
+            if($data == 0){
+                $sql = "SELECT * FROM {$table2}  WHERE  BHYT='{$bhyt}'";
+                $data = mysqli_query($conn,$sql)->num_rows;
+            }
             if( $data != 0 ){
+                connection::_close($conn);
                 $_SESSION['message-update-infor'] = " Số CMND  đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
                 $_SESSION['status'] = false;
                 echo "<meta http-equiv='Refresh' content='0;URL=/inforbasic' />";
@@ -31,11 +36,14 @@
         }
         // kiểm tra bảo hiểm y tế đã tồn tại hay chưa
         if( $bhyt != $user['BHYT'] && $bhyt!='' ){
-            $conn = connection::_open();
             $sql = "SELECT * FROM {$table}  WHERE  BHYT='{$bhyt}'";
             $data = mysqli_query($conn,$sql)->num_rows;
-            connection::_close($conn);
+            if($data == 0){
+                $sql = "SELECT * FROM {$table2}  WHERE  BHYT='{$bhyt}'";
+                $data = mysqli_query($conn,$sql)->num_rows;
+            }
             if( $data != 0 ){
+                connection::_close($conn);
                 $_SESSION['message-update-infor'] = " Số  BHYT đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
                 $_SESSION['status'] = false;
                 echo "<meta http-equiv='Refresh' content='0;URL=/inforbasic' />";
@@ -44,7 +52,6 @@
         }
         // kiểm tra email đã tồn tại hay chưa
         if( $email != $user['Email'] ){
-            $conn = connection::_open();
             $sql = "SELECT * FROM tbldangnhap WHERE Email = '{$email}'";
             $data = mysqli_query($conn,$sql)->num_rows;
             connection::_close($conn);
@@ -56,7 +63,6 @@
             }
         }
         // cập nhật thông tin
-        $conn = connection::_open();
         $sql = "UPDATE  tbldangnhap SET ";
         if( $password != $user['matKhau']){
             $password = base64_encode($password );

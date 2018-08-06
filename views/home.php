@@ -1,59 +1,62 @@
 <?php include('header.php') ?>
-    <div id="content-wrapper">
+<?php 
+	$id_bacsi = $user['id'];
+	$conn = connection::_open();
+	$sql = "SELECT * FROM tbldatlichkham A , tblbenhnhan B WHERE A.idBenhnhan = B.id AND A.idBacsi='{$id_bacsi}' ORDER BY A.ngayHen DESC";
+	$data = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+	connection::_close($conn);
+?>
+<div class="container-fluid">
+	<div class="card mb-3 card-ds-lich-kham">
+		<div class="card-header">
+			<i class="fas fa-table"></i>
+			Danh sách lịch khám
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="table-ds-lich-kham" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+                            <th>#</th>
+                            <th>Ngày</th>
+                            <th>Giờ</th>
+                            <th>Số TT</th>
+                            <th>Họ tên</th>
+							<th>Số ĐT</th>
+							<th>Lý do</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php 
+						if($data){
+							$index = 0;
+							foreach($data as $lichkham){
+								$index++;
+								$status = 'warning';
+								if($lichkham['tinhTrang']==0){
+									$status = 'success';
+								}
+							echo "<tr>
+									<td>{$index}</td>
+									<td>{$lichkham['ngayHen']}</td>
+									<td>{$lichkham['gioHen']}</td>
+									<td>{$lichkham['soTT']}</td>
+									<td>{$lichkham['ten']}</td>
+									<td>{$lichkham['soDT']}</td>
+									<td>{$lichkham['lyDo']}</td>
+									<td><button class='btn btn-{$status}'><i class='fas fa-check'></i></button></td>
+								</tr>";
+							}
+						}
+					?>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="card-footer small text-muted">Cập nhật mới nhất lúc 14:30 4/8/2018</div>
+	</div>
 
-        <div class="container-fluid">
-        <?php 
-            $conn = connection::_open();
-            $sql= "select * from tblbacsi";
-            $result = mysqli_query($conn,$sql);
-            connection::_close($conn);
-        ?>
-
-          <!-- DataTables Example -->
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-table"></i>
-              Data Table Example</div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Ma</th>
-                            <th>Tên</th>
-                            <th>ngày sinh</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php 
-                       while($item = mysqli_fetch_array($result)) {            
-                            echo "<tr>";
-                            echo "<td>".$item['id']."</td>";
-                            echo "<td>".$item['ten']."</td>";
-                            echo "<td>".$item['ngaySinh']."</td>";
-                            echo "</tr>";
-                        }
-                    ?>
-                    </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-          </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
-            </div>
-          </div>
-        </footer>
-
-    </div>
-      <!-- /.content-wrapper -->
-
+</div>
 <?php include('footer.php') ?>

@@ -1,4 +1,11 @@
 <?php include('header.php') ?>
+<?php 
+	$id_bacsi = $user['id'];
+	$conn = connection::_open();
+	$sql = "SELECT * FROM tbldatlichkham A , tblbenhnhan B WHERE A.idBenhnhan = B.id AND A.idBacsi='{$id_bacsi}' ORDER BY A.ngayHen DESC";
+	$data = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+	connection::_close($conn);
+?>
 <div class="container-fluid">
 	<div class="card mb-3 card-ds-lich-kham">
 		<div class="card-header">
@@ -21,86 +28,29 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>5/8/2018</td>
-							<td>15:30</td>
-							<td>33</td>
-							<td>Nguyễn Thị Thu Hà</td>
-							<td>0168588155</td>
-							<td>Sốt</td>
-							<td><button class="btn btn-success"><i class="fas fa-check"></i></button></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>5/8/2018</td>
-							<td>15:30</td>
-							<td>33</td>
-							<td>Nguyễn Thị Thu Điểm</td>
-							<td>0168588155</td>
-							<td>Sốt</td>
-							<td><button class="btn btn-success"><i class="fas fa-check"></i></button></td>
-                        </tr>
-                        <tr>
-							<td>1</td>
-							<td>5/8/2018</td>
-							<td>15:30</td>
-							<td>33</td>
-							<td>Nguyễn Thị Thu Điểm</td>
-							<td>0168588155</td>
-							<td>Sốt</td>
-							<td><button class="btn btn-success"><i class="fas fa-check"></i></button></td>
-                        </tr>
-                        <tr>
-							<td>1</td>
-							<td>5/8/2018</td>
-							<td>15:30</td>
-							<td>33</td>
-							<td>Nguyễn Thị Thu Điểm</td>
-							<td>0168588155</td>
-							<td>Sốt</td>
-							<td><button class="btn btn-success"><i class="fas fa-check"></i></button></td>
-                        </tr>
-                        <tr>
-							<td>1</td>
-							<td>5/8/2018</td>
-							<td>15:30</td>
-							<td>33</td>
-							<td>Nguyễn Thị Thu Điểm</td>
-							<td>0168588155</td>
-							<td>Sốt</td>
-							<td><button class="btn btn-warning"><i class="fas fa-check"></i></button></td>
-                        </tr>
-                        <tr>
-							<td>1</td>
-							<td>5/8/2018</td>
-							<td>15:30</td>
-							<td>33</td>
-							<td>Nguyễn Thị Thu Điểm</td>
-							<td>0168588155</td>
-							<td>Sốt</td>
-							<td><button class="btn btn-warning"><i class="fas fa-check"></i></button></td>
-                        </tr>
-                        <tr>
-							<td>1</td>
-							<td>5/8/2018</td>
-							<td>15:30</td>
-							<td>33</td>
-							<td>Nguyễn Thị Thu Điểm</td>
-							<td>0168588155</td>
-							<td>Sốt</td>
-							<td><button class="btn btn-warning"><i class="fas fa-check"></i></button></td>
-                        </tr>
-                        <tr>
-							<td>1</td>
-							<td>5/8/2018</td>
-							<td>15:30</td>
-							<td>33</td>
-							<td>Nguyễn Thị Thu Điểm</td>
-							<td>0168588155</td>
-							<td>Sốt</td>
-							<td><button class="btn btn-warning"><i class="fas fa-check"></i></button></td>
-						</tr>
+					<?php 
+						if($data){
+							$index = 0;
+							foreach($data as $lichkham){
+								$index++;
+								$status = 'warning';
+								if($lichkham['tinhTrang']==0){
+									$status = 'success';
+								}
+							echo "<tr>
+									<td>{$index}</td>
+									<td>{$lichkham['ngayHen']}</td>
+									<td>{$lichkham['gioHen']}</td>
+									<td>{$lichkham['soTT']}</td>
+									<td>{$lichkham['ten']}</td>
+									<td>{$lichkham['soDT']}</td>
+									<td>{$lichkham['lyDo']}</td>
+									<td><button class='btn btn-{$status}'><i class='fas fa-check'></i></button></td>
+								</tr>";
+							}
+						}
+					?>
+						
 					</tbody>
 				</table>
 			</div>
