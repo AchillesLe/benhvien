@@ -23,7 +23,7 @@
             $sql = "SELECT * FROM {$table}  WHERE  CMND = '{$cmt}'";
             $data = mysqli_query($conn,$sql)->num_rows;
             if($data == 0){
-                $sql = "SELECT * FROM {$table2}  WHERE  BHYT='{$bhyt}'";
+                $sql = "SELECT * FROM {$table2}  WHERE  CMND='{$cmt}'";
                 $data = mysqli_query($conn,$sql)->num_rows;
             }
             if( $data != 0 ){
@@ -44,7 +44,7 @@
             }
             if( $data != 0 ){
                 connection::_close($conn);
-                $_SESSION['message-update-infor'] = " Số  BHYT đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
+                $_SESSION['message-update-infor'] = "Số  BHYT đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
                 $_SESSION['status'] = false;
                 echo "<meta http-equiv='Refresh' content='0;URL=/inforbasic' />";
                 exit();

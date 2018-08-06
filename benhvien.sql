@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2018 at 06:31 AM
+-- Generation Time: Aug 06, 2018 at 04:38 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -48,38 +48,38 @@ CREATE TABLE `tblbacsi` (
 --
 
 INSERT INTO `tblbacsi` (`id`, `ten`, `idKhoa`, `ngaySinh`, `gioiTinh`, `diaChi`, `CMND`, `danToc`, `trinhDo`, `BHYT`, `soDT`, `idDangnhap`) VALUES
-(1, 'Hoàng Thanh Duân', 3, '1970-01-01', 'Nam', 'Quận 9, HCM', '205513136', 'Kinh', 'DH', '', '16577736166', 1),
-(2, ' Phùng Khắc Vũ', 4, '0000-00-00', 'Nam', 'Quận 11, HCM', '205513137', NULL, 'CH', NULL, '16577736167', 2),
-(3, ' Phạm Văn Vĩnh', 1, '0000-00-00', 'Nam', 'Quận 3, HCM', '205513135', NULL, 'CH', NULL, '16577736168', 3),
-(4, 'Chu Văn Ninh', 2, '0000-00-00', 'Nam', 'Bình Thạnh, HCM', '205513138', NULL, 'CH', NULL, '16577736169', 4),
-(5, 'Văn Minh Đức', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513567', NULL, 'DH', NULL, '0165778000', 5),
-(6, 'Thạch Hồng Vân', 5, '0000-00-00', 'Nữ', 'Quận 10, HCM', '205513147', NULL, 'CH', NULL, '16597736167', 6),
-(7, ' Lê Thế Vinh', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205514123', NULL, 'DH', NULL, '0123456756', 7),
-(8, 'Quách Hải Long', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513141', NULL, 'CH', NULL, '16577736145', 8),
-(9, 'Ngô Thị Nhanh', 3, '0000-00-00', 'Nam', 'Quận 1, HCM', '205513142', NULL, 'CH', NULL, '16577736154', 9),
-(10, 'Đặng Giao Chiêu', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513222', NULL, 'DH', NULL, '0165778002', 10),
-(11, 'Phạm Văn Tịnh', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '205513136', NULL, 'DH', NULL, '01657773616', 11),
-(12, 'Trần Thị Mỹ Hạnh', 2, '2013-06-02', 'Nữ', 'Quận 9, HCM', '205513135', NULL, 'TH', NULL, '01657773616', 12),
-(13, ' Lương Thanh Hải', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513138', NULL, 'DH', NULL, '165712345', 13),
-(14, 'Nguyễn Thanh Toàn', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '205513345', NULL, 'DH', NULL, '165734567', 14),
-(15, 'Phạm Hồng Quế', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '205513136', NULL, 'DH', NULL, '0165778767', 15),
-(16, 'Nguyễn Tuấn', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513324', NULL, 'DH', NULL, '0165778733', 16),
-(17, 'Vũ Cửu Tùng', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '205513189', NULL, 'DH', NULL, '0165778755', 17),
-(18, 'Trà Văn Hiên', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513309', NULL, 'DH', NULL, '0165778700', 18),
-(19, 'Nguyễn Bảo Xuân Tài', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513222', NULL, 'DH', NULL, '0165778722', 19),
-(20, 'Nguyễn Mậu Đạt', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513300', NULL, 'DH', NULL, '0165778744', 20),
-(21, 'Trần Thị Thúy Ngân', 8, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513301', NULL, 'DH', NULL, '0165778745', 21),
-(22, 'Nguyễn Thanh Sơn', 8, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513221', NULL, 'DH', NULL, '0165778003', 22),
-(23, 'Huỳnh Ngọc Vân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513229', NULL, 'DH', NULL, '0165778009', 23),
-(24, 'Đinh Thị Thảnh', 10, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513227', NULL, 'DH', NULL, '0165778005', 24),
-(25, 'Nguyễn Nhị Hương Tân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513111', NULL, 'DH', NULL, '0165777777', 25),
-(26, 'Trịnh Hồng Tân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513777', NULL, 'DH', NULL, '0165777779', 26),
-(27, 'Trần Văn Phước', 10, '1992-12-22', 'Nam', 'Quận 9, HCM', '205513224', NULL, 'DH', NULL, '0165778006', 27),
-(28, 'Hà Thị Thiện', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513111', NULL, 'DH', NULL, '0165778111', 28),
-(29, 'Nguyễn Nhất Phương', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513112', NULL, 'DH', NULL, '0165778112', 29),
-(30, 'Lê Thị Thúy', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513110', NULL, 'DH', NULL, '0165778113', 30),
-(31, 'Nay H\' Nga', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513100', NULL, 'DH', NULL, '0165778114', 31),
-(32, 'Hà Thị Thiện', 12, '1992-12-22', 'Nữ', 'Quận 9, HCM', '205513109', NULL, 'DH', NULL, '0165778115', 32);
+(1, 'Hoàng Thanh Duân', 3, '1970-01-01', 'Nam', 'Quận 9, HCM', '205513136', 'Kinh', 'DH', '123456789111111', '16577736166', 1),
+(2, ' Phùng Khắc Vũ', 4, '0000-00-00', 'Nam', 'Quận 11, HCM', '202513137', NULL, 'CH', '123456789111112', '16577736167', 2),
+(3, ' Phạm Văn Vĩnh', 1, '0000-00-00', 'Nam', 'Quận 3, HCM', '215513135', NULL, 'CH', '123456789111113', '16577736168', 3),
+(4, 'Chu Văn Ninh', 2, '0000-00-00', 'Nam', 'Bình Thạnh, HCM', '225513138', NULL, 'CH', '123456789111114', '16577736169', 4),
+(5, 'Văn Minh Đức', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '235513567', NULL, 'DH', '123456789111115', '0165778000', 5),
+(6, 'Thạch Hồng Vân', 5, '0000-00-00', 'Nữ', 'Quận 10, HCM', '245513147', NULL, 'CH', '123456789111116', '16597736167', 6),
+(7, ' Lê Thế Vinh', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '255514123', NULL, 'DH', '123456789111117', '0123456756', 7),
+(8, 'Quách Hải Long', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '265513141', NULL, 'CH', '123456789111118', '16577736145', 8),
+(9, 'Ngô Thị Nhanh', 3, '0000-00-00', 'Nam', 'Quận 1, HCM', '275513142', NULL, 'CH', '123456789111119', '16577736154', 9),
+(10, 'Đặng Giao Chiêu', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '285513222', NULL, 'DH', '123456789111110', '0165778002', 10),
+(11, 'Phạm Văn Tịnh', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '295513133', NULL, 'DH', '123456789111120', '01657773616', 11),
+(12, 'Trần Thị Mỹ Hạnh', 2, '2013-06-02', 'Nữ', 'Quận 9, HCM', '105513144', NULL, 'TH', '123456789111122', '01657773616', 12),
+(13, ' Lương Thanh Hải', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '115513199', NULL, 'DH', '123456789111121', '165712345', 13),
+(14, 'Nguyễn Thanh Toàn', 4, '0000-00-00', 'Nam', 'Quận 9, HCM', '125513345', NULL, 'DH', '123456789111123', '165734567', 14),
+(15, 'Phạm Hồng Quế', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '135513122', NULL, 'DH', '123456789111124', '0165778767', 15),
+(16, 'Nguyễn Tuấn', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '145513324', NULL, 'DH', '123456789111125', '0165778733', 16),
+(17, 'Vũ Cửu Tùng', 5, '1992-12-22', 'Nữ', 'Quận 10, HCM', '155513189', NULL, 'DH', '123456789111126', '0165778755', 17),
+(18, 'Trà Văn Hiên', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '165513309', NULL, 'DH', '123456789111127', '0165778700', 18),
+(19, 'Nguyễn Bảo Xuân Tài', 7, '1992-12-22', 'Nam', 'Quận 9, HCM', '175513000', NULL, 'DH', '123456789111128', '0165778722', 19),
+(20, 'Nguyễn Mậu Đạt', 6, '1992-12-22', 'Nam', 'Quận 9, HCM', '185513300', NULL, 'DH', '123456789111129', '0165778744', 20),
+(21, 'Trần Thị Thúy Ngân', 8, '1992-12-22', 'Nữ', 'Quận 9, HCM', '195513301', NULL, 'DH', '123456789111130', '0165778745', 21),
+(22, 'Nguyễn Thanh Sơn', 8, '1992-12-22', 'Nam', 'Quận 9, HCM', '305513221', NULL, 'DH', '123456789111131', '0165778003', 22),
+(23, 'Huỳnh Ngọc Vân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '315513229', NULL, 'DH', '123456789111132', '0165778009', 23),
+(24, 'Đinh Thị Thảnh', 10, '1992-12-22', 'Nữ', 'Quận 9, HCM', '325513227', NULL, 'DH', '123456789111133', '0165778005', 24),
+(25, 'Nguyễn Nhị Hương Tân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '335513111', NULL, 'DH', '123456789111134', '0165777777', 25),
+(26, 'Trịnh Hồng Tân', 9, '1992-12-22', 'Nữ', 'Quận 9, HCM', '345513777', NULL, 'DH', '123456789111135', '0165777779', 26),
+(27, 'Trần Văn Phước', 10, '1992-12-22', 'Nam', 'Quận 9, HCM', '355513224', NULL, 'DH', '123456789111136', '0165778006', 27),
+(28, 'Hà Thị Thiện', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '365513100', NULL, 'DH', '123456789111137', '0165778111', 28),
+(29, 'Nguyễn Nhất Phương', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '375513112', NULL, 'DH', '123456789111138', '0165778112', 29),
+(30, 'Lê Thị Thúy', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '385513110', NULL, 'DH', '123456789111139', '0165778113', 30),
+(31, 'Nay H\' Nga', 11, '1992-12-22', 'Nữ', 'Quận 9, HCM', '395513100', NULL, 'DH', '123456789111140', '0165778114', 31),
+(32, 'Hà Thị Thiện', 12, '1992-12-22', 'Nữ', 'Quận 9, HCM', '405513109', NULL, 'DH', '123456789111141', '0165778115', 32);
 
 -- --------------------------------------------------------
 
@@ -96,7 +96,7 @@ CREATE TABLE `tblbenhan` (
   `chieuCao` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `canNang` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `huyetAp` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `idTT` int(11) DEFAULT NULL,
+  `idToaThuoc` int(11) DEFAULT NULL,
   `ngayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `lanThu` int(11) NOT NULL DEFAULT '1',
   `tinhTrang` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '0: Chưa hoàn tất; 1: Đã hoàn tất'
@@ -106,7 +106,7 @@ CREATE TABLE `tblbenhan` (
 -- Dumping data for table `tblbenhan`
 --
 
-INSERT INTO `tblbenhan` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `chuanDoan`, `chieuCao`, `canNang`, `huyetAp`, `idTT`, `ngayTao`, `lanThu`, `tinhTrang`) VALUES
+INSERT INTO `tblbenhan` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `chuanDoan`, `chieuCao`, `canNang`, `huyetAp`, `idToaThuoc`, `ngayTao`, `lanThu`, `tinhTrang`) VALUES
 (1, 1, 3, 13, 'Sốt', '1m75', '60kg', '110mmHg', 1, '2018-08-04 17:20:29', 1, '0'),
 (2, 8, 6, 15, 'Viêm loét giác mạc', '1m55', '40kg', '112mmHg', 2, '2018-08-04 17:20:34', 1, '0'),
 (3, 9, 4, 13, 'Cận Thị', '1m60', '45kg', '100mmHg', 1, '2018-08-04 17:20:39', 1, '0'),
@@ -144,17 +144,17 @@ CREATE TABLE `tblbenhnhan` (
 --
 
 INSERT INTO `tblbenhnhan` (`id`, `ten`, `gioiTinh`, `diaChi`, `ngaySinh`, `soDT`, `CMND`, `danToc`, `ngheNghiep`, `BHYT`, `ngoaiTuyen`, `idDangnhap`) VALUES
-(1, 'Nguyễn Văn Thiện', 'Nam', 'Quận 9, HCM', '1986-06-01', '0911112222', '205513136', 'Kinh', 'giáo Viên', '1234567890987', '1', 33),
-(2, 'Trịnh Minh Vương', 'Nam', 'Quận 10, HCM', '2000-02-02', '0922233333', '205513135', 'Kinh', NULL, '1234567890', '0', 34),
-(3, 'Huỳnh Bá Viên', 'Nam', 'Quận 5, HCM', '1996-02-02', '0988899999', '123456', 'Tày', NULL, '54343', '0', 35),
-(4, 'Trương Tấn Trọng', 'Nam', 'Quận 8, HCM', '1977-01-01', '0911112233', NULL, 'Nùng', NULL, '32438768564', '0', 36),
-(5, 'Trịnh Thị nhung', 'Nữ', 'Quận 9, HCM', '1992-05-20', '0933344455', '205513130', 'Kinh', 'sinh viên', '3254658798', '1', 37),
-(6, 'Trần Thụy Dung', 'Nữ', 'Quận 3, HCM', '1992-12-22', '0966655577', '205513137', 'Kinh', NULL, '85968486276', '0', 38),
-(7, 'Nguyễn Phương Linh', 'Nam', 'Quận 9, HCM', '2012-02-02', '0999988899', NULL, 'Kinh', NULL, '123456789', '0', 39),
-(8, 'Tố Nga', 'Nam', 'Quận 1, HCM', '1992-12-02', '0977766655', NULL, 'Kinh', NULL, '123456789123454', '0', 40),
-(9, 'Trinh Nữ', 'Nam', 'Quận 9, HCM', '2013-06-01', '0966677777', '121234567', 'Kinh', NULL, '1234567891', '0', 41),
-(24, 'Nguyễn Thị Thu Điểm', 'Nu', '97 Man Thiện, Hiệp Phú, Quận 9, HCM', '1996-10-28', '0938568110', '231089273', 'Kinh', 'Sinh viên', '123456789098765', '0', 62),
-(25, 'Nguyễn Thị Thu Điểm', 'Nu', '97 Man Thiện, Hiệp Phú, Quận 9, HCM', '1996-10-28', '0938568110', '', '', 'Sinh viên', '', '0', 63);
+(1, 'Nguyễn Văn Thiện', 'Nam', 'Quận 9, HCM', '1986-06-01', '0911112222', '415513177', 'Kinh', 'giáo Viên', '123456789098722', '1', 33),
+(2, 'Trịnh Minh Vương', 'Nam', 'Quận 10, HCM', '2000-02-02', '0922233333', '405513135', 'Kinh', NULL, '503456789098722', '0', 34),
+(3, 'Huỳnh Bá Viên', 'Nam', 'Quận 5, HCM', '1996-02-02', '0988899999', '423123456', 'Tày', NULL, '513456789098722', '0', 35),
+(4, 'Trương Tấn Trọng', 'Nam', 'Quận 8, HCM', '1977-01-01', '0911112233', '452513137', 'Nùng', NULL, '523456789098722', '0', 36),
+(5, 'Trịnh Thị nhung', 'Nữ', 'Quận 9, HCM', '1992-05-20', '0933344455', '445513130', 'Kinh', 'sinh viên', '533456789098722', '1', 37),
+(6, 'Trần Thụy Dung', 'Nữ', 'Quận 3, HCM', '1992-12-22', '0966655577', '465513137', 'Kinh', NULL, '543456789098722', '0', 38),
+(7, 'Nguyễn Phương Linh', 'Nam', 'Quận 9, HCM', '2012-02-02', '0999988899', '472513137', 'Kinh', NULL, '553456789098722', '0', 39),
+(8, 'Tố Nga', 'Nam', 'Quận 1, HCM', '1992-12-02', '0977766655', '482513137', 'Kinh', NULL, '563456789098722', '0', 40),
+(9, 'Trinh Nữ', 'Nam', 'Quận 9, HCM', '2013-06-01', '0966677777', '491234567', 'Kinh', NULL, '571234567891222', '0', 41),
+(24, 'Nguyễn Thị Thu Điểm', 'Nu', '97 Man Thiện, Hiệp Phú, Quận 9, HCM', '1996-10-28', '0938568110', '501089273', 'Kinh', 'Sinh viên', '583456789098765', '0', 62),
+(25, 'Nguyễn Thị Thu Điểm', 'Nu', '97 Man Thiện, Hiệp Phú, Quận 9, HCM', '1996-10-28', '0938568110', '512513137', 'Kinh', 'Sinh viên', '593456789111111', '0', 63);
 
 -- --------------------------------------------------------
 
@@ -166,7 +166,7 @@ CREATE TABLE `tblcttoathuoc` (
   `id` int(11) NOT NULL,
   `idtoathuoc` int(11) NOT NULL,
   `idthuoc` int(11) NOT NULL,
-  `soLuong` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `soLuong` int(11) NOT NULL,
   `tongTien` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -175,7 +175,7 @@ CREATE TABLE `tblcttoathuoc` (
 --
 
 INSERT INTO `tblcttoathuoc` (`id`, `idtoathuoc`, `idthuoc`, `soLuong`, `tongTien`) VALUES
-(1, 1, 2, '10 viên', '100000');
+(1, 1, 2, 10, '100000');
 
 -- --------------------------------------------------------
 
@@ -311,7 +311,7 @@ CREATE TABLE `tblkhoa` (
 
 INSERT INTO `tblkhoa` (`id`, `tenKhoa`, `lePhiKHam`, `donGiaNgayDem`) VALUES
 (1, 'PK NỘI 1 (TIM MẠCH - NỘI TIẾT - THẦN KINH)', '20000', '45000'),
-(2, 'PK NỘI 2 (TIM MẠCH - TIÊU HÓA - HÔ HẤP - TRUYỀN NHIỄM - DA LIỄU) ', '20000', '45000'),
+(2, 'PK NỘI 2 (TIM MẠCH - TIÊU HÓA - HÔ HẤP - TRUYỀN NHIỄM - DA LIỄU)', '20000', '45000'),
 (3, 'PK NỘI 3 (NỘI CHUNG - DA LIỄU - KẾT LUẬN KHÁM SỨC KHỎE) ', '20000', '45000'),
 (4, 'PK NGOẠI 1 (CHẤN THƯƠNG CHỈNH HÌNH - NGOẠI THẦN KINH - BỎNG) ', '20000', '45000'),
 (5, 'PK NGOẠI 2 (NGOẠI GAN MẬT, NGOẠI TỔNG QUÁT - U BƯỚU - TIẾT NIỆU) ', '20000', '45000'),
@@ -337,18 +337,17 @@ CREATE TABLE `tblphieuxetnghiem` (
   `ngayXetnghiem` date NOT NULL,
   `gioXetnghiem` time NOT NULL,
   `lanThu` int(11) DEFAULT '1',
-  `ketQua` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `thanhTien` decimal(6,0) DEFAULT NULL
+  `ketQua` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tblphieuxetnghiem`
 --
 
-INSERT INTO `tblphieuxetnghiem` (`id`, `idXetnghiem`, `idBenhan`, `soTT`, `ngayXetnghiem`, `gioXetnghiem`, `lanThu`, `ketQua`, `thanhTien`) VALUES
-(1, 1, 1, 35, '2018-06-01', '10:00:00', 1, 'Bình thường', '20000'),
-(2, 2, 1, 35, '2018-06-13', '10:00:00', 2, 'Bình thường', '50000'),
-(3, 1, 3, 22, '2018-07-07', '08:30:00', 1, 'Bình thường', '20000');
+INSERT INTO `tblphieuxetnghiem` (`id`, `idXetnghiem`, `idBenhan`, `soTT`, `ngayXetnghiem`, `gioXetnghiem`, `lanThu`, `ketQua`) VALUES
+(1, 1, 1, 35, '2018-06-01', '10:00:00', 1, 'Bình thường'),
+(2, 2, 1, 35, '2018-06-13', '10:00:00', 2, 'Bình thường'),
+(3, 1, 3, 22, '2018-07-07', '08:30:00', 1, 'Bình thường');
 
 -- --------------------------------------------------------
 
@@ -466,6 +465,8 @@ INSERT INTO `tblxetnghiem` (`id`, `tenXetNghiem`, `phongXetNghiem`, `DonGia`) VA
 --
 ALTER TABLE `tblbacsi`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `CMND` (`CMND`),
+  ADD UNIQUE KEY `BHYT` (`BHYT`),
   ADD KEY `dangNhap` (`idDangnhap`) USING BTREE,
   ADD KEY `maKhoa` (`idKhoa`) USING BTREE;
 
@@ -475,7 +476,7 @@ ALTER TABLE `tblbacsi`
 ALTER TABLE `tblbenhan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `mabenhnhan` (`idBenhnhan`),
-  ADD KEY `maTT` (`idTT`) USING BTREE,
+  ADD KEY `maTT` (`idToaThuoc`) USING BTREE,
   ADD KEY `tblbenhan_ibfk_3` (`idBacsi`);
 
 --
@@ -483,6 +484,8 @@ ALTER TABLE `tblbenhan`
 --
 ALTER TABLE `tblbenhnhan`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `CMND` (`CMND`),
+  ADD UNIQUE KEY `BHYT` (`BHYT`),
   ADD KEY `dangNhap` (`idDangnhap`) USING BTREE;
 
 --
@@ -497,7 +500,8 @@ ALTER TABLE `tblcttoathuoc`
 -- Indexes for table `tbldangnhap`
 --
 ALTER TABLE `tbldangnhap`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`Email`);
 
 --
 -- Indexes for table `tbldatlichkham`
@@ -511,7 +515,8 @@ ALTER TABLE `tbldatlichkham`
 -- Indexes for table `tblkhoa`
 --
 ALTER TABLE `tblkhoa`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tenKhoa` (`tenKhoa`);
 
 --
 -- Indexes for table `tblphieuxetnghiem`
@@ -532,7 +537,8 @@ ALTER TABLE `tblthanhtoandot`
 -- Indexes for table `tblthuoc`
 --
 ALTER TABLE `tblthuoc`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tenThuoc` (`tenThuoc`);
 
 --
 -- Indexes for table `tbltoathuoc`
@@ -544,7 +550,8 @@ ALTER TABLE `tbltoathuoc`
 -- Indexes for table `tblxetnghiem`
 --
 ALTER TABLE `tblxetnghiem`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tenXetNghiem` (`tenXetNghiem`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -638,7 +645,7 @@ ALTER TABLE `tblbacsi`
 --
 ALTER TABLE `tblbenhan`
   ADD CONSTRAINT `tblbenhan_ibfk_1` FOREIGN KEY (`idBenhnhan`) REFERENCES `tblbenhnhan` (`id`),
-  ADD CONSTRAINT `tblbenhan_ibfk_2` FOREIGN KEY (`idTT`) REFERENCES `tbltoathuoc` (`id`),
+  ADD CONSTRAINT `tblbenhan_ibfk_2` FOREIGN KEY (`idToaThuoc`) REFERENCES `tbltoathuoc` (`id`),
   ADD CONSTRAINT `tblbenhan_ibfk_3` FOREIGN KEY (`idBacsi`) REFERENCES `tblbacsi` (`id`);
 
 --
