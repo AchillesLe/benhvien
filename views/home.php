@@ -101,6 +101,7 @@
 								if( $lichkham['chuDong']=='1' ){
 									$index++;
 									$status = 'warning';
+									$disbled = '';
 									if($lichkham['tinhTrang']==0){
 										$status = 'success';
 										$disbled = 'disabled';

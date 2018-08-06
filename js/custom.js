@@ -366,17 +366,15 @@ $(document).ready(function() {
     $('.btn-confirm-done').on('click',function(){
         if( $(this).hasClass('btn-warning') ){
             var id = $(this).data('id');
-            console.log($(this));
+            $this = $(this);
             $.ajax({
                 url:'/comfirm-done',
                 type:'POST',
+                dataType:'JSON',
                 data:{nameRequest:250,id:id},
                 success:function(result){
                     if(result.status){
-                        $(this).removeClass('btn-warning');
-                        $(this).addClass('btn-success');
-                        $(this).prop('dissabled',true);
-    
+                        $this.removeClass('btn-warning').addClass('btn-success').prop('disabled',true);
                     }
                 }
             });
