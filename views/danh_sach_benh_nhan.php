@@ -1,11 +1,14 @@
 <?php include('header.php') ?>
+<?php 
+	$id_bacsi =  $user['id'];
+	$conn = connection::_open();
+	$sql = "SELECT DISTINCT B.id , B.ten, B.soDT , B.ngaySinh , B.CMND ,B.BHYT FROM tbldatlichkham A, tblbenhnhan B WHERE A.idBenhnhan = B.id
+	AND A.idBacsi =  '{$id_bacsi}' ";
+	$result = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+	connection::_close($conn);
+?>
 <div class="container-fluid">
-	<!-- <div class="row mt-3 mb-3 ">
-		<div class="col-md-2 col-offset-2">
-			<a class="btn btn-success"  href="/them-ho-so-benh-an" ><i class="fas fa-plus"></i>Thêm bệnh án</a>
-		</div>
-	</div> -->
-	<div class="card mb-3">
+	<div class="card mb-3 mt-5">
 		<div class="card-header">
 			<i class="fas fa-table"></i>
 			Danh sách bệnh nhân
@@ -17,111 +20,39 @@
 						<tr>
 							<th>#</th>
 							<th>Họ tên</th>
-							<th>Số TT</th>
-							<th>Chuẩn đoán</th>
-							<th>Ngày</th>
+							<th>SDT</th>
+							<th>Ngày sinh</th>
+							<th>CMND</th>
+							<th>BHYT</th>
 							<th></th>
 							<th></th>
 						</tr>
 					</thead>
-					<tfoot>
-						<tr>
-							<th>#</th>
-							<th>Họ tên</th>
-							<th>Số TT</th>
-							<th>Chuẩn đoán</th>
-							<th>Ngày</th>
-							<th></th>
-							<th></th>
-						</tr>
-					</tfoot>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>15</td>
-							<td>XXXXXX</td>
-							<td>2011/04/25</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Chi tiết"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Sửa"></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>15</td>
-							<td>XXXXXX</td>
-							<td>2011/04/25</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Chi tiết"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Sửa"></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>15</td>
-							<td>XXXXXX</td>
-							<td>2011/04/25</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Chi tiết"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Sửa"></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>15</td>
-							<td>XXXXXX</td>
-							<td>2011/04/25</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Chi tiết"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Sửa"></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>15</td>
-							<td>XXXXXX</td>
-							<td>2011/04/25</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Chi tiết"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Sửa"></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>15</td>
-							<td>XXXXXX</td>
-							<td>2011/04/25</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Chi tiết"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Sửa"></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>15</td>
-							<td>XXXXXX</td>
-							<td>2011/04/25</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Chi tiết"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Sửa"></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>15</td>
-							<td>XXXXXX</td>
-							<td>2011/04/25</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Chi tiết"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Sửa"></td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>15</td>
-							<td>XXXXXX</td>
-							<td>2011/04/25</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Chi tiết"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Sửa"></td>
-						</tr>
+						<?php 
+						$index = 0;
+							if( $result ){
+								foreach( $result as $benhnhan){
+									$index ++;
+									$ngaysinh = date_create($benhnhan['ngaySinh'] );
+									$ngaysinh = date_format($ngaysinh,'d/m/Y');
+									echo "<tr>
+										<td>{$index}</td>
+										<td>{$benhnhan['ten']}</td>
+										<td>{$benhnhan['soDT']}</td>
+										<td>{$ngaysinh}</td>
+										<td>{$benhnhan['CMND']}</td>
+										<td>{$benhnhan['BHYT']}</td>
+										<td><a href='/dat-hen/{$benhnhan['id']}' class='btn btn-primary btn-lich-hen'>Đặt hẹn</a></td>
+										<td><a href='/xem-benh-an/{$benhnhan['id']}' class='btn btn-success btn-xem-BA'>Xem bệnh án</td>
+									</tr>";
+								}
+							}
+						?>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<div class="card-footer small text-muted">Cập nhật mới nhất lúc 14:30 4/8/2018</div>
 	</div>
 
 </div>

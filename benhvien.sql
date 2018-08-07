@@ -2,10 +2,10 @@
 -- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 06, 2018 at 04:38 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th8 07, 2018 lúc 06:27 PM
+-- Phiên bản máy phục vụ: 10.1.31-MariaDB
+-- Phiên bản PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `benhvien`
+-- Cơ sở dữ liệu: `benhvien`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblbacsi`
+-- Cấu trúc bảng cho bảng `tblbacsi`
 --
 
 CREATE TABLE `tblbacsi` (
@@ -44,7 +44,7 @@ CREATE TABLE `tblbacsi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tblbacsi`
+-- Đang đổ dữ liệu cho bảng `tblbacsi`
 --
 
 INSERT INTO `tblbacsi` (`id`, `ten`, `idKhoa`, `ngaySinh`, `gioiTinh`, `diaChi`, `CMND`, `danToc`, `trinhDo`, `BHYT`, `soDT`, `idDangnhap`) VALUES
@@ -84,7 +84,7 @@ INSERT INTO `tblbacsi` (`id`, `ten`, `idKhoa`, `ngaySinh`, `gioiTinh`, `diaChi`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblbenhan`
+-- Cấu trúc bảng cho bảng `tblbenhan`
 --
 
 CREATE TABLE `tblbenhan` (
@@ -97,31 +97,32 @@ CREATE TABLE `tblbenhan` (
   `canNang` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `huyetAp` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `idToaThuoc` int(11) DEFAULT NULL,
+  `ghiChu` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Kháng thuốc nôn ói',
   `ngayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `lanThu` int(11) NOT NULL DEFAULT '1',
   `tinhTrang` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '0: Chưa hoàn tất; 1: Đã hoàn tất'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tblbenhan`
+-- Đang đổ dữ liệu cho bảng `tblbenhan`
 --
 
-INSERT INTO `tblbenhan` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `chuanDoan`, `chieuCao`, `canNang`, `huyetAp`, `idToaThuoc`, `ngayTao`, `lanThu`, `tinhTrang`) VALUES
-(1, 1, 3, 13, 'Sốt', '1m75', '60kg', '110mmHg', 1, '2018-08-04 17:20:29', 1, '0'),
-(2, 8, 6, 15, 'Viêm loét giác mạc', '1m55', '40kg', '112mmHg', 2, '2018-08-04 17:20:34', 1, '0'),
-(3, 9, 4, 13, 'Cận Thị', '1m60', '45kg', '100mmHg', 1, '2018-08-04 17:20:39', 1, '0'),
-(4, 6, 32, 19, 'Cận Thị', '1m62', '45kg', '100mmHg', 2, '2018-08-04 17:20:44', 1, '0'),
-(5, 8, 20, 18, 'Viêm loét giác mạc', '1m55', '40kg', '112mmHg', 2, '2018-08-04 17:20:48', 2, '0'),
-(6, 3, 10, 11, 'Sốt', '1m75', '60kg', '110mmHg', 2, '2018-08-04 17:20:51', 1, '0'),
-(7, 1, 5, 10, 'Đau họng', '1m75', '60kg', '110mmHg', 1, '2018-08-04 17:20:54', 2, '0'),
-(8, 25, 18, 7, 'Đau ruột thừa', '1m60', '45kg', '100mmHg', 1, '2018-08-04 17:37:49', 1, '0'),
-(9, 4, 12, 1, 'Đau đầu', '1m60', '45kg', '100mmHg', 1, '2018-08-04 17:37:54', 1, '0'),
-(10, 4, 27, 1, 'Đau chân', '1m60', '45kg', '100mmHg', 3, '2018-08-01 17:37:54', 2, '0');
+INSERT INTO `tblbenhan` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `chuanDoan`, `chieuCao`, `canNang`, `huyetAp`, `idToaThuoc`, `ghiChu`, `ngayTao`, `lanThu`, `tinhTrang`) VALUES
+(1, 1, 3, 13, 'Sốt', '1m75', '60kg', '110mmHg', 1, 'Kháng thuốc nôn ói', '2018-08-04 17:20:29', 1, '0'),
+(2, 8, 6, 15, 'Viêm loét giác mạc', '1m55', '40kg', '112mmHg', 2, 'Kháng thuốc nôn ói', '2018-08-04 17:20:34', 1, '0'),
+(3, 9, 4, 13, 'Cận Thị', '1m60', '45kg', '100mmHg', 1, 'Kháng thuốc nôn ói', '2018-08-04 17:20:39', 1, '0'),
+(4, 6, 32, 19, 'Cận Thị', '1m62', '45kg', '100mmHg', 2, 'Kháng thuốc nôn ói', '2018-08-04 17:20:44', 1, '0'),
+(5, 8, 20, 18, 'Viêm loét giác mạc', '1m55', '40kg', '112mmHg', 2, 'Kháng thuốc nôn ói', '2018-08-04 17:20:48', 2, '0'),
+(6, 3, 10, 11, 'Sốt', '1m75', '60kg', '110mmHg', 2, 'Kháng thuốc nôn ói', '2018-08-04 17:20:51', 1, '0'),
+(7, 1, 5, 10, 'Đau họng', '1m75', '60kg', '110mmHg', 1, 'Kháng thuốc nôn ói', '2018-08-04 17:20:54', 2, '0'),
+(8, 25, 18, 7, 'Đau ruột thừa', '1m60', '45kg', '100mmHg', 1, 'Kháng thuốc nôn ói', '2018-08-04 17:37:49', 1, '0'),
+(9, 4, 12, 1, 'Đau đầu', '1m60', '45kg', '100mmHg', 1, 'Kháng thuốc nôn ói', '2018-08-04 17:37:54', 1, '0'),
+(10, 4, 27, 1, 'Đau chân', '1m60', '45kg', '100mmHg', 3, 'Kháng thuốc nôn ói', '2018-08-01 17:37:54', 2, '0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblbenhnhan`
+-- Cấu trúc bảng cho bảng `tblbenhnhan`
 --
 
 CREATE TABLE `tblbenhnhan` (
@@ -140,7 +141,7 @@ CREATE TABLE `tblbenhnhan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tblbenhnhan`
+-- Đang đổ dữ liệu cho bảng `tblbenhnhan`
 --
 
 INSERT INTO `tblbenhnhan` (`id`, `ten`, `gioiTinh`, `diaChi`, `ngaySinh`, `soDT`, `CMND`, `danToc`, `ngheNghiep`, `BHYT`, `ngoaiTuyen`, `idDangnhap`) VALUES
@@ -159,7 +160,7 @@ INSERT INTO `tblbenhnhan` (`id`, `ten`, `gioiTinh`, `diaChi`, `ngaySinh`, `soDT`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblcttoathuoc`
+-- Cấu trúc bảng cho bảng `tblcttoathuoc`
 --
 
 CREATE TABLE `tblcttoathuoc` (
@@ -171,7 +172,7 @@ CREATE TABLE `tblcttoathuoc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tblcttoathuoc`
+-- Đang đổ dữ liệu cho bảng `tblcttoathuoc`
 --
 
 INSERT INTO `tblcttoathuoc` (`id`, `idtoathuoc`, `idthuoc`, `soLuong`, `tongTien`) VALUES
@@ -180,7 +181,36 @@ INSERT INTO `tblcttoathuoc` (`id`, `idtoathuoc`, `idthuoc`, `soLuong`, `tongTien
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbldangnhap`
+-- Cấu trúc bảng cho bảng `tbldangkixetnghiem`
+--
+
+CREATE TABLE `tbldangkixetnghiem` (
+  `id` int(11) NOT NULL,
+  `idBenhnhan` int(11) NOT NULL,
+  `idXetnghiem` int(11) NOT NULL,
+  `soTT` int(11) NOT NULL,
+  `ngay` date NOT NULL,
+  `gio` time NOT NULL,
+  `tinhTrang` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '0: chưa xét nghiệm; 1: Xét nghiệm rồi'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbldangkixetnghiem`
+--
+
+INSERT INTO `tbldangkixetnghiem` (`id`, `idBenhnhan`, `idXetnghiem`, `soTT`, `ngay`, `gio`, `tinhTrang`) VALUES
+(1, 25, 1, 13, '2018-08-07', '10:00:00', '0'),
+(2, 24, 2, 13, '2018-08-06', '10:00:00', '0'),
+(3, 9, 3, 25, '2018-08-07', '14:00:00', '0'),
+(4, 8, 4, 22, '2018-08-06', '13:00:00', '0'),
+(5, 1, 5, 7, '2018-08-07', '08:00:00', '0'),
+(6, 3, 6, 10, '2018-08-07', '09:00:00', '0'),
+(7, 6, 7, 10, '2018-08-05', '09:00:00', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbldangnhap`
 --
 
 CREATE TABLE `tbldangnhap` (
@@ -192,7 +222,7 @@ CREATE TABLE `tbldangnhap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbldangnhap`
+-- Đang đổ dữ liệu cho bảng `tbldangnhap`
 --
 
 INSERT INTO `tbldangnhap` (`id`, `Email`, `matKhau`, `quyen`, `tinhTrang`) VALUES
@@ -243,7 +273,7 @@ INSERT INTO `tbldangnhap` (`id`, `Email`, `matKhau`, `quyen`, `tinhTrang`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbldatlichkham`
+-- Cấu trúc bảng cho bảng `tbldatlichkham`
 --
 
 CREATE TABLE `tbldatlichkham` (
@@ -261,14 +291,14 @@ CREATE TABLE `tbldatlichkham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbldatlichkham`
+-- Đang đổ dữ liệu cho bảng `tbldatlichkham`
 --
 
 INSERT INTO `tbldatlichkham` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `ngayHen`, `gioHen`, `soDT`, `lyDo`, `tinhTrang`, `chuDong`, `ngayTao`) VALUES
-(1, 8, 12, 13, '2018-06-01', '07:00:00', '0909090909', 'Đau mắt', '0', '0', '2018-08-04 06:51:40'),
-(2, 9, 12, 15, '2018-06-01', '07:10:00', '11111111', 'Cận', '0', '0', '2018-08-04 06:51:40'),
-(3, 1, 3, 13, '2018-07-02', '07:00:00', '0938568110', 'Sốt', '0', '0', '2018-08-04 06:51:40'),
-(4, 25, 3, 25, '2018-08-05', '14:00:00', '0938568110', 'cảm cúm', '1', '0', '2018-08-04 07:01:44'),
+(1, 8, 12, 13, '2018-06-01', '07:00:00', '0909090909', 'Đau mắt', '1', '0', '2018-08-06 18:33:50'),
+(2, 9, 12, 15, '2018-06-01', '07:10:00', '11111111', 'Cận', '1', '0', '2018-08-06 18:33:44'),
+(3, 1, 3, 13, '2018-07-02', '07:00:00', '0938568110', 'Sốt', '1', '0', '2018-08-06 18:34:02'),
+(4, 25, 3, 25, '2018-08-05', '14:00:00', '0938568110', 'cảm cúm', '0', '0', '2018-08-06 18:43:32'),
 (5, 24, 7, 27, '2018-08-03', '14:30:00', '0938568110', 'sốt', '1', '0', '2018-08-04 06:51:40'),
 (6, 24, 25, 25, '2018-08-05', '14:00:00', '0938568110', 'Đau mắt', '1', '0', '2018-08-04 07:09:08'),
 (7, 24, 18, 33, '2018-08-03', '16:00:00', '0938568110', 'Đau họng', '1', '0', '2018-08-04 06:51:40'),
@@ -277,7 +307,7 @@ INSERT INTO `tbldatlichkham` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `ngayHen`, 
 (10, 24, 3, 31, '2018-08-06', '15:30:00', '0938568110', 'Đau đầu', '1', '0', '2018-08-04 07:39:10'),
 (15, 25, 10, 1, '2018-08-03', '08:00:00', '0938568110', 'Đau răng', '1', '0', '2018-08-04 06:51:40'),
 (16, 3, 25, 30, '2018-08-03', '15:15:00', '0938568110', 'Đông y', '1', '0', '2018-08-04 06:51:40'),
-(17, 3, 1, 17, '2018-08-03', '12:00:00', '0938568110', 'Nấm da', '1', '0', '2018-08-04 06:51:40'),
+(17, 3, 1, 17, '2018-08-03', '12:00:00', '0938568110', 'Nấm da', '0', '1', '2018-08-06 18:48:21'),
 (18, 3, 18, 33, '2018-08-03', '16:00:00', '0938568110', 'Đau họng', '1', '0', '2018-08-04 06:51:40'),
 (19, 7, 18, 33, '2018-08-03', '16:00:00', '0938568110', 'Đau họng', '1', '0', '2018-08-04 06:51:40'),
 (20, 7, 7, 5, '2018-08-03', '09:00:00', '0938568110', 'Chấn thương', '1', '0', '2018-08-04 06:51:40'),
@@ -289,13 +319,13 @@ INSERT INTO `tbldatlichkham` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `ngayHen`, 
 (29, 25, 3, 25, '2018-08-04', '14:00:00', '', 'Tim', '1', '0', '2018-08-04 07:00:30'),
 (30, 25, 18, 36, '2018-08-04', '16:45:00', '', 'Dau hong', '1', '0', '2018-08-04 07:10:01'),
 (31, 25, 3, 29, '2018-08-05', '15:00:00', '', 'Suy tim', '1', '0', '2018-08-04 07:33:48'),
-(32, 25, 21, 17, '2018-08-06', '12:00:00', '', 'Đau mắt', '1', '0', '2018-08-04 07:37:46'),
+(32, 25, 21, 17, '2018-08-06', '12:00:00', '', 'Đau mắt', '0', '0', '2018-08-06 18:43:28'),
 (35, 25, 10, 36, '2018-08-05', '16:45:00', '', 'Đau răng', '1', '0', '2018-08-04 08:02:23');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblkhoa`
+-- Cấu trúc bảng cho bảng `tblkhoa`
 --
 
 CREATE TABLE `tblkhoa` (
@@ -306,7 +336,7 @@ CREATE TABLE `tblkhoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tblkhoa`
+-- Đang đổ dữ liệu cho bảng `tblkhoa`
 --
 
 INSERT INTO `tblkhoa` (`id`, `tenKhoa`, `lePhiKHam`, `donGiaNgayDem`) VALUES
@@ -326,7 +356,7 @@ INSERT INTO `tblkhoa` (`id`, `tenKhoa`, `lePhiKHam`, `donGiaNgayDem`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblphieuxetnghiem`
+-- Cấu trúc bảng cho bảng `tblphieuxetnghiem`
 --
 
 CREATE TABLE `tblphieuxetnghiem` (
@@ -341,7 +371,7 @@ CREATE TABLE `tblphieuxetnghiem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tblphieuxetnghiem`
+-- Đang đổ dữ liệu cho bảng `tblphieuxetnghiem`
 --
 
 INSERT INTO `tblphieuxetnghiem` (`id`, `idXetnghiem`, `idBenhan`, `soTT`, `ngayXetnghiem`, `gioXetnghiem`, `lanThu`, `ketQua`) VALUES
@@ -352,7 +382,7 @@ INSERT INTO `tblphieuxetnghiem` (`id`, `idXetnghiem`, `idBenhan`, `soTT`, `ngayX
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblthanhtoandot`
+-- Cấu trúc bảng cho bảng `tblthanhtoandot`
 --
 
 CREATE TABLE `tblthanhtoandot` (
@@ -364,7 +394,7 @@ CREATE TABLE `tblthanhtoandot` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tblthanhtoandot`
+-- Đang đổ dữ liệu cho bảng `tblthanhtoandot`
 --
 
 INSERT INTO `tblthanhtoandot` (`id`, `idBenhan`, `soTT`, `ngayTra`, `soTien`) VALUES
@@ -374,7 +404,7 @@ INSERT INTO `tblthanhtoandot` (`id`, `idBenhan`, `soTT`, `ngayTra`, `soTien`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblthuoc`
+-- Cấu trúc bảng cho bảng `tblthuoc`
 --
 
 CREATE TABLE `tblthuoc` (
@@ -387,7 +417,7 @@ CREATE TABLE `tblthuoc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tblthuoc`
+-- Đang đổ dữ liệu cho bảng `tblthuoc`
 --
 
 INSERT INTO `tblthuoc` (`id`, `tenThuoc`, `donVi`, `xuatXu`, `donGia`, `tinhTrang`) VALUES
@@ -410,7 +440,7 @@ INSERT INTO `tblthuoc` (`id`, `tenThuoc`, `donVi`, `xuatXu`, `donGia`, `tinhTran
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbltoathuoc`
+-- Cấu trúc bảng cho bảng `tbltoathuoc`
 --
 
 CREATE TABLE `tbltoathuoc` (
@@ -420,7 +450,7 @@ CREATE TABLE `tbltoathuoc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbltoathuoc`
+-- Đang đổ dữ liệu cho bảng `tbltoathuoc`
 --
 
 INSERT INTO `tbltoathuoc` (`id`, `tongTien`, `ngayTao`) VALUES
@@ -431,7 +461,7 @@ INSERT INTO `tbltoathuoc` (`id`, `tongTien`, `ngayTao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblxetnghiem`
+-- Cấu trúc bảng cho bảng `tblxetnghiem`
 --
 
 CREATE TABLE `tblxetnghiem` (
@@ -442,7 +472,7 @@ CREATE TABLE `tblxetnghiem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tblxetnghiem`
+-- Đang đổ dữ liệu cho bảng `tblxetnghiem`
 --
 
 INSERT INTO `tblxetnghiem` (`id`, `tenXetNghiem`, `phongXetNghiem`, `DonGia`) VALUES
@@ -457,11 +487,11 @@ INSERT INTO `tblxetnghiem` (`id`, `tenXetNghiem`, `phongXetNghiem`, `DonGia`) VA
 (9, 'Nội soi\r\n', 7, '200000');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `tblbacsi`
+-- Chỉ mục cho bảng `tblbacsi`
 --
 ALTER TABLE `tblbacsi`
   ADD PRIMARY KEY (`id`),
@@ -471,7 +501,7 @@ ALTER TABLE `tblbacsi`
   ADD KEY `maKhoa` (`idKhoa`) USING BTREE;
 
 --
--- Indexes for table `tblbenhan`
+-- Chỉ mục cho bảng `tblbenhan`
 --
 ALTER TABLE `tblbenhan`
   ADD PRIMARY KEY (`id`),
@@ -480,7 +510,7 @@ ALTER TABLE `tblbenhan`
   ADD KEY `tblbenhan_ibfk_3` (`idBacsi`);
 
 --
--- Indexes for table `tblbenhnhan`
+-- Chỉ mục cho bảng `tblbenhnhan`
 --
 ALTER TABLE `tblbenhnhan`
   ADD PRIMARY KEY (`id`),
@@ -489,7 +519,7 @@ ALTER TABLE `tblbenhnhan`
   ADD KEY `dangNhap` (`idDangnhap`) USING BTREE;
 
 --
--- Indexes for table `tblcttoathuoc`
+-- Chỉ mục cho bảng `tblcttoathuoc`
 --
 ALTER TABLE `tblcttoathuoc`
   ADD PRIMARY KEY (`id`),
@@ -497,14 +527,22 @@ ALTER TABLE `tblcttoathuoc`
   ADD KEY `tblcctoathuoc_ibfk_2` (`idtoathuoc`);
 
 --
--- Indexes for table `tbldangnhap`
+-- Chỉ mục cho bảng `tbldangkixetnghiem`
+--
+ALTER TABLE `tbldangkixetnghiem`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tbldangkikhambenh_ibfk_1` (`idBenhnhan`),
+  ADD KEY `idXetnghiem` (`idXetnghiem`);
+
+--
+-- Chỉ mục cho bảng `tbldangnhap`
 --
 ALTER TABLE `tbldangnhap`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`Email`);
 
 --
--- Indexes for table `tbldatlichkham`
+-- Chỉ mục cho bảng `tbldatlichkham`
 --
 ALTER TABLE `tbldatlichkham`
   ADD PRIMARY KEY (`id`),
@@ -512,14 +550,14 @@ ALTER TABLE `tbldatlichkham`
   ADD KEY `maBacsi` (`idBacsi`) USING BTREE;
 
 --
--- Indexes for table `tblkhoa`
+-- Chỉ mục cho bảng `tblkhoa`
 --
 ALTER TABLE `tblkhoa`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `tenKhoa` (`tenKhoa`);
 
 --
--- Indexes for table `tblphieuxetnghiem`
+-- Chỉ mục cho bảng `tblphieuxetnghiem`
 --
 ALTER TABLE `tblphieuxetnghiem`
   ADD PRIMARY KEY (`id`),
@@ -527,121 +565,127 @@ ALTER TABLE `tblphieuxetnghiem`
   ADD KEY `maXetnghiem` (`idXetnghiem`) USING BTREE;
 
 --
--- Indexes for table `tblthanhtoandot`
+-- Chỉ mục cho bảng `tblthanhtoandot`
 --
 ALTER TABLE `tblthanhtoandot`
   ADD PRIMARY KEY (`id`),
   ADD KEY `maBenhan` (`idBenhan`) USING BTREE;
 
 --
--- Indexes for table `tblthuoc`
+-- Chỉ mục cho bảng `tblthuoc`
 --
 ALTER TABLE `tblthuoc`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `tenThuoc` (`tenThuoc`);
 
 --
--- Indexes for table `tbltoathuoc`
+-- Chỉ mục cho bảng `tbltoathuoc`
 --
 ALTER TABLE `tbltoathuoc`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblxetnghiem`
+-- Chỉ mục cho bảng `tblxetnghiem`
 --
 ALTER TABLE `tblxetnghiem`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `tenXetNghiem` (`tenXetNghiem`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `tblbacsi`
+-- AUTO_INCREMENT cho bảng `tblbacsi`
 --
 ALTER TABLE `tblbacsi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT for table `tblbenhan`
+-- AUTO_INCREMENT cho bảng `tblbenhan`
 --
 ALTER TABLE `tblbenhan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tblbenhnhan`
+-- AUTO_INCREMENT cho bảng `tblbenhnhan`
 --
 ALTER TABLE `tblbenhnhan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `tblcttoathuoc`
+-- AUTO_INCREMENT cho bảng `tblcttoathuoc`
 --
 ALTER TABLE `tblcttoathuoc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbldangnhap`
+-- AUTO_INCREMENT cho bảng `tbldangkixetnghiem`
+--
+ALTER TABLE `tbldangkixetnghiem`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `tbldangnhap`
 --
 ALTER TABLE `tbldangnhap`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT for table `tbldatlichkham`
+-- AUTO_INCREMENT cho bảng `tbldatlichkham`
 --
 ALTER TABLE `tbldatlichkham`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT for table `tblkhoa`
+-- AUTO_INCREMENT cho bảng `tblkhoa`
 --
 ALTER TABLE `tblkhoa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `tblphieuxetnghiem`
+-- AUTO_INCREMENT cho bảng `tblphieuxetnghiem`
 --
 ALTER TABLE `tblphieuxetnghiem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tblthanhtoandot`
+-- AUTO_INCREMENT cho bảng `tblthanhtoandot`
 --
 ALTER TABLE `tblthanhtoandot`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tblthuoc`
+-- AUTO_INCREMENT cho bảng `tblthuoc`
 --
 ALTER TABLE `tblthuoc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `tbltoathuoc`
+-- AUTO_INCREMENT cho bảng `tbltoathuoc`
 --
 ALTER TABLE `tbltoathuoc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tblxetnghiem`
+-- AUTO_INCREMENT cho bảng `tblxetnghiem`
 --
 ALTER TABLE `tblxetnghiem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `tblbacsi`
+-- Các ràng buộc cho bảng `tblbacsi`
 --
 ALTER TABLE `tblbacsi`
   ADD CONSTRAINT `tblbacsi_ibfk_1` FOREIGN KEY (`idKhoa`) REFERENCES `tblkhoa` (`id`),
   ADD CONSTRAINT `tblbacsi_ibfk_2` FOREIGN KEY (`idDangnhap`) REFERENCES `tbldangnhap` (`id`);
 
 --
--- Constraints for table `tblbenhan`
+-- Các ràng buộc cho bảng `tblbenhan`
 --
 ALTER TABLE `tblbenhan`
   ADD CONSTRAINT `tblbenhan_ibfk_1` FOREIGN KEY (`idBenhnhan`) REFERENCES `tblbenhnhan` (`id`),
@@ -649,34 +693,41 @@ ALTER TABLE `tblbenhan`
   ADD CONSTRAINT `tblbenhan_ibfk_3` FOREIGN KEY (`idBacsi`) REFERENCES `tblbacsi` (`id`);
 
 --
--- Constraints for table `tblbenhnhan`
+-- Các ràng buộc cho bảng `tblbenhnhan`
 --
 ALTER TABLE `tblbenhnhan`
   ADD CONSTRAINT `tblbenhnhan_ibfk_1` FOREIGN KEY (`idDangnhap`) REFERENCES `tbldangnhap` (`id`);
 
 --
--- Constraints for table `tblcttoathuoc`
+-- Các ràng buộc cho bảng `tblcttoathuoc`
 --
 ALTER TABLE `tblcttoathuoc`
   ADD CONSTRAINT `tblcctoathuoc_ibfk_1` FOREIGN KEY (`idthuoc`) REFERENCES `tblthuoc` (`id`),
   ADD CONSTRAINT `tblcctoathuoc_ibfk_2` FOREIGN KEY (`idtoathuoc`) REFERENCES `tbltoathuoc` (`id`);
 
 --
--- Constraints for table `tbldatlichkham`
+-- Các ràng buộc cho bảng `tbldangkixetnghiem`
+--
+ALTER TABLE `tbldangkixetnghiem`
+  ADD CONSTRAINT `tbldangkikhambenh_ibfk_1` FOREIGN KEY (`idBenhnhan`) REFERENCES `tblbenhnhan` (`id`),
+  ADD CONSTRAINT `tbldangkixetnghiem_ibfk_1` FOREIGN KEY (`idXetnghiem`) REFERENCES `tblxetnghiem` (`id`);
+
+--
+-- Các ràng buộc cho bảng `tbldatlichkham`
 --
 ALTER TABLE `tbldatlichkham`
   ADD CONSTRAINT `tbldatlichkham_ibfk_1` FOREIGN KEY (`idBacsi`) REFERENCES `tblbacsi` (`id`),
   ADD CONSTRAINT `tbldatlichkham_ibfk_2` FOREIGN KEY (`idBenhnhan`) REFERENCES `tblbenhnhan` (`id`);
 
 --
--- Constraints for table `tblphieuxetnghiem`
+-- Các ràng buộc cho bảng `tblphieuxetnghiem`
 --
 ALTER TABLE `tblphieuxetnghiem`
   ADD CONSTRAINT `blphieuxetnghiem_ibfk_1` FOREIGN KEY (`idBenhan`) REFERENCES `tblbenhan` (`id`),
   ADD CONSTRAINT `blphieuxetnghiem_ibfk_2` FOREIGN KEY (`idXetnghiem`) REFERENCES `tblxetnghiem` (`id`);
 
 --
--- Constraints for table `tblthanhtoandot`
+-- Các ràng buộc cho bảng `tblthanhtoandot`
 --
 ALTER TABLE `tblthanhtoandot`
   ADD CONSTRAINT `tblthanhtoandot_ibfk_1` FOREIGN KEY (`idBenhan`) REFERENCES `tblbenhan` (`id`);

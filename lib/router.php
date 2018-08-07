@@ -22,7 +22,15 @@ if( isset($_SESSION['user'] ) ){
             default:
                 break;
         }
-    }else{
+    }
+    else{
+        // var_dump("------------");
+        // var_dump($request_uri);
+        // var_dump("------------");
+        // var_dump($_GET);
+        // $new_uri = explode("/",$request_uri);
+        // die( var_dump($new_uri) );
+
         switch( $request_uri[0] ){  
             case '/ho-so-benh-an':
                 require 'views/benhAn-bacsi.php';
@@ -32,6 +40,9 @@ if( isset($_SESSION['user'] ) ){
                 exit();
             case '/danh-sach-benh-nhan':
                 require 'views/danh_sach_benh_nhan.php';
+                exit();
+            case '/dat-hen':
+                require 'views/bs-dat-hen.php';
                 exit();
             default:
                 break;

@@ -324,44 +324,36 @@ $(document).ready(function() {
         }
         
     });
-    $('#table-benh-an-bacsi').dataTable({
+    var option = {
         "language": {
             "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
-            "lengthMenu":"Hiển thị _MENU_ kết quả"
+            "lengthMenu":"Hiển thị _MENU_ kết quả",
+            "infoEmpty":"Hiển thị 0 kết quả",
+            "search":    "Tìm kiếm:",
+            "paginate": {
+                "first":        "Đầu",
+                "previous":     "Trước",
+                "next":         "Tiếp",
+                "last":         "Cuối"
+            }
         }
-        // "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
-        // "lengthMenu":"Hiển thị _MENU_ kết quả"
-    });
-    $('#table-ds-benh-nhan').dataTable({
-        "language": {
-            "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
-            "lengthMenu":"Hiển thị _MENU_ kết quả"
-        }
-    });	
-    $('#table-ds-lich-kham-1').dataTable({
-        "language": {
-            "emptyTable": "<h4><i>Không có lịch khám với bệnh nhân nào .</i></h4>",
-            "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
-            "lengthMenu":"Hiển thị _MENU_ kết quả"
-        }
-    });
-    $('#table-ds-lich-kham-2').dataTable({
-        "language": {
-            "emptyTable": "<h4><i>Không có lịch khám với bác sĩ nào .</i></h4>",
-            "info": "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
-            "lengthMenu":"Hiển thị _MENU_ kết quả"
-        }
-    });
-    $('#table-ds-lich-hen-1').dataTable({
-        "language": {
-            "emptyTable": "<h4><i>Không có lịch hẹn với bệnh nhân nào.</i></h4>"
-          }
-    });
-    $('#table-ds-lich-hen-2').dataTable({
-        "language": {
-            "emptyTable": "<h4><i>Không có lịch hẹn nào từ  phía bác sĩ</i></h4>"
-          }
-    });
+    }
+    
+    $('#table-benh-an-bacsi').dataTable(option);
+    $('#table-ds-benh-nhan').dataTable(option);	
+    var option1 = Object.assign({}, option);
+    option1.language["emptyTable"] = "<h4><i> Không có lịch khám nào . </i></h4>";
+    $('#table-ds-lich-kham-1').dataTable(option1);
+    var option3 = Object.assign({}, option);
+    option3.language["emptyTable"] = "<h4><i>Không có lịch hẹn với bệnh nhân nào.</i></h4>";
+    $('#table-ds-lich-hen-1').dataTable(option3);
+
+    var option2 = Object.assign({}, option);
+    option2.language["emptyTable"] = "<h4><i>Không có lịch khám với bác sĩ nào .</i></h4>";
+    $('#table-ds-lich-kham-2').dataTable(option2);
+    var option4 = Object.assign({}, option);
+    option4.language["emptyTable"] = "<h4><i>Không có lịch hẹn nào từ phía bác sĩ.</i></h4>";
+    $('#table-ds-lich-hen-2').dataTable(option4);
     $('#txt_gio').timepicker({
         minuteStep: 5,
         showInputs: false,
@@ -391,4 +383,25 @@ $(document).ready(function() {
         }
     });
 
+});
+
+$(function(){
+    console.log(option);
+    console.log("--------------------");
+    console.log(option1);
+    console.log("--------------------");
+    console.log(option2);
+    console.log("--------------------");
+    console.log(option3);
+    console.log("--------------------");
+    console.log(option4);
+
+});
+
+
+$(function(){
+    
+});
+$(function(){
+    
 });
