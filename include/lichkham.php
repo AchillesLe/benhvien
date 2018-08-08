@@ -70,11 +70,24 @@
         }else if(isset($_POST['nameRequest']) && $_POST['nameRequest'] == REQUEST_CHECKTIMELICHKHAM){
             $id_benhnhan = $id_benhnhan = ( $_SESSION['user'] )['id'];
             $id_bacsi =  $_POST['idbacsi'];
+            $idkhoa = $_POST['idkhoa'];
+            $namekhoa = $_POST['namekhoa'];
             $indextime =  $_POST['indextime'];
             $time =  $_POST['time'];
             $ngay =  str_replace('/', '-', $_POST['ngay']);
             $ngay =  date("Y-m-d", strtotime($ngay) );
             $result = ['status'=>true,'massage'=>""];
+            //Kiềm tra trùng khoa
+            $conn = connection::_open();
+            $sql  = "SELECT * FROM tbldatlichkham A , tblbacsi  B WHERE A.idBacsi = B.id AND A.idBenhnhan = {$id_benhnhan}  AND ngayHen='{$ngay}' AND B.idkhoa = {$idkhoa}  ";
+            $data = mysqli_query($conn,$sql);
+            connection::_close($conn);
+            if($data->num_rows != 0 ){
+                $result['status'] = false;
+                $result['massage'] = "Bạn đã có sẵn 1 lịch hẹn với khoa {$namekhoa}  trong ngày {$_POST['ngay']}. Vui lòng chọn khoa khác !";
+                echo json_encode($result);
+                exit();
+            }
             //Kiểm tra lịch hẹn  có trùng ngày giờ 
             $conn = connection::_open();
             $sql  = "SELECT * FROM tbldatlichkham WHERE idBenhnhan ='{$id_benhnhan}' AND ngayHen='{$ngay}' AND soTT='{$indextime}'  ";

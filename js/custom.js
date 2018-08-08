@@ -253,11 +253,14 @@ $(document).ready(function() {
         var time = $('#sel_time option:selected').text();
         var idbacsi = $('#sel_bacsi').val();
         var ngay = $('#txt_ngaykham').val();
+        var idkhoa = $('#sel_khoa').val();
+        var namekhoa = $('#sel_khoa option:selected').text();
+        console.log(namekhoa);
         $.ajax({
             url:"/check-lichkham",
             type:"POST",
             dataType:'json',
-            data:{nameRequest:210,indextime:indextime,time:time,idbacsi:idbacsi,ngay:ngay},
+            data:{nameRequest:210,idkhoa:idkhoa,namekhoa:namekhoa,indextime:indextime,time:time,idbacsi:idbacsi,ngay:ngay},
             success:function(result){
                 let html ="";
                 if(!result.status){
@@ -338,7 +341,7 @@ $(document).ready(function() {
             }
         }
     }
-    
+
     $('#table-benh-an-bacsi').dataTable(option);
     $('#table-ds-benh-nhan').dataTable(option);	
     var option1 = Object.assign({}, option);
@@ -385,23 +388,3 @@ $(document).ready(function() {
 
 });
 
-$(function(){
-    console.log(option);
-    console.log("--------------------");
-    console.log(option1);
-    console.log("--------------------");
-    console.log(option2);
-    console.log("--------------------");
-    console.log(option3);
-    console.log("--------------------");
-    console.log(option4);
-
-});
-
-
-$(function(){
-    
-});
-$(function(){
-    
-});

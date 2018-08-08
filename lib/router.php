@@ -75,32 +75,25 @@ if( isset($_SESSION['user'] ) ){
     switch ($request_uri[0]) {
         case '/':
             require 'views/dangnhap.php';
-            break;
             exit();
         case '/p-dangnhap':
             require 'include/dangnhap.php';
-            break;
             exit();
         case '/dangki':
             require 'views/dangki.php';
-            break;
             exit();
         case '/p-dangki':
             require 'include/dangki.php';
-            break;
             exit();
         case '/forgot-password':
             require 'views/forgot-pass.php';
-            break;
             exit();
         case '/p-forgotpassword':
             require 'include/forgot-pass.php';
-            break;
             exit();
 
         default:
             require 'views/404.php';
-            break;
             exit();
     }
 }
