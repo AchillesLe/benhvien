@@ -1,86 +1,62 @@
-<?php include('header.php') ?>
 <?php
+    $id = isset($_GET['bn'])?$_GET['bn']:0;
     $conn = connection::_open();
-    $sql = "SELECT * FROM tblkhoa";
-    $khoa = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+    $sql = "SELECT * FROM tblbenhnhan WHERE id={$id}";
+    $result = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
+    $name = "";
+    if( $result ){
+        $name = $result['ten'];
+    }else{
+        echo "<meta http-equiv='Refresh' content='0;URL=/'>";
+    }
     connection::_close($conn);
 ?>
+<?php include('header.php') ?>
 <div id="content-wrapper">
     <div class="container-fluid">
         <div class="card mb-3 dklichkham">
             <div class="card-header">
-              <i class="fas fa-table"></i><?php echo $user['quyen'] == 1 ? " Đăng kí lịch khám":" Đăng kí lịch hẹn"; ?> 
+              <i class="fas fa-table"></i>Đăng kí lịch khám 
             </div>
-            <div id="message-lichkham"></div>
-            <?php
-                if( isset($_SESSION['status']) && $_SESSION['status']==true ){
-                    echo "<div class='alert alert-success'>{$_SESSION['message-dklichkham']}</div>";
-                    unset($_SESSION['message-dklichkham']);
-                    unset($_SESSION['status']);
-                }else if(isset($_SESSION['status']) && $_SESSION['status']==false){
-                    echo "<div class='alert alert-danger'>{$_SESSION['message-dklichkham']}</div>";
-                    unset($_SESSION['message-dklichkham']);
-                    unset($_SESSION['status']);
+            <div id="message-lichkham">
+                <?php
+                if(isset($_SESSION['status']) && $_SESSION['status']==false){
+                        echo "<div class='alert alert-danger alert-massage'>{$_SESSION['message-dklichkham']}</div>";
+                        unset($_SESSION['message-dklichkham']);
+                        unset($_SESSION['status']);
                 }
-            ?>
+                ?>
+            </div>
             <div class="card-body">
-                <form id="form-appointment-schedule" method="POST" action="/p-dangki-lichkham">
+                <form id="form-appointment-schedule-bs" method="POST" action="/p-dangki-lichkham">
                     <div class="form-row">
                         <div class="form-group offset-md-2 col-md-8">
-                            <label for="sel_khoa">Khoa</label>
-                            <select name="sel_khoa" id="sel_khoa" class="form-control">
-                                <option value="0">--------------------------Chọn khoa------------------------</option>
-                                    <?php 
-                                        foreach($khoa as $item){
-                                            echo "<option value='{$item['id']}'>{$item['tenKhoa']}</option>";
-                                        }
-                                    ?>
-                            </select>
-                            <label id="error-sel-khoa" class="label-danger" hidden>Vui lòng chọn khoa !</label>
+                            <label >Tên bệnh nhân</label>
+                            <input type="text" class="form-control" value="<?php echo $name ?>" disabled>
+                            <input type="text" id="id_bn" name="id_bn" value="<?php echo $id ?>" hidden>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group offset-md-2 col-md-6">
-                            <label for="sel_bacsi">Bác sĩ</label>
-                            <select name="sel_bacsi" id="sel_bacsi" class="form-control">
-                                <option value="0">------ Khoa tự sắp xếp ------</option> 
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group offset-md-2 col-md-6">
-                            <label for="txt_ngaykham">Ngày khám</label>
-                            <input type="text" class="form-control" name="txt_ngaykham" id="txt_ngaykham"   placeholder="dd/mm/yyyy">
+                            <label for="txt_ngayhen">Ngày khám</label>
+                            <input type="text" class="form-control" name="txt_ngayhen" id="txt_ngayhen"   placeholder="dd/mm/yyyy">
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="sel_time">Giờ khám</label>
-                            <select name="sel_time"  id="sel_time" class="form-control" >
-                                <!-- <option value="0">--Chọn--</option> -->
-                                <!-- <?php 
-                                    foreach($array_time as $key => $time){
-                                        echo "<option value={$key}>{$time}</option>";
-                                    }
-                                ?> -->
+                            <label for="sel_time_hen">Giờ khám</label>
+                            <select name="sel_time_hen"  id="sel_time_hen" class="form-control" >
                             </select>
-                        </div>
-                        <label id="error-sel-time" class="label-danger" hidden>Vui lòng chọn thời gian !</label>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group offset-md-2 col-md-6">
-                            <label for="txt_sdt">Số điện thoại</label>
-                            <input type="text" class="form-control" id="txt_sdt" name="txt_sdt" placeholder="Số điện thoại">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group offset-md-2 col-md-8">
-                            <label for="txt_reason">Nguyên nhân / Triệu chứng &nbsp;&nbsp;( Tối đa 300 kí tự )</label>
+                            <label for="txt_reason">Lý do &nbsp;&nbsp;( Tối đa 300 kí tự )</label>
                             <textarea class="form-control" name="txt_reason" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group offset-md-2 col-md-4">
-                            <input class="form-control" value="200" name="nameRequest" hidden>
-                            <button type="button" class="btn btn-primary bnt-appointment-schedule">Tạo lịch hẹn</button>
+                            <input class="form-control" value="300" name="nameRequest" hidden>
+                            <button type="button" class="btn btn-primary bnt-appointment-schedule-bs">Tạo lịch hẹn</button>
                         </div>
                     </div>
                 </form>
@@ -101,7 +77,82 @@
     };
     var date = new Date();
     var currdate =  date.getDate()+"/"+ (date.getMonth()+1) +"/"+date.getFullYear();
-    $('#txt_ngaykham').datepicker(options_Y_M_D);
-    $('#txt_ngaykham').data('datepicker').setStartDate(currdate);
-
+    $('#txt_ngayhen').datepicker(options_Y_M_D);
+    $('#txt_ngayhen').data('datepicker').setStartDate(currdate);
+    $('#form-appointment-schedule-bs').validate({
+        rules: {
+            txt_ngayhen:{
+                required:true
+            },
+            txt_reason:{
+                required:true,
+                maxlength : 300,
+                minlength:3
+            },
+        },
+        messages:{
+            txt_ngayhen:{
+                required:"Vui lòng nhập/chọn ngày hẹn !",
+            },
+            txt_reason:{
+                required:"Vui lòng nhập nguyên nhân triệu chứng !",
+                maxlength : "Nhập tối đa 300 kí tự !",
+                minlength : "Nhập tối đa 3 kí tự !",
+            },
+        },
+        errorClass: "label-danger",
+        errorPlacement: function(error, element) {
+            error.insertAfter(element);
+        }
+    });
+    $('#txt_ngayhen').on('change',function(){
+        $('#message-lichkham').html("");
+        $('#sel_time_hen').empty();
+        $('#sel_time_hen').append('<option value="0">-chọn-</option>');
+        $ngay =  $(this).val();
+        var res = $ngay.split('/');
+        $newngay = res[1]+"/"+res[0]+"/"+res[2];
+        $now = new Date();
+        $date_now = ($now.getMonth()+1)+"/"+$now.getDate()+"/"+$now.getFullYear() +" "+$now.getHours()+":"+$now.getMinutes();
+        $.each(JSON.parse(array_time),function(index,element){
+            $date_comp = $newngay+" "+element;
+            if(Date.parse(new Date($date_comp)) > Date.parse(new Date($date_now))){
+                let html = '<option value="'+index+'">'+element+'</option>';
+                $('#sel_time_hen').append(html);
+            }
+        });
+    });
+    $('#sel_time_hen').on('change',function(){
+        $('#message-lichkham').html("");
+        var indextime = $(this).val();
+        var time = $('#sel_time_hen option:selected').text();
+        var ngay = $('#txt_ngayhen').val();
+        var idbn = $('#id_bn').val();
+        $.ajax({
+            url:"/check-lichkham",
+            type:"POST",
+            dataType:'json',
+            data:{nameRequest:290,indextime:indextime,time:time,ngay:ngay,idbn:idbn},
+            success:function(result){
+                let html ="";
+                if(!result.status){
+                    html = "<div class='alert alert-danger'>"+result.massage+"</div>";
+                }
+                $('#message-lichkham').html(html);
+            }
+        });
+    });
+    $('.bnt-appointment-schedule-bs').on('click',function(){
+        
+        if( $('#form-appointment-schedule-bs').valid()==false ){
+            return;
+        }
+        if( $('#sel_time_hen').val() == 0 ){
+            alert("Vui lòng chọn thời gian hẹn !");
+            return;
+        }
+        if( $('#message-lichkham').html() == ''){
+            $('#form-appointment-schedule-bs').submit();
+        }
+    });
 </script>

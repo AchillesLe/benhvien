@@ -7,12 +7,6 @@ if( isset($_SESSION['user'] ) ){
             case '/dangki-lichkham':
                 require 'views/dangkilichkham.php';
                 exit();
-            case '/p-dangki-lichkham':
-                require 'include/lichkham.php';
-                exit();
-            case '/check-lichkham':
-                require 'include/lichkham.php'; 
-                exit();
             case '/get-bacsi-by-idKhoa':
                 require 'include/khoa.php';
                 exit();
@@ -24,12 +18,12 @@ if( isset($_SESSION['user'] ) ){
         }
     }
     else{
-        // var_dump("------------");
-        // var_dump($request_uri);
-        // var_dump("------------");
-        // var_dump($_GET);
-        // $new_uri = explode("/",$request_uri);
-        // die( var_dump($new_uri) );
+            // var_dump("------------");
+            // var_dump($request_uri);
+            // var_dump("------------");
+            // var_dump($_GET);
+            // $new_uri = explode("/",$request_uri);
+            // die( var_dump($request_uri) );
 
         switch( $request_uri[0] ){  
             case '/ho-so-benh-an':
@@ -42,7 +36,7 @@ if( isset($_SESSION['user'] ) ){
                 require 'views/danh_sach_benh_nhan.php';
                 exit();
             case '/dat-hen':
-                require 'views/bs-dat-hen.php';
+                require 'views/dangkilichhen.php';
                 exit();
             default:
                 break;
@@ -60,8 +54,14 @@ if( isset($_SESSION['user'] ) ){
         case '/p-inforbasic':
             require 'include/update-infor.php';
             exit();
+        case '/p-dangki-lichkham':
+            require 'include/lichkham.php';
+            exit();
         case '/comfirm-done':
             require 'include/lichkham.php';
+            exit();
+        case '/check-lichkham':
+            require 'include/lichkham.php'; 
             exit();
         case '/dangxuat':
             require 'include/dangxuat.php';

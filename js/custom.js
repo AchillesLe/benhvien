@@ -343,7 +343,10 @@ $(document).ready(function() {
     }
 
     $('#table-benh-an-bacsi').dataTable(option);
-    $('#table-ds-benh-nhan').dataTable(option);	
+    var option0 = Object.assign({}, option);
+    option0.language["emptyTable"] = "<h4><i> Chưa khám cho  bệnh nhân nào . </i></h4>";
+    $('#table-ds-benh-nhan').dataTable(option0);	
+
     var option1 = Object.assign({}, option);
     option1.language["emptyTable"] = "<h4><i> Không có lịch khám nào . </i></h4>";
     $('#table-ds-lich-kham-1').dataTable(option1);

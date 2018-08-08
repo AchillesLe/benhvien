@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="card mb-3 dklichkham">
             <div class="card-header">
-              <i class="fas fa-table"></i><?php echo $user['quyen'] == 1 ? " Đăng kí lịch khám":" Đăng kí lịch hẹn"; ?> 
+              <i class="fas fa-table"></i>Đăng kí lịch khám 
             </div>
             <div id="message-lichkham">
                 <?php

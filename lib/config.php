@@ -22,6 +22,8 @@
     define("REQUEST_DANGKILICHKHAM", 200);
     define("REQUEST_CHECKTIMELICHKHAM", 210);
     define("REQUEST_CONFIRM_DONE", 250);
+    define("REQUEST_CHECKTIMELICHHEN", 290);
+    define("REQUEST_DANGKILICHHEN", 300);
     
     $array_time = array(   
         1=>"8:00",2=>"8:15",3=>"8:30",4=>"8:45",5=>"9:00",6=>"9:15",7=>"9:30",8=>"9:45",9=>"10:00",10=>"10:15",11=>"10:30",12=>"10:45",
