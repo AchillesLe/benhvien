@@ -437,19 +437,37 @@ $(document).ready(function() {
         //     behavior: "smooth"
         //   });
     });
-    $('#btn_My_sott').on('click',function(){
-        var idbacsi = $('#sel_bacsi_tracuu').val();
-        var ngay = $('#txt_ngay_check').val();
+    // $('#btn_My_sott').on('click',function(){
+    //     var idbacsi = $('#sel_bacsi_tracuu').val();
+    //     var ngay = $('#txt_ngay_check').val();
+    //     $.ajax({
+    //         url:'/tra-cuu',
+    //         data:{nameRequest:310,idbacsi:idbacsi,ngay:ngay},
+    //         type:'POST',
+    //         success:function(result){
+    //             $('#table-tracuu-phongkham tbody').html('');
+    //             if(result){
+    //                 $('#table-tracuu-phongkham tbody').html(result);
+    //             }else{
+    //                 $('#table-tracuu-phongkham tbody').html("<tr><td colspan='3'><center><h5><i>Không có hàng chờ !</i></h5></center></td></tr>");
+    //             }
+    //         }
+    //     });
+    // });
+    $('#sel_XN_tracuu').on('change',function(){
+        var date = new Date();
+        var currdate_ymd =  date.getFullYear()+"-"+ (date.getMonth()+1) +"-" + date.getDate();
+        var idXN = $('#sel_XN_tracuu').val();
         $.ajax({
             url:'/tra-cuu',
-            data:{nameRequest:310,idbacsi:idbacsi,ngay:ngay},
+            data:{nameRequest:340,idXN:idXN,ngay:currdate_ymd},
             type:'POST',
             success:function(result){
-                $('#table-tracuu-phongkham tbody').html('');
+                $('#table-tracuu-phongXN tbody').html('');
                 if(result){
-                    $('#table-tracuu-phongkham tbody').html(result);
+                    $('#table-tracuu-phongXN tbody').html(result);
                 }else{
-                    $('#table-tracuu-phongkham tbody').html("<tr><td colspan='3'><center><h5><i>Không có hàng chờ !</i></h5></center></td></tr>");
+                    $('#table-tracuu-phongXN tbody').html("<tr><td colspan='4'><center><h5><i>Không có hàng chờ !</i></h5></center></td></tr>");
                 }
             }
         });

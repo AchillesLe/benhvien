@@ -40,11 +40,12 @@
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-bordered" id="table-tracuu-phongkham" width="100%" cellspacing="0">
+					<table class="table table-bordered" id="table-tracuu-phongXN" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th>#</th>
 								<th>Số thứ tự</th>
+								<th>Giờ</th>
 								<th>Tên</th>
 							</tr>
 						</thead>
@@ -68,8 +69,7 @@
         autoclose: true,
         orientation: "auto right",
     };
-    var date = new Date();
-    var currdate_ymd =  date.getFullYear()+"-"+ (date.getMonth()+1) +"-" + date.getDate();
+    
     // $("#sel_bacsi").chosen({});
 
 </script>

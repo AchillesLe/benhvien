@@ -60,6 +60,7 @@
 							<tr>
 								<th>#</th>
 								<th>Số thứ tự</th>
+								<th>Giờ</th>
 								<th>Tên</th>
 							</tr>
 						</thead>
