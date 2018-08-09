@@ -36,9 +36,10 @@
 		<div class="card mb-3 mt-5">
 			<div class="card-header">
 				<i class="fas fa-table"></i>
-				Kết quả tra cứu
+				Kết quả tra cứu . 
 			</div>
 			<div class="card-body">
+                <div class="alert alert-info">Lưu ý : Chỉ tra cứu  ngày hiện tại .</div>
 				<div class="table-responsive">
 					<table class="table table-bordered" id="table-tracuu-phongXN" width="100%" cellspacing="0">
 						<thead>
