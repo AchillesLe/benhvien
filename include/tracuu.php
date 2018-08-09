@@ -13,8 +13,8 @@
             if($result){
                 $html ="";
                 $index = 0;
-                $active = "";
                 foreach( $result as $lichkham ){
+                    $active = "";
                     $index++;
                     if( $id_benhnhan != '' && $lichkham['id'] == $id_benhnhan ){
                         $active = "class ='active' ";
@@ -23,7 +23,7 @@
                     $html .= "<tr {$active}>
                         <td>{$index}</td>
                         <td>{$lichkham['soTT']}</td>
-                        <td>{ $gio }</td>
+                        <td>{$gio}</td>
                         <td>{$lichkham['ten']}</td>
                     </tr>";
                 }
