@@ -3,6 +3,7 @@
 $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 if( isset($_SESSION['user'] ) ){
     if( $_SESSION['user']['quyen'] == 1 ){
+        // Chỉ bệnh nhân có thể truy cập
         switch( $request_uri[0] ){ 
             case '/dangki-lichkham':
                 require 'views/dangkilichkham.php';
@@ -18,6 +19,7 @@ if( isset($_SESSION['user'] ) ){
         }
     }
     else{
+        // chỉ bác sĩ  có thể truy cập
             // var_dump("------------");
             // var_dump($request_uri);
             // var_dump("------------");
@@ -43,7 +45,7 @@ if( isset($_SESSION['user'] ) ){
         }
         
     }
-
+// bác sĩ và bệnh nhân đểu có thể truy cập
     switch( $request_uri[0] ){ 
         case '/':
             require 'views/home.php';
@@ -63,6 +65,15 @@ if( isset($_SESSION['user'] ) ){
         case '/check-lichkham':
             require 'include/lichkham.php'; 
             exit();
+        case '/phong-kham':
+            require 'views/phong-kham.php';
+            exit();
+        case '/phong-xet-nghiem':
+            require 'views/phong-xet-nghiem.php';
+            exit();
+        case '/tra-cuu':
+            require 'include/tracuu.php';
+            exit();
         case '/dangxuat':
             require 'include/dangxuat.php';
             exit();
@@ -72,6 +83,7 @@ if( isset($_SESSION['user'] ) ){
     }
     
 }else{
+    // bất kì ai có thể truy cập
     switch ($request_uri[0]) {
         case '/':
             require 'views/dangnhap.php';

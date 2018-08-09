@@ -79,6 +79,16 @@
             <span>Bảng điều khiển</span>
           </a>
 		</li>
+		<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fas fa-fw fa-folder"></i>
+					<span>Thứ tự</span>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+					<a class="dropdown-item" href="/phong-kham">Phòng khám</a>
+					<a class="dropdown-item" href="/phong-xet-nghiem">Phòng xét nghiệm</a>
+				</div>
+			</li>
 		<?php if($user['quyen'] == 1) :?>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -86,15 +96,8 @@
 					<span>Khám trực tuyến</span>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-					
 						<a class="dropdown-item" href="/dangki-lichkham">Đặt lịch khám</a>
 						<a class="dropdown-item" href="/danh-sach-lich-kham">Xem lịch khám</a>
-					
-
-					<!-- <div class="dropdown-divider"></div> -->
-					<!-- <h6 class="dropdown-header">Other Pages:</h6>
-					<a class="dropdown-item" href="404.html">404 Page</a>
-					<a class="dropdown-item" href="blank.html">Blank Page</a> -->
 				</div>
 			</li>
 		<?php endif;?>

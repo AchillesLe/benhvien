@@ -153,11 +153,11 @@
             $id_benhnhan = $_POST['id_bn'] ;
             $ngayhen = str_replace('/', '-', $_POST['txt_ngayhen']);
             $stt = $_POST['sel_time_hen'];
-            $giokham = $array_time[ $stt ];
+            $giohen = $array_time[ $stt ];
             $lyDo = $_POST['txt_reason'];
             $ngayhen = date("Y-m-d", strtotime($ngayhen) );
             $conn = connection::_open();
-            $sql = "INSERT INTO tbldatlichkham(idBenhnhan,idBacsi,soTT,ngayHen,lyDo,chuDong) VALUES ('{$id_benhnhan}','{$id_bacsi}','{$stt}','{$ngayhen}','{$lyDo}','1') ";
+            $sql = "INSERT INTO tbldatlichkham(idBenhnhan,idBacsi,soTT,ngayHen,gioHen,lyDo,chuDong) VALUES ('{$id_benhnhan}','{$id_bacsi}','{$stt}','{$ngayhen}','{$giohen}','{$lyDo}','1') ";
             $result = mysqli_query($conn,$sql);
            
             if($result){
@@ -169,7 +169,7 @@
                     $inforMail = array(
                         'emailTo'=>$email,
                         'subject'=>"BỆNH VIÊN QUÂN DÂN Y MIÊN ĐÔNG",
-                        'body'=>"Bác sĩ <b> {$name_bacsi} </b> đã hẹn bạn tới khám tại Bệnh Viện Quân Dân Y Miền Đông lúc {$giokham} ngày {$ngayhen}. <p>Mong bạn thu xếp thời gian tới khám , vì sức khỏe của bạn . Trân trọng !</p>",
+                        'body'=>"Bác sĩ <b> {$name_bacsi} </b> đã hẹn bạn tới khám tại Bệnh Viện Quân Dân Y Miền Đông lúc {$giohen} ngày {$ngayhen}. <p>Mong bạn thu xếp thời gian tới khám , vì sức khỏe của bạn . Trân trọng !</p>",
                     );
                     $mail = new Mail();
                     $result = $mail->send($inforMail);

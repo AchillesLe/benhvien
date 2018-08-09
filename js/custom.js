@@ -208,6 +208,7 @@ $(document).ready(function() {
     }
     $('#sel_khoa').on('change',function(){
         resetUI_lichkham(this);
+        $('#txt_ngay_check').val('');
         var id = $(this).val();
         $.ajax({
             url:'/get-bacsi-by-idKhoa',
@@ -226,6 +227,7 @@ $(document).ready(function() {
     });
     $('#sel_bacsi').on('change',function(){
         resetUI_lichkham(this);
+        $('#txt_ngay_check').val('');
     });
     $('#txt_ngaykham').on('change',function(){
         resetUI_lichkham(this);
@@ -387,6 +389,70 @@ $(document).ready(function() {
                 }
             });
         }
+    });
+    $('#sel_khoa_tracuu').on('change',function(){
+        $('#sel_bacsi_tracuu').empty();
+        $('#sel_bacsi_tracuu').append('<option value="0">---------------Chọn bác sĩ-----------</option>');
+        $('#txt_ngay_check').val('');
+        var id = $(this).val();
+        $.ajax({
+            url:'/get-bacsi-by-idKhoa',
+            type:'POST',
+            dataType:'json',
+            data:{nameRequest:100,idkhoa:id},
+            success:function(result) {
+                if(result.success){
+                    $.each( result.data , function(index,element){
+                        var html = "<option value='"+element.id+"'>"+element.ten+"</option>";
+                        $('select#sel_bacsi_tracuu').append(html);
+                    });
+                }
+            }
+        });
+    });
+    $('#sel_bacsi_tracuu').on('change',function(){
+        $('#txt_ngay_check').val('');
+    })
+    $('#txt_ngay_check').on('change',function(){
+        var idbacsi = $('#sel_bacsi_tracuu').val();
+        var ngay = $('#txt_ngay_check').val();
+        $.ajax({
+            url:'/tra-cuu',
+            data:{nameRequest:310,idbacsi:idbacsi,ngay:ngay},
+            type:'POST',
+            success:function(result){
+                $('#table-tracuu-phongkham tbody').html('');
+                if(result){
+                    $('#table-tracuu-phongkham tbody').html(result);
+                }else{
+                    $('#table-tracuu-phongkham tbody').html("<tr><td colspan='3'><center><h5><i>Không có hàng chờ !</i></h5></center></td></tr>");
+                }
+            }
+        });
+        $('html,body').animate({
+            scrollTop: $("#table-tracuu-phongkham").offset().top},
+        'fast');
+        // window.scroll({
+        //     top: 1500,
+        //     behavior: "smooth"
+        //   });
+    });
+    $('#btn_My_sott').on('click',function(){
+        var idbacsi = $('#sel_bacsi_tracuu').val();
+        var ngay = $('#txt_ngay_check').val();
+        $.ajax({
+            url:'/tra-cuu',
+            data:{nameRequest:310,idbacsi:idbacsi,ngay:ngay},
+            type:'POST',
+            success:function(result){
+                $('#table-tracuu-phongkham tbody').html('');
+                if(result){
+                    $('#table-tracuu-phongkham tbody').html(result);
+                }else{
+                    $('#table-tracuu-phongkham tbody').html("<tr><td colspan='3'><center><h5><i>Không có hàng chờ !</i></h5></center></td></tr>");
+                }
+            }
+        });
     });
 
 });

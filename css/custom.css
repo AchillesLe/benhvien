@@ -190,3 +190,24 @@ input[type=search]{
 [id*="table-ds-lich-hen-"]  thead tr th:last-child{
     width:7%!important;
 }
+#table-tracuu-phongkham{
+    width: 50%;
+    margin: auto;
+}
+#table-tracuu-phongkham th{
+    text-align: center;
+}
+#table-tracuu-phongkham thead tr th:nth-child(1){
+    width:10%!important;
+}
+#table-tracuu-phongkham thead tr th:nth-child(2){
+    width:30%!important;
+}
+.active {
+    background:#4d90f5;
+}
+#btn_My_sott{
+    width: 200px;
+    height: 50px;
+    font-size: 1.2rem;
+}

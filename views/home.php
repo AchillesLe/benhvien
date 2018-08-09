@@ -1,5 +1,4 @@
 <?php include('header.php') ?>
-<?php if($user['quyen'] == 0) :?>
 <?php 
 	$id_bacsi = $user['id'];
 	$conn = connection::_open();
@@ -7,7 +6,7 @@
 	$data = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
 	connection::_close($conn);
 ?>
-
+<?php if($user['quyen'] == 0) :?>
 <div class="container-fluid">
 	<div class="card mb-2 card-ds-lich-kham">
 		<div class="card-header bg-info">
@@ -172,29 +171,30 @@
 						$index = 0;
 						if($data){
 							foreach( $data as $lichkham ){
-								if( $lichkham['chuDong'] == 0 )
-								$index++;
-								$status = 'warning';
-								$disbled= '';
-								if( $lichkham['tinhTrang'] == 0 ){
-									$status = 'success';
-									$disbled = 'disabled';
+								if( $lichkham['chuDong'] == 0 ){
+									$index++;
+									$status = 'warning';
+									$disbled= '';
+									if( $lichkham['tinhTrang'] == 0 ){
+										$status = 'success';
+										$disbled = 'disabled';
+									}
+									$ngayhen = $lichkham['ngayHen'];
+									$ngayhen = date_create($ngayhen);
+									$ngayhen = date_format($ngayhen,'d/m/Y');
+									$gio = substr($lichkham['gioHen'] ,0,5);
+									echo "<tr >
+											<td>{$index}</td>
+											<td>{$ngayhen}</td>
+											<td>{$gio}</td>
+											<td>{$lichkham['soTT']}</td>
+											<td>{$lichkham['ten']}</td>
+											<td>{$lichkham['soDT']}</td>
+											<td>{$lichkham['lyDo']}</td>
+											<td><button class='btn btn-{$status}  btn-confirm-done' data-id='{$lichkham['id']}' {$disbled} ><i class='fas fa-check'></i></button></td>
+										</tr>";
 								}
-								$ngayhen = $lichkham['ngayHen'];
-								$ngayhen = date_create($ngayhen);
-								$ngayhen = date_format($ngayhen,'d/m/Y');
-								$gio = substr($lichkham['gioHen'] ,0,5);
-								echo "<tr >
-										<td>{$index}</td>
-										<td>{$ngayhen}</td>
-										<td>{$gio}</td>
-										<td>{$lichkham['soTT']}</td>
-										<td>{$lichkham['ten']}</td>
-										<td>{$lichkham['soDT']}</td>
-										<td>{$lichkham['lyDo']}</td>
-										<td><button class='btn btn-{$status}  btn-confirm-done' data-id='{$lichkham['id']}' {$disbled} ><i class='fas fa-check'></i></button></td>
-									</tr>";
-								}
+							}
 						}
 					?>
 						
