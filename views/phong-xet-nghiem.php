@@ -12,6 +12,7 @@
               <i class="fas fa-table"></i>Tra cứu số thứ tự
             </div>
             <div class="card-body">
+            <div class="alert alert-info">Lưu ý : Chỉ tra cứu  ngày hiện tại .</div>
 				<div class="form-row">
 					<div class="form-group offset-md-2 col-md-8">
 						<label for="sel_XN_tracuu">Phòng xét nghiệm</label>
@@ -39,7 +40,6 @@
 				Kết quả tra cứu . 
 			</div>
 			<div class="card-body">
-                <div class="alert alert-info">Lưu ý : Chỉ tra cứu  ngày hiện tại .</div>
 				<div class="table-responsive">
 					<table class="table table-bordered" id="table-tracuu-phongXN" width="100%" cellspacing="0">
 						<thead>
