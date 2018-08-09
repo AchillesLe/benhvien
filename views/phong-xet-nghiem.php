@@ -1,8 +1,8 @@
 <?php include('header.php') ?>
 <?php
     $conn = connection::_open();
-    $sql = "SELECT * FROM tblkhoa";
-    $khoa = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+    $sql = "SELECT * FROM tblxetnghiem";
+    $phongXN = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
     connection::_close($conn);
 ?>
 <div id="content-wrapper">
@@ -14,32 +14,17 @@
             <div class="card-body">
 				<div class="form-row">
 					<div class="form-group offset-md-2 col-md-8">
-						<label for="sel_khoa_tracuu">Khoa</label>
-						<select  id="sel_khoa_tracuu" class="form-control">
-							<option value="0">--------------------------Chọn khoa------------------------</option>
+						<label for="sel_XN_tracuu">Phòng xét nghiệm</label>
+						<select  id="sel_XN_tracuu" class="form-control">
+							<option value="0">--------------------------Chọn phòng xét nghiệm------------------------</option>
 								<?php 
-									foreach($khoa as $item){
-										echo "<option value='{$item['id']}'>{$item['tenKhoa']}</option>";
+									foreach($phongXN as $item){
+										echo "<option value='{$item['id']}'>{$item['tenXetNghiem']}</option>";
 									}
 								?>
 						</select>
 					</div>
 				</div>
-				<div class="form-row">
-					<div class="form-group offset-md-2 col-md-6">
-						<label for="sel_bacsi">Bác sĩ</label>
-						<select  id="sel_bacsi_tracuu" class="form-control">
-							<option value="0">--------------Chọn bác sĩ-----------</option> 
-						</select>
-					</div>
-				</div>
-				<div class="form-row">
-					<div class="form-group offset-md-2 col-md-6">
-						<label for="txt_ngay_check">Ngày khám</label>
-						<input type="text" class="form-control" name="txt_ngay_check" id="txt_ngay_check"   placeholder="dd/mm/yyyy">
-					</div>
-				</div>
-				
 			</div>
 			<!-- <div class="form-row">
 				<div class="form-group offset-md-9 col-md-3">
@@ -84,9 +69,7 @@
         orientation: "auto right",
     };
     var date = new Date();
-    var currdate =  date.getDate()+"/"+ (date.getMonth()+1) +"/"+date.getFullYear();
-    $('#txt_ngay_check').datepicker(options_Y_M_D);
-    $('#txt_ngay_check').data('datepicker').setStartDate(currdate);
+    var currdate_ymd =  date.getFullYear()+"-"+ (date.getMonth()+1) +"-" + date.getDate();
     // $("#sel_bacsi").chosen({});
 
 </script>

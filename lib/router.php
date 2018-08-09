@@ -8,8 +8,8 @@ if( isset($_SESSION['user'] ) ){
             case '/dangki-lichkham':
                 require 'views/dangkilichkham.php';
                 exit();
-            case '/get-bacsi-by-idKhoa':
-                require 'include/khoa.php';
+            case '/p-dangki-lichkham':
+                require 'include/lichkham.php';
                 exit();
             case '/ho-so-benh-an':
                 require 'views/benhAn-benhnhan.php';
@@ -56,9 +56,9 @@ if( isset($_SESSION['user'] ) ){
         case '/p-inforbasic':
             require 'include/update-infor.php';
             exit();
-        case '/p-dangki-lichkham':
-            require 'include/lichkham.php';
-            exit();
+        case '/get-bacsi-by-idKhoa':
+                require 'include/khoa.php';
+                exit();
         case '/comfirm-done':
             require 'include/lichkham.php';
             exit();
