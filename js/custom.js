@@ -1,3 +1,9 @@
+var option_time = { minuteStep: 5,
+    showInputs: false,
+    defaultTime:"current",
+    mode:'24h',
+    disableFocus: true,
+    showMeridian: false  };
 $(document).ready(function() {
     
     $('#form-dangki').validate({
@@ -343,7 +349,6 @@ $(document).ready(function() {
             }
         }
     }
-
     $('#table-benh-an-bacsi').dataTable(option);
     var option0 = Object.assign({}, option);
     option0.language["emptyTable"] = "<h4><i> Chưa khám cho  bệnh nhân nào . </i></h4>";
@@ -362,17 +367,13 @@ $(document).ready(function() {
     var option4 = Object.assign({}, option);
     option4.language["emptyTable"] = "<h4><i>Không có lịch hẹn nào từ phía bác sĩ.</i></h4>";
     $('#table-ds-lich-hen-2').dataTable(option4);
-    $('#txt_gio').timepicker({
-        minuteStep: 5,
-        showInputs: false,
-        defaultTime:"current",
-        mode:'24h',
-        disableFocus: true,
-        showMeridian: false  
-    });
-    $('#txt_gio').on('change',function(){
-        console.log($(this).val());
-    });
+    var option5 = Object.assign({}, option);
+    option5.language["emptyTable"] = "<h4><i>Không có bệnh án nào.</i></h4>";
+    $('#table-ds-benh-an').dataTable(option4);
+    $('#txt_gio').timepicker(option_time);
+    // $('#txt_gio').on('change',function(){
+    //     console.log($(this).val());
+    // });
     $('.btn-confirm-done').on('click',function(){
         if( $(this).hasClass('btn-warning') ){
             var id = $(this).data('id');
@@ -416,6 +417,10 @@ $(document).ready(function() {
     $('#txt_ngay_check').on('change',function(){
         var idbacsi = $('#sel_bacsi_tracuu').val();
         var ngay = $('#txt_ngay_check').val();
+        if(idbacsi==0){
+            alert("Vui lòng chọn Khoa và Bác sĩ !");
+            return;
+        }
         $.ajax({
             url:'/tra-cuu',
             data:{nameRequest:310,idbacsi:idbacsi,ngay:ngay},
@@ -425,7 +430,7 @@ $(document).ready(function() {
                 if(result){
                     $('#table-tracuu-phongkham tbody').html(result);
                 }else{
-                    $('#table-tracuu-phongkham tbody').html("<tr><td colspan='3'><center><h5><i>Không có hàng chờ !</i></h5></center></td></tr>");
+                    $('#table-tracuu-phongkham tbody').html("<tr><td colspan='4'><center><h5><i>Không có hàng chờ !</i></h5></center></td></tr>");
                 }
             }
         });
@@ -474,4 +479,124 @@ $(document).ready(function() {
     });
 
 });
+function delete_row_XN(obj){
+    var row_index  =  $(obj).parent().parent().index();
+    $('#table_xet_nghiem tbody tr').eq(row_index).remove();
+}
+function delete_row_thuoc(obj){
+    var row_index  =  $(obj).parent().parent().index();
+    $('#table_thuoc tbody tr').eq(row_index).remove();
+}
+$(function(){
+    /** Bệnh Án */
+    $('#btn_them_xet_nghiem').on('click',function(){
+        var id_XN = $('#sel_xet_nghiem').val();
+        var tenXN = $('#sel_xet_nghiem option:selected').html();
+        var gioXN = $('#txt_gio').val();
+        var lan_thu = $('#txt_lan_thu').val();
+        var ketqua = $('#txt_ket_qua').val();
+        if(id_XN == 0){
+            alert("Vui lòng chọn xét nghiệm !");
+            return;
+        }
+        var html_tr = `<tr data-id_XN="${id_XN}">
+                    <td>${tenXN}</td>
+                    <td>${gioXN}</td>
+                    <td>${lan_thu}</td>
+                    <td>${ketqua}</td>
+                    <td><input type="button" class="btn btn-warning btn-delete-XN" Onclick="delete_row_XN(this)" value="Xóa"></td>
+                </tr>`;
+        $('#table_xet_nghiem tbody').append(html_tr);
+        $('#sel_xet_nghiem').val('0');
+        $('#txt_gio').timepicker('setTime', new Date());
+        $('#txt_lan_thu').val('');
+        $('#txt_ket_qua').val('');
+    });
+    $('#btn_them_thuoc').on('click',function(){
+        var id_Thuoc = $('#sel_thuoc').val();
+        var tenThuoc = $('#sel_thuoc option:selected').html();
+        var donvi = $('#txt_donvi').val();
+        var soluong = $('#txt_soluong').val();
+        if(id_Thuoc == 0){
+            alert("Vui lòng chọn thuốc !");
+            return;
+        }
+        var html_tr = `<tr data-id_thuoc="${id_Thuoc}">
+                    <td>${tenThuoc}</td>
+                    <td>${donvi}</td>
+                    <td>${soluong}</td>
+                    <td><input type="button" class="btn btn-warning btn-delete-thuoc" Onclick="delete_row_thuoc(this)" value="Xóa"></td>
+                </tr>`;
+        $('#table_thuoc tbody').append(html_tr);
+        $('#sel_thuoc').val('0');
+        $('#txt_donvi').val('');
+        $('#txt_soluong').val('');
+    });
+    $('#sel_thuoc').on('change',function(){
+        var donvi = "";
+        $('#txt_donvi').val("");
+        donvi = $('#sel_thuoc option:selected').data('donvi');
+        $('#txt_donvi').val(donvi);
+    });
+    $('#btn_save_benh_an').on('click',function(){
+        data = {};
+        data['nameRequest'] = 400;
+        var id_BN = $('input[name=id_benh_nhan]').val();
+        var soTT = $('input[name=txt_soTT]').val();
+        var chieu_cao = $('input[name=text_chieu_cao]').val();
+        var can_nang = $('input[name=txt_can_nang]').val();
+        var huyet_ap = $('input[name=txt_huyet_ap]').val();
+        var chuan_doan = $('textarea[name=text_chuan_doan]').val();
+        var ghi_chu = $('textarea[name=text_ghi_chu]').val();
+        
+        var basic = {};
+        basic['id_BN'] = id_BN;
+        basic['soTT'] = soTT;
+        basic['chieu_cao'] = chieu_cao;
+        basic['can_nang'] = can_nang;
+        basic['huyet_ap'] = huyet_ap;
+        basic['chuan_doan'] = chuan_doan;
+        basic['ghi_chu'] = ghi_chu;
+        data['basic'] = basic;
 
+        var xetnghiem = {};
+        $('#table_xet_nghiem tbody tr').each(function(e){
+            var row_index  =  $(this).index();
+            var xet_nghiem_tam = {};
+            xet_nghiem_tam['id_XN'] = $(this).attr('data-id_XN');
+            xet_nghiem_tam['tenXN'] = $(this).find('td:eq(0)').html();
+            xet_nghiem_tam['gioXN'] = $(this).find('td:eq(1)').html();
+            xet_nghiem_tam['lan_thu'] = $(this).find('td:eq(2)').html();
+            xet_nghiem_tam['ketqua'] = $(this).find('td:eq(3)').html();
+            xetnghiem[row_index] = xet_nghiem_tam;
+        });
+        data['xetnghiem'] = xetnghiem;
+
+        var thuoc = {};
+        $('#table_thuoc tbody tr').each(function(e){
+            var row_index  =  $(this).index();
+            var thuoc_tam = {};
+            thuoc_tam['id_Thuoc'] = $(this).attr('data-id_thuoc');
+            thuoc_tam['tenThuoc'] = $(this).find('td:eq(0)').html();
+            thuoc_tam['donvi'] = $(this).find('td:eq(1)').html();
+            thuoc_tam['soluong'] = $(this).find('td:eq(2)').html();
+            thuoc[row_index] = thuoc_tam;
+        });
+        data['thuoc'] = thuoc;
+        $.ajax({
+            url:'/p-them-benh-an',
+            dataType:'JSON',
+            type:'POST',
+            data : data,
+            success :function(result){
+                if(result.status){
+                    $('#message-tao_benh_An').html(`<div class='alert alert-success alert-massage'>${result.message}</div>`);
+                    setTimeout(function(){ 
+                        window.history.back();
+                    }, 3000);
+                }
+            }
+        });
+    });
+
+})

@@ -26,6 +26,7 @@
     define("REQUEST_DANGKILICHHEN", 300);
     define("REQUEST_TRACUUSOTT_KHAM", 310);
     define("REQUEST_TRACUUSOTT_XN", 340);
+    define("REQUEST_THEMBENHAN", 400);
     
     $array_time = array(   
         1=>"8:00",2=>"8:15",3=>"8:30",4=>"8:45",5=>"9:00",6=>"9:15",7=>"9:30",8=>"9:45",9=>"10:00",10=>"10:15",11=>"10:30",12=>"10:45",

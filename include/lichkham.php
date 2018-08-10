@@ -173,14 +173,14 @@
                     );
                     $mail = new Mail();
                     $result = $mail->send($inforMail);
-                    $_SESSION['message-dklichkham'] = "Đặt lịch hẹn thành công !";
+                    $_SESSION['message-dklichhen'] = "Đặt lịch hẹn thành công !";
                     $_SESSION['status'] = true;
                     connection::_close($conn);
                     echo "<meta http-equiv='Refresh' content='0;URL=/danh-sach-benh-nhan' />";
                 }
 
             }else{
-                $_SESSION['message-dklichkham'] = "Đặt lịch hẹn thất bại ! Vui lòng thử lại ";
+                $_SESSION['message-dklichhen'] = "Đặt lịch hẹn thất bại ! Vui lòng thử lại ";
                 $_SESSION['status'] = false;
                 connection::_close($conn);
                 echo "<meta http-equiv='Refresh' content='0;URL=/dat-hen' />";

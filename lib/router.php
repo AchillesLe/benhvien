@@ -12,7 +12,7 @@ if( isset($_SESSION['user'] ) ){
                 require 'include/lichkham.php';
                 exit();
             case '/ho-so-benh-an':
-                require 'views/benhAn-benhnhan.php';
+                require 'views/ho-so-benh-an.php';
                 exit();
             default:
                 break;
@@ -20,25 +20,25 @@ if( isset($_SESSION['user'] ) ){
     }
     else{
         // chỉ bác sĩ  có thể truy cập
-            // var_dump("------------");
-            // var_dump($request_uri);
-            // var_dump("------------");
-            // var_dump($_GET);
-            // $new_uri = explode("/",$request_uri);
-            // die( var_dump($request_uri) );
-
+        
         switch( $request_uri[0] ){  
             case '/ho-so-benh-an':
-                require 'views/benhAn-bacsi.php';
+                require 'views/ho-so-benh-an.php';
                 exit();
             case '/them-ho-so-benh-an':
                 require 'views/thembenhAn.php';
+                exit();
+            case '/p-them-benh-an':
+                require 'include/benh-An.php';
                 exit();
             case '/danh-sach-benh-nhan':
                 require 'views/danh_sach_benh_nhan.php';
                 exit();
             case '/dat-hen':
                 require 'views/dangkilichhen.php';
+                exit();
+            case '/xem-benh-an':
+                require 'include/benhAn-bacsi.php';
                 exit();
             default:
                 break;
@@ -103,7 +103,6 @@ if( isset($_SESSION['user'] ) ){
         case '/p-forgotpassword':
             require 'include/forgot-pass.php';
             exit();
-
         default:
             require 'views/404.php';
             exit();

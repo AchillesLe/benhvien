@@ -1,11 +1,24 @@
 <?php include('header.php') ?>
+<?php 
+
+	$conn = connection::_open();
+	$sql = "SELECT * FROM tblxetnghiem ";
+	$xetnghiem = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+	$sql = "SELECT * FROM tblthuoc ";
+	$thuoc = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+	connection::_close($conn);
+?>
 <div class="container-fluid">
+	
     <div class="card mb-3 mt-3">
 		<div class="card-header bg-info">
 			<i class="fas fa-table"></i>
 			Thông tin cơ bản của bệnh án
 		</div>
 		<div class="card-body">
+			<div id="message-tao_benh_An">
+
+			</div>
 			<form>
 				<div class="form-group">
 					<div class="form-row">
@@ -62,6 +75,16 @@
 						</div>
 					</div>
 				</div>
+				<div class="form-group">
+					<div class="form-row">
+						<div class="col-md-2">
+							<label for="text_chuan_doan">Ghi chú</label>
+						</div>	
+						<div class="col-md-6">
+							<textarea class="form-control" name="text_ghi_chu" cols="30" rows="3"></textarea>
+						</div>
+					</div>
+				</div>
 			</form>
 		</div>
     </div>
@@ -77,12 +100,19 @@
 						<label for="text_bacsi">Xét nghiệm</label>
 					</div>	
 					<div class="col-md-4">
-						<select class="form-control" name="sel_xet_nghiem">
-							<option>1</option>
+						<select class="form-control" name="sel_xet_nghiem" id="sel_xet_nghiem">
+							<option value="0">------------Chọn xét nghiệm------------</option>
+							<?php 
+								if($xetnghiem){
+									foreach($xetnghiem as $XN){
+										echo "<option value='{$XN['id']}'>{$XN['tenXetNghiem']}</option>";
+									}
+								}
+							?>
 						</select>
 					</div>
-					<div class="col-md-1">
-						<label for="txt_gio">Giờ XN</label>
+					<div class="col-md-2">
+						<label for="txt_gio" style="margin-left:30px;">Giờ XN ( 24h )</label>
 					</div>
 					<div class="col-md-2 bootstrap-timepicker timepicker">
 						<input class="form-control" type="text" id="txt_gio" name="txt_gio">
@@ -90,8 +120,8 @@
 					<div class="col-md-1">
 						<label for="txt_lan_thu">Lần thứ</label>
 					</div>	
-					<div class="col-md-2">
-						<input class="form-control" type="text" name="txt_lan_thu">
+					<div class="col-md-1">
+						<input class="form-control" type="text" name="txt_lan_thu" id="txt_lan_thu">
 					</div>
 				</div>
 			</div>
@@ -101,7 +131,7 @@
 						<label for="txt_ket_qua">Kết quả</label>
 					</div>	
 					<div class="col-md-6">
-						<textarea class="form-control" name="txt_ket_qua" rows="3"></textarea>
+						<textarea class="form-control" name="txt_ket_qua" id="txt_ket_qua"  rows="3"></textarea>
 					</div>
 				</div>
 			</div>
@@ -118,25 +148,15 @@
 				<table class="table table-bordered" id="table_xet_nghiem" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th>#</th>
 							<th>Xét nghiệm</th>
 							<th>Giờ</th>
 							<th>Lần thứ</th>
 							<th>Kết quả</th>
 							<th></th>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Chụp X-quang</td>
-							<td>15:30</td>
-							<td>1</td>
-							<td>XXXXXX</td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Sửa"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Xóa"></td>
-						</tr>
+						
 					</tbody>
 				</table>
 			</div>
@@ -155,30 +175,34 @@
 					</div>	
 					<div class="col-md-4">
 						<select class="form-control" name="sel_thuoc" id="sel_thuoc">
-							<option>Panadol</option>
-							<option>Panadol</option>
-							<option>Panadol</option>
-							<option>Panadol</option>
+							<option value="0">------------Chọn thuốc------------</option>
+							<?php 
+								if($xetnghiem){
+									foreach($thuoc as $t){
+										echo "<option value='{$t['id']}' data-donvi='{$t['donVi']}'>{$t['tenThuoc']}</option>";
+									}
+								}
+							?>
 						</select>
 					</div>
 					<div class="col-md-1">
 						<label for="txt_donvi">Đơn vị</label>
 					</div>
 					<div class="col-md-1">
-						<input class="form-control" type="text"  name="txt_donvi" value="vỉ" readonly>
+						<input class="form-control" type="text"  id="txt_donvi"  readonly>
 					</div>
 					<div class="col-md-1">
-						<label for="txt_donvi">Số lượng</label>
+						<label for="txt_soluong">Số lượng</label>
 					</div>
 					<div class="col-md-1">
-						<input class="form-control" type="text"  name="txt_soluong" value="2">
+						<input class="form-control" type="text"  name="txt_soluong" id="txt_soluong" >
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="form-row">
 					<div class="col-md-2 offset-md-2">
-						<button class="btn bg-dark text-white" id="btn_them_xet_nghiem"><i class="fas fa-plus"></i>Thêm vào toa thuốc</button>
+						<button class="btn bg-dark text-white" id="btn_them_thuoc"><i class="fas fa-plus"></i>Thêm vào toa thuốc</button>
 					</div>
 				</div>
 			</div>
@@ -188,36 +212,30 @@
 				<table class="table table-bordered" id="table_thuoc" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th>#</th>
 							<th>Tên thuốc</th>
 							<th>Đơn vị</th>
 							<th>Số lượng</th>
 							<th></th>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Panadol</td>
-							<td>vỉ</td>
-							<td><input type="number" class="form-control" value="2"></td>
-							<td><input type="button" class="btn btn-info btn-detail" value="Sửa"></td>
-							<td><input type="button" class="btn btn-warning btn-edit" value="Xóa"></td>
-						</tr>
+
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 	<div class="row row-end">
-		<div class="offset-md-5 col-md-4">
-			<input name="nameRequest" value="300" hidden>
-			<button class="btn btn-info" name="btn_save" id="btn_save"><i class="fas fa-save"></i> Lưu bệnh án</button>
+		<div class="offset-md-3 col-md-4">
+			<button class="btn btn-info"  id="btn_save_benh_an"><i class="fas fa-save"></i> Lưu bệnh án</button>
+		</div>
+		<div class="col-md-4">
+			<a href="/ho-so-benh-an" class="btn btn-danger" id="btn_cancel"><i class="fas fa-arrow-left"></i> Hủy</a>
 		</div>
 	</div>
 </div>
 <?php include('footer.php') ?>
 <script>
 	$("#sel_thuoc").chosen({});
+</script>
 </script>

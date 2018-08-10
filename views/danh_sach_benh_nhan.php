@@ -2,7 +2,7 @@
 <?php 
 	$id_bacsi =  $user['id'];
 	$conn = connection::_open();
-	$sql = "SELECT DISTINCT B.id , B.ten, B.soDT , B.ngaySinh , B.CMND ,B.BHYT FROM tbldatlichkham A, tblbenhnhan B WHERE A.idBenhnhan = B.id
+	$sql = "SELECT DISTINCT B.id , B.ten, B.soDT , B.ngaySinh , B.CMND ,B.BHYT FROM tblbenhan A, tblbenhnhan B WHERE A.idBenhnhan = B.id
 	AND A.idBacsi =  '{$id_bacsi}' ";
 	$result = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
 	connection::_close($conn);
@@ -13,15 +13,16 @@
 			<i class="fas fa-table"></i>
 			Danh sách bệnh nhân
 		</div>
-		<div id="message-lichkham">
+		<div id="message-dklichhen">
 			<?php
 				if( isset($_SESSION['status']) && $_SESSION['status']==true ){
-					echo "<div class='alert alert-success alert-massage'>{$_SESSION['message-dklichkham']}</div>";
-					unset($_SESSION['message-dklichkham']);
+					echo "<div class='alert alert-success alert-massage'>{$_SESSION['message-dklichhen']}</div>";
+					unset($_SESSION['message-dklichhen']);
 					unset($_SESSION['status']);
 				}
 			?>
 		</div>
+		
 		<div class="card-body">
 			<div class="table-responsive">
 				<table class="table table-bordered" id="table-ds-benh-nhan" width="100%" cellspacing="0">
@@ -53,7 +54,7 @@
 										<td>{$benhnhan['CMND']}</td>
 										<td>{$benhnhan['BHYT']}</td>
 										<td><a href='/dat-hen?bn={$benhnhan['id']}' class='btn btn-primary btn-lich-hen'>Đặt hẹn</a></td>
-										<td><a href='/xem-benh-an?bn={$benhnhan['id']}' class='btn btn-success btn-xem-BA'>Xem bệnh án</td>
+										<td><a href='/ho-so-benh-an?bn={$benhnhan['id']}' class='btn btn-success btn-xem-BA'>Xem bệnh án</td>
 									</tr>";
 								}
 							}
