@@ -1,12 +1,25 @@
 <?php include('header.php') ?>
 <?php 
-
-	$conn = connection::_open();
-	$sql = "SELECT * FROM tblxetnghiem ";
-	$xetnghiem = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
-	$sql = "SELECT * FROM tblthuoc ";
-	$thuoc = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
-	connection::_close($conn);
+	if( ( $user['quyen']==0) && isset($_GET['bn']) && is_numeric($_GET['bn'])  ){
+		$conn = connection::_open();
+		$id_bn = $_GET['bn'];
+		$sql = "SELECT * FROM tblbenhnhan WHERE id= '{$id_bn}' ";
+		$benhnhan = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
+		if($benhnhan){
+			$sql = "SELECT * FROM tblxetnghiem ";
+			$xetnghiem = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+			$sql = "SELECT * FROM tblthuoc ";
+			$thuoc = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+			connection::_close($conn);
+		}
+		else{
+			echo "<meta http-equiv='Refresh' content='0;URL=/' />";
+		}
+		
+	}else{
+		echo "<meta http-equiv='Refresh' content='0;URL=/' />";
+	}
+	
 ?>
 <div class="container-fluid">
 	
@@ -32,14 +45,14 @@
 							<label for="id_benh_nhan">Bệnh nhân</label>
 						</div>	
 						<div class="col-md-3">
-							<input class="form-control" type="text" name="id_benh_nhan" value="25" hidden>
-							<input class="form-control" type="text" name="text_benh_nhan" value="Nguyễn Thị Thu Điểm" readonly>
+							<input class="form-control" type="text" name="id_benh_nhan" value="<?php echo $id_bn ?>" hidden>
+							<input class="form-control" type="text" name="text_benh_nhan" value="<?php echo $benhnhan['ten'] ?>" readonly>
 						</div>
 						<div class="col-md-1">
 							<label for="txt_soTT">Số thứ tự</label>
 						</div>
 						<div class="col-md-1">
-							<input class="form-control" type="text" name="txt_soTT" value="16" readonly>
+							<input class="form-control" type="text" name="txt_soTT"  readonly>
 						</div>
 					</div>
 				</div>

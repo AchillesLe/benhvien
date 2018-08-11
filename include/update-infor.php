@@ -54,7 +54,6 @@
         if( $email != $user['Email'] ){
             $sql = "SELECT * FROM tbldangnhap WHERE Email = '{$email}'";
             $data = mysqli_query($conn,$sql)->num_rows;
-            connection::_close($conn);
             if(  $data != 0 ){
                 $_SESSION['message-update-infor'] = "Địa chỉ Email này đã được đăng kí trong hệ thống , vui lòng kiểm tra lại .";
                 $_SESSION['status'] = false;
