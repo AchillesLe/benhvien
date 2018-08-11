@@ -390,6 +390,7 @@ $(document).ready(function() {
                 }
             });
         }
+        window.location.reload();
     });
     $('#sel_khoa_tracuu').on('change',function(){
         $('#sel_bacsi_tracuu').empty();
