@@ -12,7 +12,7 @@
  * config mail
  */
     define("MAIL_HOST", "smtp.gmail.com");
-    define("MAIL_SEND", "diemnguyentt0812@gmail.com");//diemnguyentt2810@gmail.com
+    define("MAIL_SEND", "ngttdiem28@gmail.com");
     define("MAIL_PASSWORD", "diem1234");//diem1234
     define("MAIL_SMTP_SECURE", "tls");
 /**

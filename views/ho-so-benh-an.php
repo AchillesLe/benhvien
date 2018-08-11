@@ -69,7 +69,6 @@
 				</table>
 			</div>
 		</div>
-		<div class="card-footer small text-muted">Cập nhật mới nhất lúc 14:30 4/8/2018</div>
 	</div>
 
 </div>
