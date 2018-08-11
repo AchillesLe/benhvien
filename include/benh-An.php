@@ -4,7 +4,7 @@
             $id_bacsi =  ($_SESSION['user'])['id'];
             $arr_basic = isset($_POST['basic'])?$_POST['basic']:[];
             $arr_thuoc = isset($_POST['thuoc'])?$_POST['thuoc']:[];
-            $arr_xetnghiem = $_POST['xetnghiem'];
+            $arr_xetnghiem = isset($_POST['xetnghiem'])?$_POST['xetnghiem']:[];
             $ngayXN = date("Y-m-d");
             $conn = connection::_open();
             
