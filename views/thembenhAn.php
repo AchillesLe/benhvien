@@ -1,8 +1,9 @@
 <?php include('header.php') ?>
 <?php 
-	if( ( $user['quyen']==0) && isset($_GET['bn']) && is_numeric($_GET['bn'])  ){
+	if( ( $user['quyen']==0) && isset($_GET['bn']) && is_numeric($_GET['bn']) && isset($_GET['stt']) && is_numeric($_GET['stt']) ){
 		$conn = connection::_open();
 		$id_bn = $_GET['bn'];
+		$stt = $_GET['stt'];
 		$sql = "SELECT * FROM tblbenhnhan WHERE id= '{$id_bn}' ";
 		$benhnhan = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
 		if($benhnhan){
@@ -52,7 +53,7 @@
 							<label for="txt_soTT">Số thứ tự</label>
 						</div>
 						<div class="col-md-1">
-							<input class="form-control" type="text" name="txt_soTT"  readonly>
+							<input class="form-control" type="text" name="txt_soTT" value="<?php echo $stt ?>" readonly>
 						</div>
 					</div>
 				</div>
@@ -134,7 +135,7 @@
 						<label for="txt_lan_thu">Lần thứ</label>
 					</div>	
 					<div class="col-md-1">
-						<input class="form-control" type="text" name="txt_lan_thu" id="txt_lan_thu">
+						<input class="form-control" type="text" name="txt_lan_thu" id="txt_lan_thu" readonly>
 					</div>
 				</div>
 			</div>

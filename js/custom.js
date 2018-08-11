@@ -490,6 +490,25 @@ function delete_row_thuoc(obj){
 }
 $(function(){
     /** Bệnh Án */
+    $('#sel_xet_nghiem').on('change',function(){
+        var id_XN = $('#sel_xet_nghiem').val();
+        var id_BN = $('input[name=id_benh_nhan]').val();
+        if(id_XN > 0 ){
+            $.ajax({
+                url:'/tra-cuu',
+                type:'POST',
+                data : {nameRequest:350,id_XN:id_XN,id_BN:id_BN},
+                success :function(result){
+                    if(result){
+                       $('#txt_lan_thu').val(result);
+                    }
+                }
+            });
+        }else{
+            $('#txt_lan_thu').val('');
+        }
+       
+    });
     $('#btn_them_xet_nghiem').on('click',function(){
         var id_XN = $('#sel_xet_nghiem').val();
         var tenXN = $('#sel_xet_nghiem option:selected').html();

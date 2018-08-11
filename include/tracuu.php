@@ -58,6 +58,20 @@
                 echo ( $html );
                 exit();
             }
+        }else if( isset($_POST['nameRequest'])  && $_POST['nameRequest'] == REQUEST_TRACUUSOTT_CUA_XN  ){
+            $id_XN = $_POST['id_XN'];
+            $id_BN = $_POST['id_BN'];
+            $conn = connection::_open();
+            $sql = "SELECT A.lanThu FROM tblphieuxetnghiem A , tblbenhan B  WHERE A.idBenhan = B.id AND A.idXetnghiem = '{$id_XN}' AND B.idBenhnhan= '{$id_BN}'
+            ORDER BY A.lanThu  DESC ";
+            $result = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+            connection::_close($conn);
+            if($result){
+                echo intval($result[0]['lanThu']) + 1;
+            }else{
+                echo 1;
+            }
+            exit();
         }
     }
 ?>

@@ -23,12 +23,7 @@
 	
 ?>
 <div class="container-fluid">
-	<div class="row mt-3 mb-3 ">
-		<div class="col-md-2 col-offset-2">
-			<a class="btn btn-success"  href="/them-ho-so-benh-an?bn=<?php echo $id_benhnhan ?>" ><i class="fas fa-plus"></i>Thêm bệnh án</a>
-		</div>
-	</div>
-	<div class="card mb-3">
+	<div class="card mb-3 mt-3">
 		<div class="card-header">
 			<i class="fas fa-table"></i>
 			Danh sách bệnh án
