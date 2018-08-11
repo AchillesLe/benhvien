@@ -16,16 +16,9 @@
     <div class="container-fluid">
         <div class="card mb-3 dklichkham">
             <div class="card-header">
-              <i class="fas fa-table"></i>Đăng kí lịch khám 
+              <i class="fas fa-table"></i> Đặt lịch hẹn
             </div>
-            <div id="message-lichkham">
-                <?php
-                if(isset($_SESSION['status']) && $_SESSION['status']==false){
-                        echo "<div class='alert alert-danger alert-massage'>{$_SESSION['message-dklichkham']}</div>";
-                        unset($_SESSION['message-dklichkham']);
-                        unset($_SESSION['status']);
-                }
-                ?>
+            <div id="message-lichhen">
             </div>
             <div class="card-body">
                 <form id="form-appointment-schedule-bs" method="POST" action="/p-dangki-lichkham">
@@ -106,7 +99,7 @@
         }
     });
     $('#txt_ngayhen').on('change',function(){
-        $('#message-lichkham').html("");
+        $('#message-lichhen').html("");
         $('#sel_time_hen').empty();
         $('#sel_time_hen').append('<option value="0">-chọn-</option>');
         $ngay =  $(this).val();
@@ -121,9 +114,7 @@
                 $('#sel_time_hen').append(html);
             }
         });
-    });
-    $('#sel_time_hen').on('change',function(){
-        $('#message-lichkham').html("");
+
         var indextime = $(this).val();
         var time = $('#sel_time_hen option:selected').text();
         var ngay = $('#txt_ngayhen').val();
@@ -138,7 +129,27 @@
                 if(!result.status){
                     html = "<div class='alert alert-danger'>"+result.massage+"</div>";
                 }
-                $('#message-lichkham').html(html);
+                $('#message-lichhen').html(html);
+            }
+        });
+    });
+    $('#sel_time_hen').on('change',function(){
+        $('#message-lichhen').html("");
+        var indextime = $(this).val();
+        var time = $('#sel_time_hen option:selected').text();
+        var ngay = $('#txt_ngayhen').val();
+        var idbn = $('#id_bn').val();
+        $.ajax({
+            url:"/check-lichkham",
+            type:"POST",
+            dataType:'json',
+            data:{nameRequest:290,indextime:indextime,time:time,ngay:ngay,idbn:idbn},
+            success:function(result){
+                let html ="";
+                if(!result.status){
+                    html = "<div class='alert alert-danger'>"+result.massage+"</div>";
+                }
+                $('#message-lichhen').html(html);
             }
         });
     });
@@ -151,7 +162,7 @@
             alert("Vui lòng chọn thời gian hẹn !");
             return;
         }
-        if( $('#message-lichkham').html() == ''){
+        if( $('#message-lichhen').html() == ''){
             $('#form-appointment-schedule-bs').submit();
         }
     });

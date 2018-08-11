@@ -32,7 +32,7 @@
 			<div id="message-tao_benh_An">
 
 			</div>
-			<form>
+			<form id="form-benh-an">
 				<div class="form-group">
 					<div class="form-row">
 						<div class="col-md-2">
@@ -250,5 +250,72 @@
 <?php include('footer.php') ?>
 <script>
 	$("#sel_thuoc").chosen({});
-</script>
+	$(function(){
+		$('#form-benh-an').validate({
+			rules: {
+				txt_name: {
+					required: true
+				},
+				rd_sex: {
+					required:true
+				},
+				txt_address: {
+					required:true
+				},
+				txt_birthday: {
+					required:true
+				},
+				txt_bhyt: {
+					number: true,
+					maxlength : 15,
+					minlength: 15
+				},
+				txt_cmt: {
+					number: true,
+					maxlength : 9,
+					minlength: 9
+				},
+				txt_email: {
+					required:true,
+					email:true
+				},
+			},
+			messages:{
+				txt_name: {
+					required: "Vui lòng nhập !"
+				},
+				rd_sex: {
+					required: "Vui lòng chọn !"
+				},
+				txt_address: {
+					required: "Vui lòng nhập !"
+				},
+				txt_birthday: {
+					required: "Vui lòng nhập !"
+				},
+				txt_bhyt: {
+					number:  "Phải là số !",
+					minlength: "Không hợp lệ !",
+					maxlength: "Không hợp lệ !"
+				},
+				txt_cmt: {
+					number:  "Phải là số !",
+					minlength: "Không hợp lệ !",
+					maxlength: "Không hợp lệ !"
+				},
+				txt_email: {
+					required: "Vui lòng nhập !",
+					email:"Không hợp lệ !"
+				},
+			},
+			errorClass: "label-danger",
+			errorPlacement: function(error, element) {
+				if(element.attr("name")=="rd_sex"){
+					error.insertAfter(element.parent().parent());
+				}
+				else
+					error.insertAfter(element);
+			}
+		});
+	});
 </script>
