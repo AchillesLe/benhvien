@@ -148,6 +148,16 @@
                 echo json_encode($result);
                 exit();
             }
+            /** check bác sĩ đã có hẹn trong giờ / ngày đó hay chưa */
+            $sql = "SELECT * FROM tbldatlichkham A WHERE  A.idBacsi = '{$id_bacsi}' AND A.ngayHen = '{$ngayhen}' AND A.soTT = '{$stt}'";
+            $data = mysqli_query($conn,$sql);
+            if($data->num_rows != 0){
+                connection::_close($conn);
+                $result['status'] = false;
+                $result['massage'] = "Bạn đã có sẵn 1 lịch khám / hẹn lúc {$giokham}  trong ngày {$ngayhen}. Vui lòng chọn ngày/giờ khác !";
+                echo json_encode($result);
+                exit();
+            }
             /** check cac bác sĩ cùng khoa đặt lịch vs bệnh nhan hoặc bệnh nhan có lịch hẹn trong khoa trong cùng 1 ngày */
             $conn = connection::_open();
             $sql = "SELECT * FROM tblbacsi WHERE id='{$id_bacsi}' AND idKhoa in (SELECT B.idKhoa FROM tbldatlichkham A,tblbacsi B WHERE A.idBacsi = B.id AND A.idBenhnhan = '{$id_benhnhan}' AND A.ngayHen = '{$ngayhen}') ";
@@ -159,6 +169,7 @@
                 echo json_encode($result);
                 exit();
             }
+            
         }else if(isset($_POST['nameRequest']) && $_POST['nameRequest'] == REQUEST_DANGKILICHHEN){
             $id_bacsi = ( $_SESSION['user'] )['id'];
             $id_benhnhan = $_POST['id_bn'] ;
