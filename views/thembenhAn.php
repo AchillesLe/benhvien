@@ -254,59 +254,41 @@
 	$(function(){
 		$('#form-benh-an').validate({
 			rules: {
-				txt_name: {
-					required: true
-				},
-				rd_sex: {
-					required:true
-				},
-				txt_address: {
-					required:true
-				},
-				txt_birthday: {
-					required:true
-				},
-				txt_bhyt: {
+				text_chieu_cao: {
+					required: true,
 					number: true,
-					maxlength : 15,
-					minlength: 15
 				},
-				txt_cmt: {
-					number: true,
-					maxlength : 9,
-					minlength: 9
-				},
-				txt_email: {
+				txt_can_nang: {
 					required:true,
-					email:true
+					number: true,
 				},
+				txt_huyet_ap: {
+					required:true,
+					number: true,
+				},
+				text_chuan_doan :{
+					required:true,
+					minlength:6,
+					maxlength:200
+				}
 			},
 			messages:{
-				txt_name: {
-					required: "Vui lòng nhập !"
-				},
-				rd_sex: {
-					required: "Vui lòng chọn !"
-				},
-				txt_address: {
-					required: "Vui lòng nhập !"
-				},
-				txt_birthday: {
-					required: "Vui lòng nhập !"
-				},
-				txt_bhyt: {
-					number:  "Phải là số !",
-					minlength: "Không hợp lệ !",
-					maxlength: "Không hợp lệ !"
-				},
-				txt_cmt: {
-					number:  "Phải là số !",
-					minlength: "Không hợp lệ !",
-					maxlength: "Không hợp lệ !"
-				},
-				txt_email: {
+				text_chieu_cao: {
 					required: "Vui lòng nhập !",
-					email:"Không hợp lệ !"
+					number:"Phải là số !"
+				},
+				txt_can_nang: {
+					required: "Vui lòng chọn !",
+					number:"Phải là số !"
+				},
+				txt_huyet_ap: {
+					required: "Vui lòng nhập !",
+					number:"Phải là số !"
+				},
+				text_chuan_doan: {
+					required: "Vui lòng nhập !",
+					minlength:"Nhập ít nhất 6 kí tự !",
+					maxlength:"Nhập tối đa 200 kí tự !",
 				},
 			},
 			errorClass: "label-danger",

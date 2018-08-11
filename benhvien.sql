@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 11, 2018 lúc 12:16 PM
+-- Thời gian đã tạo: Th8 11, 2018 lúc 06:21 PM
 -- Phiên bản máy phục vụ: 10.1.31-MariaDB
 -- Phiên bản PHP: 7.2.3
 
@@ -96,7 +96,6 @@ CREATE TABLE `tblbenhan` (
   `chieuCao` float DEFAULT '160' COMMENT 'cm',
   `canNang` float DEFAULT '50' COMMENT 'KG',
   `huyetAp` float DEFAULT '120' COMMENT 'mmHg',
-  `idToaThuoc` int(11) DEFAULT NULL,
   `ghiChu` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Kháng thuốc nôn ói',
   `ngayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `lanThu` int(11) NOT NULL DEFAULT '1',
@@ -107,10 +106,11 @@ CREATE TABLE `tblbenhan` (
 -- Đang đổ dữ liệu cho bảng `tblbenhan`
 --
 
-INSERT INTO `tblbenhan` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `chuanDoan`, `chieuCao`, `canNang`, `huyetAp`, `idToaThuoc`, `ghiChu`, `ngayTao`, `lanThu`, `tinhTrang`) VALUES
-(15, 25, 3, 1, 'Tim đập không ổn định', 155, 39, 120, 8, '', '2018-08-11 09:44:38', 1, '0'),
-(25, 25, 3, 1, 'Bình thường', 155, 40, 121, 18, 'Không có tiền sử dị ứng với bất kì thuốc.', '2018-08-11 09:47:42', 1, '0'),
-(26, 1, 3, 2, 'Thiếu ngủ, tình trạng ăn uống không ổn định', 170, 60, 110, 19, '', '2018-08-11 09:51:44', 1, '0');
+INSERT INTO `tblbenhan` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `chuanDoan`, `chieuCao`, `canNang`, `huyetAp`, `ghiChu`, `ngayTao`, `lanThu`, `tinhTrang`) VALUES
+(15, 25, 3, 1, 'Tim đập không ổn định', 155, 39, 120, '', '2018-08-11 09:44:38', 1, '0'),
+(25, 25, 3, 1, 'Bình thường', 155, 40, 121, 'Không có tiền sử dị ứng với bất kì thuốc.', '2018-08-11 09:47:42', 1, '0'),
+(26, 1, 3, 2, 'Thiếu ngủ, tình trạng ăn uống không ổn định', 170, 60, 110, '', '2018-08-11 09:51:44', 1, '0'),
+(28, 25, 3, 1, 'Bình thường', 155, 40, 120, 'Không ', '2018-08-11 15:59:34', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -175,7 +175,9 @@ INSERT INTO `tblcttoathuoc` (`id`, `idtoathuoc`, `idthuoc`, `soLuong`, `tongTien
 (40, 18, 3, 10, '3000000'),
 (41, 18, 5, 1, '250000'),
 (42, 19, 3, 20, '6000000'),
-(43, 19, 12, 10, '1500000');
+(43, 19, 12, 10, '1500000'),
+(44, 20, 1, 10, '1000000'),
+(45, 20, 3, 15, '4500000');
 
 -- --------------------------------------------------------
 
@@ -298,7 +300,12 @@ INSERT INTO `tbldatlichkham` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `ngayHen`, 
 (62, 1, 3, 13, '2018-08-14', '11:00:00', NULL, 'Theo dõi', '1', '1', '2018-08-11 09:52:54'),
 (63, 24, 1, 5, '2018-08-13', '09:00:00', '', 'Suy nhược', '1', '0', '2018-08-11 09:57:43'),
 (64, 24, 21, 9, '2018-08-13', '10:00:00', '0938568110', 'Mỏi mắt', '1', '0', '2018-08-11 09:58:31'),
-(65, 24, 3, 6, '2018-08-13', '09:15:00', '0938568110', 'Đau đầu', '1', '0', '2018-08-11 09:59:44');
+(65, 24, 3, 6, '2018-08-13', '09:15:00', '0938568110', 'Đau đầu', '1', '0', '2018-08-11 09:59:44'),
+(66, 25, 2, 29, '2018-08-13', '15:00:00', '0938568110', 'Bỏng', '1', '0', '2018-08-11 15:21:05'),
+(67, 25, 16, 7, '2018-08-13', '09:30:00', '', 'Đau họng', '1', '0', '2018-08-11 15:24:29'),
+(68, 25, 9, 15, '2018-08-13', '11:30:00', '', 'Bị trĩ', '1', '0', '2018-08-11 15:26:21'),
+(69, 25, 26, 14, '2018-08-14', '11:15:00', '0938568111', 'no thing', '1', '0', '2018-08-11 15:32:18'),
+(70, 25, 16, 5, '2018-08-14', '09:00:00', '0938568111', 'No thing 2', '1', '0', '2018-08-11 15:42:25');
 
 -- --------------------------------------------------------
 
@@ -354,7 +361,8 @@ CREATE TABLE `tblphieuxetnghiem` (
 
 INSERT INTO `tblphieuxetnghiem` (`id`, `idXetnghiem`, `idBenhan`, `soTT`, `ngayXetnghiem`, `gioXetnghiem`, `lanThu`, `ketQua`) VALUES
 (8, 4, 25, 1, '2018-08-11', '16:45:00', 1, 'Bình thường'),
-(9, 4, 26, 2, '2018-08-11', '16:50:00', 1, 'Bình thường');
+(9, 4, 26, 2, '2018-08-11', '16:50:00', 1, 'Bình thường'),
+(10, 4, 28, 1, '2018-08-11', '23:00:00', 2, 'Bình thường');
 
 -- --------------------------------------------------------
 
@@ -423,6 +431,7 @@ INSERT INTO `tblthuoc` (`id`, `tenThuoc`, `donVi`, `xuatXu`, `donGia`, `tinhTran
 
 CREATE TABLE `tbltoathuoc` (
   `id` int(11) NOT NULL,
+  `idBenhan` int(11) NOT NULL,
   `tongTien` decimal(10,0) NOT NULL,
   `ngayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -431,10 +440,11 @@ CREATE TABLE `tbltoathuoc` (
 -- Đang đổ dữ liệu cho bảng `tbltoathuoc`
 --
 
-INSERT INTO `tbltoathuoc` (`id`, `tongTien`, `ngayTao`) VALUES
-(8, '7300000', '2018-08-11 09:44:38'),
-(18, '3250000', '2018-08-11 09:47:42'),
-(19, '7500000', '2018-08-11 09:51:44');
+INSERT INTO `tbltoathuoc` (`id`, `idBenhan`, `tongTien`, `ngayTao`) VALUES
+(8, 15, '7300000', '2018-08-11 16:16:27'),
+(18, 25, '3250000', '2018-08-11 16:16:31'),
+(19, 26, '7500000', '2018-08-11 16:16:39'),
+(20, 28, '5500000', '2018-08-11 16:19:29');
 
 -- --------------------------------------------------------
 
@@ -484,7 +494,6 @@ ALTER TABLE `tblbacsi`
 ALTER TABLE `tblbenhan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `mabenhnhan` (`idBenhnhan`),
-  ADD KEY `maTT` (`idToaThuoc`) USING BTREE,
   ADD KEY `tblbenhan_ibfk_3` (`idBacsi`);
 
 --
@@ -560,7 +569,8 @@ ALTER TABLE `tblthuoc`
 -- Chỉ mục cho bảng `tbltoathuoc`
 --
 ALTER TABLE `tbltoathuoc`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tbltoathuoc_ibfk_1` (`idBenhan`);
 
 --
 -- Chỉ mục cho bảng `tblxetnghiem`
@@ -583,7 +593,7 @@ ALTER TABLE `tblbacsi`
 -- AUTO_INCREMENT cho bảng `tblbenhan`
 --
 ALTER TABLE `tblbenhan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `tblbenhnhan`
@@ -595,7 +605,7 @@ ALTER TABLE `tblbenhnhan`
 -- AUTO_INCREMENT cho bảng `tblcttoathuoc`
 --
 ALTER TABLE `tblcttoathuoc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `tbldangkixetnghiem`
@@ -613,7 +623,7 @@ ALTER TABLE `tbldangnhap`
 -- AUTO_INCREMENT cho bảng `tbldatlichkham`
 --
 ALTER TABLE `tbldatlichkham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT cho bảng `tblkhoa`
@@ -625,7 +635,7 @@ ALTER TABLE `tblkhoa`
 -- AUTO_INCREMENT cho bảng `tblphieuxetnghiem`
 --
 ALTER TABLE `tblphieuxetnghiem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `tblthanhtoandot`
@@ -643,7 +653,7 @@ ALTER TABLE `tblthuoc`
 -- AUTO_INCREMENT cho bảng `tbltoathuoc`
 --
 ALTER TABLE `tbltoathuoc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `tblxetnghiem`
@@ -667,7 +677,6 @@ ALTER TABLE `tblbacsi`
 --
 ALTER TABLE `tblbenhan`
   ADD CONSTRAINT `tblbenhan_ibfk_1` FOREIGN KEY (`idBenhnhan`) REFERENCES `tblbenhnhan` (`id`),
-  ADD CONSTRAINT `tblbenhan_ibfk_2` FOREIGN KEY (`idToaThuoc`) REFERENCES `tbltoathuoc` (`id`),
   ADD CONSTRAINT `tblbenhan_ibfk_3` FOREIGN KEY (`idBacsi`) REFERENCES `tblbacsi` (`id`);
 
 --
@@ -709,6 +718,12 @@ ALTER TABLE `tblphieuxetnghiem`
 --
 ALTER TABLE `tblthanhtoandot`
   ADD CONSTRAINT `tblthanhtoandot_ibfk_1` FOREIGN KEY (`idBenhan`) REFERENCES `tblbenhan` (`id`);
+
+--
+-- Các ràng buộc cho bảng `tbltoathuoc`
+--
+ALTER TABLE `tbltoathuoc`
+  ADD CONSTRAINT `tbltoathuoc_ibfk_1` FOREIGN KEY (`idBenhan`) REFERENCES `tblbenhan` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

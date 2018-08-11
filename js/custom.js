@@ -603,20 +603,24 @@ $(function(){
             thuoc[row_index] = thuoc_tam;
         });
         data['thuoc'] = thuoc;
-        $.ajax({
-            url:'/p-them-benh-an',
-            dataType:'JSON',
-            type:'POST',
-            data : data,
-            success :function(result){
-                if(result.status){
-                    $('#message-tao_benh_An').html(`<div class='alert alert-success alert-massage'>${result.message}</div>`);
-                    setTimeout(function(){ 
-                        window.history.back();
-                    }, 3000);
+        if($('#form-benh-an').valid() == true){
+            $.ajax({
+                url:'/p-them-benh-an',
+                dataType:'JSON',
+                type:'POST',
+                data : data,
+                success :function(result){
+                    if(result.status){
+                        $('#message-tao_benh_An').html(`<div class='alert alert-success alert-massage'>${result.message}</div>`);
+                        setTimeout(function(){ 
+                            window.history.back();
+                        }, 3000);
+                    }
                 }
-            }
-        });
+            });
+        }
+        return;
+
     });
 
 })
