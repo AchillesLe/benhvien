@@ -10,6 +10,7 @@
             
             $id_benhAn = "";
             $tongtien_toathuoc = 0;
+            $id_toathuoc ="";
             /** tạo  Bệnh án */
             $sql = "INSERT INTO tblbenhan(idBenhnhan,idBacsi,soTT,chuanDoan,chieuCao,canNang,huyetAp,ghiChu) 
             VALUES ('{$arr_basic['id_BN']}','{$id_bacsi}','{$arr_basic['soTT']}','{$arr_basic['chuan_doan']}','{$arr_basic['chieu_cao']}','{$arr_basic['can_nang']}','{$arr_basic['huyet_ap']}','{$arr_basic['ghi_chu']}')";
@@ -57,7 +58,7 @@
             /** cập nhật  toa thuốc mới */
             $sql = "UPDATE tbltoathuoc SET tongTien = '{$tongtien_toathuoc}' WHERE id= '{$id_toathuoc}'";
             $result = mysqli_query($conn,$sql);
-            $id_toathuoc = mysqli_insert_id($conn);
+
             echo json_encode(['status'=>true , 'message'=>"Tạo bệnh án thành công !"]);
             connection::_close($conn);
             exit();
