@@ -613,7 +613,7 @@ $(function(){
                     if(result.status){
                         $('#message-tao_benh_An').html(`<div class='alert alert-success alert-massage'>${result.message}</div>`);
                         setTimeout(function(){ 
-                            window.history.back();
+                            window.location.href=href_benh_an;
                         }, 3000);
                     }
                 }

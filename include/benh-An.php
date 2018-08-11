@@ -1,11 +1,12 @@
 <?php 
     if( isset($_SESSION['user'] ) ){
         if( isset($_POST['nameRequest'])  && $_POST['nameRequest'] == REQUEST_THEMBENHAN ){
-            $id_bacsi =  ($_SESSION['user'])['id'];
             $arr_basic = isset($_POST['basic'])?$_POST['basic']:[];
             $arr_thuoc = isset($_POST['thuoc'])?$_POST['thuoc']:[];
             $arr_xetnghiem = isset($_POST['xetnghiem'])?$_POST['xetnghiem']:[];
             $ngayXN = date("Y-m-d");
+            $id_bacsi =  ($_SESSION['user'])['id'];
+            $id_benh_nhan = $arr_basic['id_BN'];
             $conn = connection::_open();
             
             $id_benhAn = "";
@@ -13,7 +14,7 @@
             $id_toathuoc ="";
             /** tạo  Bệnh án */
             $sql = "INSERT INTO tblbenhan(idBenhnhan,idBacsi,soTT,chuanDoan,chieuCao,canNang,huyetAp,ghiChu) 
-            VALUES ('{$arr_basic['id_BN']}','{$id_bacsi}','{$arr_basic['soTT']}','{$arr_basic['chuan_doan']}','{$arr_basic['chieu_cao']}','{$arr_basic['can_nang']}','{$arr_basic['huyet_ap']}','{$arr_basic['ghi_chu']}')";
+            VALUES ('{$id_benh_nhan}','{$id_bacsi}','{$arr_basic['soTT']}','{$arr_basic['chuan_doan']}','{$arr_basic['chieu_cao']}','{$arr_basic['can_nang']}','{$arr_basic['huyet_ap']}','{$arr_basic['ghi_chu']}')";
             $result = mysqli_query($conn,$sql);
             $id_benhAn = mysqli_insert_id($conn);
              /** tạo xét nghiệm */
@@ -23,6 +24,14 @@
                         /**  lấy giá  xet nghiem */
                         $sql = "SELECT * FROM tblxetnghiem WHERE id = '{$xn['id_XN']}'";
                         $xetnghiem = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
+                        /**  lấy lần thứ ? xet nghiem */
+                        // $lanthu = 1;
+                        // $sql = "SELECT A.lanThu FROM tblphieuxetnghiem A , tblbenhan B  WHERE A.idBenhan = B.id AND A.idXetnghiem = '{$xn['id']}' AND B.idBenhnhan= '{$id_benh_nhan}'
+                        // ORDER BY A.lanThu  DESC ";
+                        // $result = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+                        // if($result){
+                        //     $lanthu = intval($result[0]['lanThu']) + 1;
+                        // }
                         if($xetnghiem){
                             /** tạo  phiếu xt nghiem */
                             $sql = "INSERT INTO tblphieuxetnghiem(idXetnghiem,idBenhan,soTT,ngayXetnghiem,gioXetnghiem,lanThu,ketQua) 

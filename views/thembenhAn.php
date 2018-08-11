@@ -250,6 +250,8 @@
 </div>
 <?php include('footer.php') ?>
 <script>
+	var id_BN_ = "<?php echo $_GET['bn']?>";
+	var href_benh_an = "/ho-so-benh-an?bn="+id_BN_;
 	$("#sel_thuoc").chosen({});
 	$(function(){
 		$('#form-benh-an').validate({
