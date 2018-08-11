@@ -56,8 +56,8 @@
 										<td>{$lichkham['lyDo']}</td>
 										<td><button class='btn btn-{$status} btn-confirm-done' data-id='{$lichkham['id']}' {$disbled}><i class='fas fa-check'></i></button></td> 
 										<td>";
-										if( $lichkham['tinhTrang'] == 0){
-											echo "<a class='btn btn-success'  href='/them-ho-so-benh-an?bn={$lichkham['idBenhnhan']}&&stt={$lichkham['soTT']}'><i class='fas fa-plus'></i>Thêm bệnh án</a>";
+										if( $lichkham['tinhTrang'] == 0 && $lichkham['datao_benhAn'] == 0){
+											echo "<a class='btn btn-success'  href='/them-ho-so-benh-an?LK={$lichkham['id']}'><i class='fas fa-plus'></i>Thêm bệnh án</a>";
 										}
 									echo "</td></tr>";
 								}

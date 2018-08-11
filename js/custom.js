@@ -587,6 +587,7 @@ $(function(){
     $('#btn_save_benh_an').on('click',function(){
         data = {};
         data['nameRequest'] = 400;
+        var id_LK = $('input[name=id_LK]').val();
         var id_BN = $('input[name=id_benh_nhan]').val();
         var soTT = $('input[name=txt_soTT]').val();
         var chieu_cao = $('input[name=text_chieu_cao]').val();
@@ -596,6 +597,7 @@ $(function(){
         var ghi_chu = $('textarea[name=text_ghi_chu]').val();
         
         var basic = {};
+        basic['id_LK'] = id_LK;
         basic['id_BN'] = id_BN;
         basic['soTT'] = soTT;
         basic['chieu_cao'] = chieu_cao;

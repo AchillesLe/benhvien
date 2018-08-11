@@ -17,8 +17,12 @@
             VALUES ('{$id_benh_nhan}','{$id_bacsi}','{$arr_basic['soTT']}','{$arr_basic['chuan_doan']}','{$arr_basic['chieu_cao']}','{$arr_basic['can_nang']}','{$arr_basic['huyet_ap']}','{$arr_basic['ghi_chu']}')";
             $result = mysqli_query($conn,$sql);
             $id_benhAn = mysqli_insert_id($conn);
-             /** tạo xét nghiệm */
+             
             if( $id_benhAn ){
+                /** Update status da tao benh án ở tbldatlichkham */
+                $sql = "UPDATE tbldatlichkham SET datao_benhAn ='1' WHERE id='{$arr_basic['id_LK']}' ";
+                $result = mysqli_query($conn,$sql);
+                /** tạo xét nghiệm */
                 if( count($arr_xetnghiem) > 0){
                     foreach($arr_xetnghiem as $xn){
                         /**  lấy giá  xet nghiem */

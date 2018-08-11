@@ -1,9 +1,12 @@
 <?php include('header.php') ?>
 <?php 
-	if( ( $user['quyen']==0) && isset($_GET['bn']) && is_numeric($_GET['bn']) && isset($_GET['stt']) && is_numeric($_GET['stt']) ){
+	if( ( $user['quyen']==0) && isset($_GET['LK']) && is_numeric($_GET['LK']) ){
 		$conn = connection::_open();
-		$id_bn = $_GET['bn'];
-		$stt = $_GET['stt'];
+		$id_LK = $_GET['LK'];
+		$sql = "SELECT * FROM tbldatlichkham WHERE id='{$id_LK}' ";
+		$LK = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
+		$id_bn = $LK['idBenhnhan'];
+		$stt = $LK['soTT'];
 		$sql = "SELECT * FROM tblbenhnhan WHERE id= '{$id_bn}' ";
 		$benhnhan = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
 		if($benhnhan){
@@ -43,10 +46,11 @@
 							<input class="form-control" type="text" name="text_bacsi" value="<?php echo $user['ten'] ?>" readonly>
 						</div>
 						<div class="col-md-1">
-							<label for="id_benh_nhan">Bệnh nhân</label>
+							<label >Bệnh nhân</label>
 						</div>	
 						<div class="col-md-3">
 							<input class="form-control" type="text" name="id_benh_nhan" value="<?php echo $id_bn ?>" hidden>
+							<input class="form-control" type="text" name="id_LK" value="<?php echo $id_LK ?>" hidden>
 							<input class="form-control" type="text" name="text_benh_nhan" value="<?php echo $benhnhan['ten'] ?>" readonly>
 						</div>
 						<div class="col-md-1">
@@ -250,7 +254,7 @@
 </div>
 <?php include('footer.php') ?>
 <script>
-	var id_BN_ = "<?php echo $_GET['bn']?>";
+	var id_BN_ = "<?php echo $id_bn?>";
 	var href_benh_an = "/ho-so-benh-an?bn="+id_BN_;
 	$("#sel_thuoc").chosen({});
 	$(function(){
