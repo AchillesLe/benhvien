@@ -105,7 +105,7 @@
 				<span>Bệnh án</span>
 			</a>
 			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				<a class="dropdown-item" href="/ho-so-benh-an">Hồ sơ bệnh án</a>
+				<a class="dropdown-item" href="/ho-so-benh-an?bn=<?php echo $user['id']?>">Hồ sơ bệnh án</a>
 			</div>
 		</li>
 		<?php endif;?>

@@ -1,6 +1,6 @@
 <?php include('header.php') ?>
 <?php 
-	if( ( $user['quyen']==0) && isset($_GET['ba']) && is_numeric($_GET['ba']) ){
+	if(  isset($_GET['ba']) && is_numeric($_GET['ba']) ){
 		$conn = connection::_open();
         $id_ba = $_GET['ba'];
 		$sql = "SELECT A.* , A.id as id_ba , B.* ,B.id as id_bn , B.ten  as ten_bn , C.* ,  C.id as id_bs , C.ten as ten_bs FROM tblbenhan A , tblbenhnhan B , tblbacsi C WHERE A.idBenhnhan = B.id AND A.idBacsi = C.id AND A.id= '{$id_ba}' ";
