@@ -43,7 +43,7 @@
             /** tạo toa thuốc */
                 if( count($arr_thuoc) > 0){
                     /** tạo  toa thuốc mới */
-                    $sql = "INSERT INTO tbltoathuoc(idBenhan,tongTien) VALUES ('0')";
+                    $sql = "INSERT INTO tbltoathuoc(idBenhAn,tongTien) VALUES ('{$id_benhAn}','0')";
                     $result = mysqli_query($conn,$sql);
                     $id_toathuoc = mysqli_insert_id($conn);
                     if($id_toathuoc){

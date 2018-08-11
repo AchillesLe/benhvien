@@ -74,6 +74,9 @@ if( isset($_SESSION['user'] ) ){
         case '/tra-cuu':
             require 'include/tracuu.php';
             exit();
+        case '/chi-tiet-benh-an':
+            require 'views/chitietbenhan.php';
+            exit();
         case '/dangxuat':
             require 'include/dangxuat.php';
             exit();

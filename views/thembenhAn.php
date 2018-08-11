@@ -14,11 +14,11 @@
 			connection::_close($conn);
 		}
 		else{
-			echo "<meta http-equiv='Refresh' content='0;URL=/' />";
+			echo "<meta http-equiv='Refresh' content='0;URL=/' />"; exit();
 		}
 		
 	}else{
-		echo "<meta http-equiv='Refresh' content='0;URL=/' />";
+		echo "<meta http-equiv='Refresh' content='0;URL=/' />"; exit();
 	}
 	
 ?>

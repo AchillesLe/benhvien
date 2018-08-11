@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 11, 2018 lúc 07:09 PM
+-- Thời gian đã tạo: Th8 11, 2018 lúc 07:33 PM
 -- Phiên bản máy phục vụ: 10.1.31-MariaDB
 -- Phiên bản PHP: 7.2.3
 
@@ -98,23 +98,24 @@ CREATE TABLE `tblbenhan` (
   `huyetAp` float DEFAULT '120' COMMENT 'mmHg',
   `ghiChu` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Kháng thuốc nôn ói',
   `ngayTao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `tinhTrang` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '0: Chưa hoàn tất; 1: Đã hoàn tất'
+  `tinhTrang` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '0: Chưa khám; 1: Đã khám',
+  `datao_benhAn` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '0 là chưa; 1 là rồi'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tblbenhan`
 --
 
-INSERT INTO `tblbenhan` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `chuanDoan`, `chieuCao`, `canNang`, `huyetAp`, `ghiChu`, `ngayTao`, `tinhTrang`) VALUES
-(15, 25, 3, 1, 'Tim đập không ổn định', 155, 39, 120, '', '2018-08-11 09:44:38', '0'),
-(25, 25, 3, 1, 'Bình thường', 155, 40, 121, 'Không có tiền sử dị ứng với bất kì thuốc.', '2018-08-11 09:47:42', '0'),
-(26, 1, 3, 2, 'Thiếu ngủ, tình trạng ăn uống không ổn định', 170, 60, 110, '', '2018-08-11 09:51:44', '0'),
-(28, 25, 3, 1, 'Bình thường', 155, 40, 120, 'Không ', '2018-08-11 15:59:34', '0'),
-(31, 24, 3, 6, 'Suy nhược, thiếu ăn, mất ngủ', 155, 40, 120, '', '2018-08-11 16:37:48', '0'),
-(32, 24, 3, 6, 'No thing', 150, 120, 100, '', '2018-08-11 16:40:46', '0'),
-(33, 24, 3, 6, 'XXXXXXXXXXXXXXXXXXXXXX', 10, 15, 1111, 'AAAAAAAAAAa', '2018-08-11 16:42:38', '0'),
-(34, 1, 3, 2, 'Bình thường 3', 155, 40, 120, '', '2018-08-11 16:44:43', '0'),
-(35, 1, 3, 13, 'Hong thích 6 kí tự nha', 165, 56, 112, 'ahihi', '2018-08-11 16:45:59', '0');
+INSERT INTO `tblbenhan` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `chuanDoan`, `chieuCao`, `canNang`, `huyetAp`, `ghiChu`, `ngayTao`, `tinhTrang`, `datao_benhAn`) VALUES
+(15, 25, 3, 1, 'Tim đập không ổn định', 155, 39, 120, '', '2018-08-11 09:44:38', '0', '0'),
+(25, 25, 3, 1, 'Bình thường', 155, 40, 121, 'Không có tiền sử dị ứng với bất kì thuốc.', '2018-08-11 09:47:42', '0', '0'),
+(26, 1, 3, 2, 'Thiếu ngủ, tình trạng ăn uống không ổn định', 170, 60, 110, '', '2018-08-11 09:51:44', '0', '0'),
+(28, 25, 3, 1, 'Bình thường', 155, 40, 120, 'Không ', '2018-08-11 15:59:34', '0', '0'),
+(31, 24, 3, 6, 'Suy nhược, thiếu ăn, mất ngủ', 155, 40, 120, '', '2018-08-11 16:37:48', '0', '0'),
+(32, 24, 3, 6, 'No thing', 150, 120, 100, '', '2018-08-11 16:40:46', '0', '0'),
+(33, 24, 3, 6, 'XXXXXXXXXXXXXXXXXXXXXX', 10, 15, 1111, 'AAAAAAAAAAa', '2018-08-11 16:42:38', '0', '0'),
+(34, 1, 3, 2, 'Bình thường 3', 155, 40, 120, '', '2018-08-11 16:44:43', '0', '0'),
+(35, 1, 3, 13, 'Hong thích 6 kí tự nha', 165, 56, 112, 'ahihi', '2018-08-11 16:45:59', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -204,9 +205,9 @@ CREATE TABLE `tbldangkixetnghiem` (
 --
 
 INSERT INTO `tbldangkixetnghiem` (`id`, `idBenhnhan`, `idXetnghiem`, `soTT`, `ngay`, `gio`, `tinhTrang`) VALUES
-(8, 25, 4, 36, '2018-08-11', '16:45:00', '0'),
-(9, 1, 4, 33, '2018-08-11', '16:00:00', '0'),
-(10, 5, 4, 5, '2018-08-11', '09:00:00', '0');
+(8, 25, 4, 36, '2018-08-12', '16:45:00', '0'),
+(9, 1, 4, 33, '2018-08-12', '16:00:00', '0'),
+(10, 5, 4, 5, '2018-08-12', '09:00:00', '0');
 
 -- --------------------------------------------------------
 
@@ -309,7 +310,8 @@ INSERT INTO `tbldatlichkham` (`id`, `idBenhnhan`, `idBacsi`, `soTT`, `ngayHen`, 
 (67, 25, 16, 7, '2018-08-13', '09:30:00', '', 'Đau họng', '1', '0', '2018-08-11 15:24:29'),
 (68, 25, 9, 15, '2018-08-13', '11:30:00', '', 'Bị trĩ', '1', '0', '2018-08-11 15:26:21'),
 (69, 25, 26, 14, '2018-08-14', '11:15:00', '0938568111', 'no thing', '1', '0', '2018-08-11 15:32:18'),
-(70, 25, 16, 5, '2018-08-14', '09:00:00', '0938568111', 'No thing 2', '1', '0', '2018-08-11 15:42:25');
+(70, 25, 16, 5, '2018-08-14', '09:00:00', '0938568111', 'No thing 2', '1', '0', '2018-08-11 15:42:25'),
+(71, 2, 3, 9, '2018-08-13', '10:00:00', '', 'Nhứt đầu', '1', '0', '2018-08-11 17:26:08');
 
 -- --------------------------------------------------------
 
@@ -628,7 +630,7 @@ ALTER TABLE `tbldangnhap`
 -- AUTO_INCREMENT cho bảng `tbldatlichkham`
 --
 ALTER TABLE `tbldatlichkham`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT cho bảng `tblkhoa`

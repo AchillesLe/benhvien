@@ -519,6 +519,18 @@ $(function(){
             alert("Vui lòng chọn xét nghiệm !");
             return;
         }
+        var check = false;
+        $('#table_xet_nghiem tbody tr').each(function(index,element){
+            var id = $(this).attr("data-id_XN");
+            if( id_XN == id){
+                check = true;
+                alert("Phiếu Xét nghiệm có sẵn , vui lòng kiểm tra lại !");
+            }
+        });
+        if(check==true){
+            e.preventDefault();
+            return;
+        }
         var html_tr = `<tr data-id_XN="${id_XN}">
                     <td>${tenXN}</td>
                     <td>${gioXN}</td>
@@ -532,7 +544,7 @@ $(function(){
         $('#txt_lan_thu').val('');
         $('#txt_ket_qua').val('');
     });
-    $('#btn_them_thuoc').on('click',function(){
+    $('#btn_them_thuoc').on('click',function(e){
         var id_Thuoc = $('#sel_thuoc').val();
         var tenThuoc = $('#sel_thuoc option:selected').html();
         var donvi = $('#txt_donvi').val();
@@ -541,6 +553,19 @@ $(function(){
             alert("Vui lòng chọn thuốc !");
             return;
         }
+        var check = false;
+        $('#table_thuoc tbody tr').each(function(index,element){
+            var id = $(this).attr("data-id_thuoc");
+            if( id_Thuoc == id){
+                check = true;
+                alert("Thuốc đã có sẵn trong toa , vui lòng kiểm tra lại !");
+            }
+        });
+        if(check==true){
+            e.preventDefault();
+            return;
+        }
+        
         var html_tr = `<tr data-id_thuoc="${id_Thuoc}">
                     <td>${tenThuoc}</td>
                     <td>${donvi}</td>
@@ -548,7 +573,8 @@ $(function(){
                     <td><input type="button" class="btn btn-warning btn-delete-thuoc" Onclick="delete_row_thuoc(this)" value="Xóa"></td>
                 </tr>`;
         $('#table_thuoc tbody').append(html_tr);
-        $('#sel_thuoc').val('0');
+        $('#sel_thuoc').val(0);
+        $('#sel_thuoc').trigger("chosen:updated");
         $('#txt_donvi').val('');
         $('#txt_soluong').val('');
     });
@@ -612,9 +638,10 @@ $(function(){
                 success :function(result){
                     if(result.status){
                         $('#message-tao_benh_An').html(`<div class='alert alert-success alert-massage'>${result.message}</div>`);
+                        window.scrollTo(0,0);
                         setTimeout(function(){ 
                             window.location.href=href_benh_an;
-                        }, 3000);
+                        }, 2000);
                     }
                 }
             });

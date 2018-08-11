@@ -235,3 +235,18 @@ input[type=search]{
 a[data-action=decrementMinute]{
     background: #e41414;
 } */
+#table_xet_nghiem_detail thead {
+   text-align: center;
+}
+#table_xet_nghiem_detail thead tr th:nth-child(1){
+    width:25%!important;
+}
+#table_xet_nghiem_detail thead tr th:nth-child(2){
+    width:15%!important;
+}
+#table_xet_nghiem_detail thead tr th:nth-child(3){
+    width:10%!important;
+}
+#table_xet_nghiem_detail thead tr th:nth-child(4){
+    width:10%!important;
+}

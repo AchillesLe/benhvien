@@ -5,7 +5,7 @@
 		$id_bacsi =  $user['id'];
 		$id_benhnhan = $_GET['bn'];
 		$conn = connection::_open();
-		$sql = "SELECT * FROM tblbenhan A , tblbenhnhan B WHERE A.idBenhnhan = B.id 
+		$sql = "SELECT A.*,A.id as id_ba,B.*,B.id as id_bn FROM tblbenhan A , tblbenhnhan B WHERE A.idBenhnhan = B.id 
 		AND A.idBenhnhan = '{$id_benhnhan}'
 		AND A.idBacsi =  '{$id_bacsi}' ";
 		$benhAn = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
@@ -57,7 +57,7 @@
 										<td>{$ba['soTT']}</td>
 										<td>{$ba['chuanDoan']}</td>
 										<td>{$ngay}</td> 
-										<td><a class='btn btn-info btn-detail'>Chi tiết</a></td>";
+										<td><a class='btn btn-info btn-detail' href='/chi-tiet-benh-an?ba={$ba['id_ba']}'>Chi tiết</a></td>";
 										if($quyen=='0'):
 											echo "<td><a class='btn btn-warning btn-edit' >Sửa</a></td>";
 										endif;
