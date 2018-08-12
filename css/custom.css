@@ -191,7 +191,7 @@ input[type=search]{
     width:10%!important;
 }
 #table-tracuu-phongkham thead tr th:nth-child(2){
-    width:15%!important;
+    width:22%!important;
 }
 #table-tracuu-phongkham thead tr th:nth-child(3){
     width:15%!important;
@@ -219,6 +219,12 @@ input[type=search]{
     width: 200px;
     height: 50px;
     font-size: 1.2rem;
+}
+#btn_dat_lich_XN{
+    width: 300px;
+    height: 50px;
+    font-size: 1.2rem;
+    margin-left: 13px;
 }
 #btn_save_benh_an{
     width: 200px;
@@ -265,4 +271,7 @@ a[data-action=decrementMinute]{
 }
 #table_xet_nghiem_detail thead tr th:nth-child(4){
     width:10%!important;
+}
+#sel_time_XN , #lb_time_XN{
+    margin-left: 13px;
 }

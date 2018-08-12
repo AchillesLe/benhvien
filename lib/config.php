@@ -27,6 +27,7 @@
     define("REQUEST_TRACUUSOTT_KHAM", 310);
     define("REQUEST_TRACUUSOTT_XN", 340);
     define("REQUEST_TRACUUSOTT_CUA_XN", 350);
+    define("REQUEST_DANGKIXETNGHIEM", 390);
     define("REQUEST_THEMBENHAN", 400);
     define("REQUEST_SUABENHAN", 410);
     

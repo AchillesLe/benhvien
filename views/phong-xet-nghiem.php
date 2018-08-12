@@ -9,15 +9,16 @@
     <div class="container-fluid">
         <div class="card mb-3 tracuuTT">
             <div class="card-header">
-              <i class="fas fa-table"></i>Tra cứu số thứ tự
+              <i class="fas fa-table"></i> Tra cứu số thứ tự
             </div>
             <div class="card-body">
-            <div class="alert alert-info">Lưu ý : Chỉ tra cứu  ngày hiện tại .</div>
+			<div class="alert alert-info">Lưu ý : Chỉ tra cứu  ngày hiện tại ( <?php echo date('d/m/Y'); ?> ) .</div>
+			<div id="message"></div>
 				<div class="form-row">
 					<div class="form-group offset-md-2 col-md-8">
 						<label for="sel_XN_tracuu">Phòng xét nghiệm</label>
 						<select  id="sel_XN_tracuu" class="form-control">
-							<option value="0">--------------------------Chọn phòng xét nghiệm------------------------</option>
+							<option value="0">------------------------------------Chọn phòng xét nghiệm-----------------------------------</option>
 								<?php 
 									foreach($phongXN as $item){
 										echo "<option value='{$item['id']}'>{$item['tenXetNghiem']}</option>";
@@ -27,11 +28,27 @@
 					</div>
 				</div>
 			</div>
-			<!-- <div class="form-row">
-				<div class="form-group offset-md-9 col-md-3">
-					<input type="button" id="btn_My_sott" class="btn btn-info" value="Số thứ tự của tôi">
+			<hr>
+			<?php if($user['quyen'] == 1):?>
+			<div class="form-row">
+				<div class="form-group offset-md-2 col-md-2">
+					<label id="lb_time_XN">Giờ XN</label>
+					<select name="sel_time_XN"  id="sel_time_XN" class="form-control" >
+						<option value="0">--Chọn--</option> -->
+						<?php 
+							foreach($array_time as $key => $time){
+								echo "<option value={$key}>{$time}</option>";
+							}
+						?>
+					</select>
 				</div>
-			</div> -->
+			</div>
+			<div class="form-row">
+				<div class="form-group offset-md-2 col-md-5">
+					<a id="btn_dat_lich_XN" class="btn btn-info text-white" ><i class="fas fa-registered"></i> Đặt lịch xét nghiệm tại phòng</a>
+				</div>
+			</div>
+			<?php endif;?>
         </div>
 
 		<div class="card mb-3 mt-5">
@@ -70,7 +87,5 @@
         autoclose: true,
         orientation: "auto right",
     };
-    
-    // $("#sel_bacsi").chosen({});
 
 </script>

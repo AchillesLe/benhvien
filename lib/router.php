@@ -8,6 +8,9 @@ if( isset($_SESSION['user'] ) ){
             case '/dangki-lichkham':
                 require 'views/dangkilichkham.php';
                 exit();
+            case '/dat-lich-xet-nghiem':
+                require 'include/tracuu.php';
+                exit();
             case '/ho-so-benh-an':
                 require 'views/ho-so-benh-an.php';
                 exit();

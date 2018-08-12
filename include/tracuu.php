@@ -72,6 +72,32 @@
                 echo 1;
             }
             exit();
+        }else if( isset($_POST['nameRequest'])  && $_POST['nameRequest'] == REQUEST_DANGKIXETNGHIEM  ){
+            $id_XN = $_POST['id_XN'];
+            $id_time_XN = $_POST['id_time_XN'];
+            $gio = $_POST['time'];
+            $id_BN = ($_SESSION['user'])['id'];
+            $ngay = date('Y-m-d');
+            $new_ngay = date('d/m/Y',strtotime($ngay));
+            $conn = connection::_open();
+            $sql = " SELECT * FROM tbldangkixetnghiem A , tblxetnghiem B WHERE A.idXetnghiem = B.id AND idBenhnhan = '{$id_BN}' AND idXetnghiem = '{$id_XN}' AND ngay = '{$ngay}' AND soTT = '{$id_time_XN}' ";
+            $result = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
+            if( $result ){
+                connection::_close($conn);
+                echo json_encode(['status'=>false , 'message'=>"Bạn đã có sẵn lịch hẹn với phòng xét nghiệm <b>{$result['tenXetNghiem']}</b> lúc <b>{$gio}</b> ngày  <b>{$new_ngay}</b> "]);
+                exit();
+            }else{
+                $sql = "INSERT INTO tbldangkixetnghiem (idBenhnhan,idXetnghiem,soTT,ngay,gio) VALUES('{$id_BN}','{$id_XN}','{$id_time_XN}','{$ngay}','{$gio}')";
+                $result = mysqli_query($conn,$sql);
+                connection::_close($conn);
+                if($result){
+                    echo json_encode(['status'=>true , 'message'=>"Tạo lịch hẹn xét nghiệm thành công !"]);
+                    exit();
+                }else{
+                    echo json_encode(['status'=>false , 'message'=>"Tạo lịch hẹn xét nghiệm thất bại ! Vui lòng thử lại ."]);
+                    exit();
+                }
+            }
         }
     }
 ?>

@@ -479,6 +479,49 @@ $(document).ready(function() {
         });
     });
 
+    $('#btn_dat_lich_XN').on('click',function(){
+		var id_XN = $('#sel_XN_tracuu').val();
+		var id_time_XN = $('#sel_time_XN').val();
+		var time = $('#sel_time_XN option:selected').text();
+		if( id_XN == 0){
+			alert("Vui lòng chọn phòng xét nghiệm !");
+			return;
+		}
+		if( id_time_XN == 0){
+			alert("Vui lòng chọn giờ xét nghiệm !");
+			return;
+		}
+		$.ajax({
+			url:'/dat-lich-xet-nghiem',
+			data:{ nameRequest: 390 ,id_XN  : id_XN , id_time_XN:id_time_XN , time:time } ,
+			type : 'POST',
+			dataType:'JSON',
+			success : function(result){
+				var status = '';
+				var html = '';
+				if(result.status){
+					status = 'success';
+					html =  `<div class='alert alert-${status}'>${result.message}</div>`;
+                    $('#message').html(html);
+                    window.scrollTo(0,0);
+					setTimeout(function(){ 
+						$('#message').html('');
+                        }, 1500);
+                    $('#sel_XN_tracuu').trigger("change");
+				}else{
+					status = 'danger';
+					html =  `<div class='alert alert-${status}'>${result.message}</div>`;
+                    $('#message').html(html);
+                    window.scrollTo(0,0);
+					setTimeout(function(){ 
+						$('#message').html('');
+                        }, 1500);
+				}
+			}
+		});
+	});
+
+
 });
 function delete_row_XN(obj){
     var row_index  =  $(obj).parent().parent().index();

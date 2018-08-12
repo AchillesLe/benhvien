@@ -99,7 +99,7 @@
 					<span>Khám trực tuyến</span>
 				</a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-						<a class="dropdown-item" href="/dangki-lichkham">Đặt lịch khám</a>
+					<a class="dropdown-item" href="/dangki-lichkham">Đặt lịch khám</a>
 				</div>
       </li>
       <li class="nav-item dropdown">
