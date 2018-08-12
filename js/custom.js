@@ -263,7 +263,6 @@ $(document).ready(function() {
         var ngay = $('#txt_ngaykham').val();
         var idkhoa = $('#sel_khoa').val();
         var namekhoa = $('#sel_khoa option:selected').text();
-        console.log(namekhoa);
         $.ajax({
             url:"/check-lichkham",
             type:"POST",
@@ -464,6 +463,21 @@ $(document).ready(function() {
         var date = new Date();
         var currdate_ymd =  date.getFullYear()+"-"+ (date.getMonth()+1) +"-" + date.getDate();
         var idXN = $('#sel_XN_tracuu').val();
+
+        $('#sel_time_XN').empty();
+        $('#sel_time_XN').append('<option value="0">--Chọn--</option>');
+        $now = new Date();
+        $newngay = ($now.getMonth()+1)+"/"+$now.getDate()+"/"+$now.getFullYear();
+        $date_now = ($now.getMonth()+1)+"/"+$now.getDate()+"/"+$now.getFullYear() +" "+$now.getHours()+":"+$now.getMinutes();
+        $.each(JSON.parse(array_time),function(index,element){
+            $date_comp = $newngay+" "+element;
+            if(Date.parse(new Date($date_comp)) > Date.parse(new Date($date_now))){
+                let html = '<option value="'+index+'">'+element+'</option>';
+                $('#sel_time_XN').append(html);
+            }
+        });
+       
+
         $.ajax({
             url:'/tra-cuu',
             data:{nameRequest:340,idXN:idXN,ngay:currdate_ymd},
@@ -482,7 +496,9 @@ $(document).ready(function() {
     $('#btn_dat_lich_XN').on('click',function(){
 		var id_XN = $('#sel_XN_tracuu').val();
 		var id_time_XN = $('#sel_time_XN').val();
-		var time = $('#sel_time_XN option:selected').text();
+        var time = $('#sel_time_XN option:selected').text();
+        var date = new Date();
+        var currdate_ymd =  date.getFullYear()+"-"+ (date.getMonth()+1) +"-" + date.getDate();
 		if( id_XN == 0){
 			alert("Vui lòng chọn phòng xét nghiệm !");
 			return;
@@ -493,7 +509,7 @@ $(document).ready(function() {
 		}
 		$.ajax({
 			url:'/dat-lich-xet-nghiem',
-			data:{ nameRequest: 390 ,id_XN  : id_XN , id_time_XN:id_time_XN , time:time } ,
+			data:{ nameRequest: 390 ,id_XN  : id_XN , id_time_XN:id_time_XN ,ngay :currdate_ymd , time:time } ,
 			type : 'POST',
 			dataType:'JSON',
 			success : function(result){
@@ -507,6 +523,7 @@ $(document).ready(function() {
 					setTimeout(function(){ 
 						$('#message').html('');
                         }, 1500);
+                        $('#sel_XN_tracuu').change();
                     $('#sel_XN_tracuu').trigger("change");
 				}else{
 					status = 'danger';

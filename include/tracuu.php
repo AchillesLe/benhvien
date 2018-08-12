@@ -76,17 +76,18 @@
             $id_XN = $_POST['id_XN'];
             $id_time_XN = $_POST['id_time_XN'];
             $gio = $_POST['time'];
+            $ngay = $_POST['ngay'];
             $id_BN = ($_SESSION['user'])['id'];
-            $ngay = date('Y-m-d');
             $new_ngay = date('d/m/Y',strtotime($ngay));
             $conn = connection::_open();
-            $sql = " SELECT * FROM tbldangkixetnghiem A , tblxetnghiem B WHERE A.idXetnghiem = B.id AND idBenhnhan = '{$id_BN}' AND idXetnghiem = '{$id_XN}' AND ngay = '{$ngay}' AND soTT = '{$id_time_XN}' ";
+            $sql = " SELECT * FROM tbldangkixetnghiem A , tblxetnghiem B WHERE A.idXetnghiem = B.id AND idBenhnhan = '{$id_BN}'  AND ngay = '{$ngay}' AND soTT = '{$id_time_XN}' ";
             $result = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
             if( $result ){
                 connection::_close($conn);
-                echo json_encode(['status'=>false , 'message'=>"Bạn đã có sẵn lịch hẹn với phòng xét nghiệm <b>{$result['tenXetNghiem']}</b> lúc <b>{$gio}</b> ngày  <b>{$new_ngay}</b> "]);
+                echo json_encode(['status'=>false , 'message'=>"Bạn đã có sẵn lịch hẹn với  lúc <b>{$gio}</b> ngày  <b>{$new_ngay}</b> . Vui lòng kiểm tra lại !"]);
                 exit();
-            }else{
+            }
+            else{
                 $sql = "INSERT INTO tbldangkixetnghiem (idBenhnhan,idXetnghiem,soTT,ngay,gio) VALUES('{$id_BN}','{$id_XN}','{$id_time_XN}','{$ngay}','{$gio}')";
                 $result = mysqli_query($conn,$sql);
                 connection::_close($conn);

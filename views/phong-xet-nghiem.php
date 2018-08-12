@@ -35,11 +35,11 @@
 					<label id="lb_time_XN">Giờ XN</label>
 					<select name="sel_time_XN"  id="sel_time_XN" class="form-control" >
 						<option value="0">--Chọn--</option> -->
-						<?php 
+						<!-- <?php 
 							foreach($array_time as $key => $time){
 								echo "<option value={$key}>{$time}</option>";
 							}
-						?>
+						?> -->
 					</select>
 				</div>
 			</div>
