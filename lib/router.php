@@ -25,7 +25,10 @@ if( isset($_SESSION['user'] ) ){
             case '/them-ho-so-benh-an':
                 require 'views/thembenhAn.php';
                 exit();
-            case '/p-them-benh-an':
+            case '/sua-benh-an':
+                require 'views/suabenhan.php';
+                exit();
+            case '/p-benh-an':
                 require 'include/benh-An.php';
                 exit();
             case '/danh-sach-benh-nhan':

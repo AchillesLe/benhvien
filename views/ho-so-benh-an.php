@@ -60,7 +60,7 @@
 										<td>{$ngay}</td> 
 										<td><a class='btn btn-info btn-detail' href='/chi-tiet-benh-an?ba={$ba['id_ba']}'>Chi tiết</a></td>";
 										if($quyen=='0'):
-											echo "<td><a class='btn btn-warning btn-edit'>Sửa</a></td>";
+											echo "<td><a class='btn btn-warning btn-edit' href='/sua-benh-an?ba={$ba['id_ba']}'>Sửa</a></td>";
 										endif;
 									echo"</tr>";
 								}

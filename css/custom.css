@@ -235,6 +235,22 @@ input[type=search]{
 a[data-action=decrementMinute]{
     background: #e41414;
 } */
+#table_xet_nghiem thead {
+    text-align: center;
+ }
+ #table_xet_nghiem thead tr th:nth-child(1){
+     width:30%!important;
+ }
+ #table_xet_nghiem thead tr th:nth-child(2){
+     width:10%!important;
+ }
+ #table_xet_nghiem thead tr th:nth-child(3){
+     width:10%!important;
+ }
+
+ #table_xet_nghiem thead tr th:last-child{
+    width:10%!important;
+}
 #table_xet_nghiem_detail thead {
    text-align: center;
 }

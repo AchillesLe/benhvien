@@ -1,29 +1,35 @@
 <?php include('header.php') ?>
 <?php 
-	if( ( $user['quyen']==0) && isset($_GET['LK']) && is_numeric($_GET['LK']) ){
-		$conn = connection::_open();
-		$id_LK = $_GET['LK'];
-		$sql = "SELECT * FROM tbldatlichkham WHERE id='{$id_LK}' ";
-		$LK = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
-		$id_bn = $LK['idBenhnhan'];
-		$stt = $LK['soTT'];
-		$sql = "SELECT * FROM tblbenhnhan WHERE id= '{$id_bn}' ";
-		$benhnhan = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
-		if($benhnhan){
-			$sql = "SELECT * FROM tblxetnghiem ";
+	if(  isset($_GET['ba']) && is_numeric($_GET['ba']) ){
+        $conn = connection::_open();
+        /**Dữ liệu master */
+        $sql = "SELECT * FROM tblxetnghiem ";
+        $s_xetnghiem = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+        $sql = "SELECT * FROM tblthuoc ";
+        $s_thuoc = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+
+        $id_ba = $_GET['ba'];
+		$sql = "SELECT A.* , A.id as id_ba , B.* ,B.id as id_bn , B.ten  as ten_bn , C.* ,  C.id as id_bs , C.ten as ten_bs FROM tblbenhan A , tblbenhnhan B , tblbacsi C WHERE A.idBenhnhan = B.id AND A.idBacsi = C.id AND A.id= '{$id_ba}' ";
+        $BenhAn = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
+        $id_bn  = $BenhAn['id_bn'];
+        /**Dữ liệu bệnh bán */
+		if($BenhAn){
+			$sql = "SELECT * FROM tblphieuxetnghiem A,tblxetnghiem B WHERE A.idXetnghiem = B.id AND A.idBenhan = '{$id_ba}' ";
 			$xetnghiem = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
-			$sql = "SELECT * FROM tblthuoc ";
-			$thuoc = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
+			$sql = "SELECT A.* , A.id as id_toathuoc , B.*,B.id as id_ctthuoc , C.* , C.id as id_thuoc FROM tbltoathuoc A , tblcttoathuoc B , tblthuoc  C WHERE B.idtoathuoc = A.id AND B.idthuoc = C.id AND A.idBenhan = '{$id_ba}'";
+            $thuoc = mysqli_query($conn,$sql)->fetch_all(MYSQLI_ASSOC);
 			connection::_close($conn);
-		}
+        }
+            
 		else{
-			echo "<meta http-equiv='Refresh' content='0;URL=/' />"; exit();
+            echo "<meta http-equiv='Refresh' content='0;URL=/' />";
+            exit();
 		}
 		
 	}else{
-		echo "<meta http-equiv='Refresh' content='0;URL=/' />"; exit();
+        echo "<meta http-equiv='Refresh' content='0;URL=/' />";
+        exit();
 	}
-	
 ?>
 <div class="container-fluid">
 	
@@ -43,21 +49,21 @@
 							<label for="text_bacsi">Người tạo bệnh án</label>
 						</div>	
 						<div class="col-md-3">
-							<input class="form-control" type="text" name="text_bacsi" value="<?php echo $user['ten'] ?>" readonly>
+							<input class="form-control" type="text" name="id_benh_an" value="<?php echo $id_ba ?>" hidden>
+							<input class="form-control" type="text" name="id_benh_nhan" value="<?php echo $BenhAn['id_bn'] ?>" hidden>
+							<input class="form-control" type="text" name="text_bacsi" value="<?php echo $BenhAn['ten_bs'] ?>" readonly>
 						</div>
 						<div class="col-md-1">
-							<label >Bệnh nhân</label>
+							<label for="id_benh_nhan">Bệnh nhân</label>
 						</div>	
 						<div class="col-md-3">
-							<input class="form-control" type="text" name="id_benh_nhan" value="<?php echo $id_bn ?>" hidden>
-							<input class="form-control" type="text" name="id_LK" value="<?php echo $id_LK ?>" hidden>
-							<input class="form-control" type="text" name="text_benh_nhan" value="<?php echo $benhnhan['ten'] ?>" readonly>
+							<input class="form-control" type="text" name="text_benh_nhan" value="<?php echo $BenhAn['ten_bn'] ?>" readonly>
 						</div>
 						<div class="col-md-1">
 							<label for="txt_soTT">Số thứ tự</label>
 						</div>
 						<div class="col-md-1">
-							<input class="form-control" type="text" name="txt_soTT" value="<?php echo $stt ?>" readonly>
+							<input class="form-control" type="text" name="txt_soTT" value="<?php echo $BenhAn['soTT'] ?>" readonly>
 						</div>
 					</div>
 				</div>
@@ -67,19 +73,19 @@
 							<label for="text_chieu_cao">Chiều cao</label>
 						</div>	
 						<div class="col-md-2">
-							<input class="form-control" type="text" name="text_chieu_cao" placeholder="CM">
+							<input class="form-control" type="text" name="text_chieu_cao" placeholder="CM" value="<?php echo $BenhAn['chieuCao'] ?>"> 
 						</div>
 						<div class="col-md-1 offset-md-1">
 							<label for="txt_can_nang">Cân nặng</label>
 						</div>	
 						<div class="col-md-2">
-							<input class="form-control" type="text" name="txt_can_nang" placeholder="KG">
+							<input class="form-control" type="text" name="txt_can_nang" placeholder="KG" value="<?php echo $BenhAn['canNang'] ?>">
 						</div>
 						<div class="col-md-1 offset-md-1">
 							<label for="txt_huyet_ap">Huyết Áp</label>
 						</div>
 						<div class="col-md-2">
-							<input class="form-control" type="text" name="txt_huyet_ap" placeholder="mmHg">
+							<input class="form-control" type="text" name="txt_huyet_ap" placeholder="mmHg" value="<?php echo $BenhAn['huyetAp'] ?>">
 						</div>
 					</div>
 				</div>
@@ -89,7 +95,7 @@
 							<label for="text_chuan_doan">Chuẩn đoán</label>
 						</div>	
 						<div class="col-md-6">
-							<textarea class="form-control" name="text_chuan_doan" cols="30" rows="3"></textarea>
+							<textarea class="form-control" name="text_chuan_doan" cols="30" rows="3"><?php echo $BenhAn['chuanDoan'] ?></textarea>
 						</div>
 					</div>
 				</div>
@@ -99,7 +105,7 @@
 							<label for="text_chuan_doan">Ghi chú</label>
 						</div>	
 						<div class="col-md-6">
-							<textarea class="form-control" name="text_ghi_chu" cols="30" rows="3"></textarea>
+							<textarea class="form-control" name="text_ghi_chu" cols="30" rows="3"><?php echo $BenhAn['ghiChu'] ?></textarea>
 						</div>
 					</div>
 				</div>
@@ -121,8 +127,8 @@
 						<select class="form-control" name="sel_xet_nghiem" id="sel_xet_nghiem">
 							<option value="0">------------Chọn xét nghiệm------------</option>
 							<?php 
-								if($xetnghiem){
-									foreach($xetnghiem as $XN){
+								if($s_xetnghiem){
+									foreach($s_xetnghiem as $XN){
 										echo "<option value='{$XN['id']}'>{$XN['tenXetNghiem']}</option>";
 									}
 								}
@@ -150,7 +156,7 @@
 					</div>	
 					<div class="col-md-6">
 						<textarea class="form-control" name="txt_ket_qua" id="txt_ket_qua"  rows="3"></textarea>
-					</div>
+                    </div>
 				</div>
 			</div>
 			<div class="form-group">
@@ -174,7 +180,21 @@
 						</tr>
 					</thead>
 					<tbody>
-						
+                        <?php 
+                            if( count( $xetnghiem ) > 0 ){
+                                foreach( $xetnghiem as $xn ){
+                                    $ngay = date('d/m/Y',strtotime($xn['ngayXetnghiem']) );
+                                    $gio = substr($xn['gioXetnghiem'] , 0 ,5);
+                                    echo "<tr data-id_XN='{$xn['id']}'>
+                                    <td>{$xn['tenXetNghiem']}</td>
+                                    <td>{$gio}</td>
+                                    <td>{$xn['lanThu']}</td>
+                                    <td>{$xn['ketQua']}</td>
+                                    <td><input type='button' class='btn btn-warning btn-delete-XN' Onclick='delete_row_XN(this)' value='Xóa'></td>
+                                    </tr>";
+                                }
+                            }
+                        ?>
 					</tbody>
 				</table>
 			</div>
@@ -195,8 +215,8 @@
 						<select class="form-control" name="sel_thuoc" id="sel_thuoc">
 							<option value="0">------------Chọn thuốc------------</option>
 							<?php 
-								if($xetnghiem){
-									foreach($thuoc as $t){
+								if($s_thuoc){
+									foreach($s_thuoc as $t){
 										echo "<option value='{$t['id']}' data-donvi='{$t['donVi']}'>{$t['tenThuoc']}</option>";
 									}
 								}
@@ -237,7 +257,18 @@
 						</tr>
 					</thead>
 					<tbody>
-
+                        <?php
+                            if( count( $thuoc ) > 0 ){
+                                foreach( $thuoc as $t ){
+                                    echo "<tr data-id_thuoc='{$t['id_thuoc']}'>
+                                    <td>{$t['tenThuoc']}</td>
+                                    <td>{$t['donVi']}</td>
+                                    <td>{$t['soLuong']}</td>
+                                    <td><input type='button' class='btn btn-warning btn-delete-thuoc' Onclick='delete_row_thuoc(this)' value='Xóa'></td>
+                                    </tr>";
+                                }
+                            }
+                        ?>
 					</tbody>
 				</table>
 			</div>
@@ -245,7 +276,7 @@
 	</div>
 	<div class="row row-end">
 		<div class="offset-md-3 col-md-4">
-			<button class="btn btn-info"  id="btn_add_benh_an"><i class="fas fa-save"></i> Lưu bệnh án</button>
+			<button class="btn btn-info"  id="btn_edit_benh_an"><i class="fas fa-save"></i> Lưu bệnh án</button>
 		</div>
 		<div class="col-md-4">
 			<a href="/ho-so-benh-an" class="btn btn-danger" id="btn_cancel"><i class="fas fa-arrow-left"></i> Hủy</a>
@@ -255,7 +286,7 @@
 <?php include('footer.php') ?>
 <script>
 	var id_BN_ = "<?php echo $id_bn?>";
-	var href_benh_an = "/ho-so-benh-an?bn="+id_BN_;
+    var href_benh_an = "/ho-so-benh-an?bn="+id_BN_;
 	$("#sel_thuoc").chosen({});
 	$(function(){
 		$('#form-benh-an').validate({
@@ -304,18 +335,8 @@
 				}
 				else
 					error.insertAfter(element);
-			},
-			focusInvalid: function() {
-				if ( this.settings.focusInvalid ) {
-					try {
-						var firstInvalidElement = $(this.errorList[0].element);
-						$('html,body').scrollTop(firstInvalidElement.offset().top);
-						firstInvalidElement.focus();
-					} catch ( e ) {
-						// ignore IE throwing errors when focusing hidden elements
-					}
-				}
 			}
 		});
 	});
 </script>
+

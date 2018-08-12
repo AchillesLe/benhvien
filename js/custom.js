@@ -489,7 +489,7 @@ function delete_row_thuoc(obj){
     $('#table_thuoc tbody tr').eq(row_index).remove();
 }
 $(function(){
-    /** Bệnh Án */
+    /** Thêm Bệnh Án */
     $('#sel_xet_nghiem').on('change',function(){
         var id_XN = $('#sel_xet_nghiem').val();
         var id_BN = $('input[name=id_benh_nhan]').val();
@@ -509,7 +509,7 @@ $(function(){
         }
        
     });
-    $('#btn_them_xet_nghiem').on('click',function(){
+    $('#btn_them_xet_nghiem').on('click',function(e){
         var id_XN = $('#sel_xet_nghiem').val();
         var tenXN = $('#sel_xet_nghiem option:selected').html();
         var gioXN = $('#txt_gio').val();
@@ -553,6 +553,10 @@ $(function(){
             alert("Vui lòng chọn thuốc !");
             return;
         }
+        if(soluong == 0){
+            alert("Vui lòng nhập số lượng !");
+            return;
+        }
         var check = false;
         $('#table_thuoc tbody tr').each(function(index,element){
             var id = $(this).attr("data-id_thuoc");
@@ -584,56 +588,57 @@ $(function(){
         donvi = $('#sel_thuoc option:selected').data('donvi');
         $('#txt_donvi').val(donvi);
     });
-    $('#btn_save_benh_an').on('click',function(){
-        data = {};
-        data['nameRequest'] = 400;
-        var id_LK = $('input[name=id_LK]').val();
-        var id_BN = $('input[name=id_benh_nhan]').val();
-        var soTT = $('input[name=txt_soTT]').val();
-        var chieu_cao = $('input[name=text_chieu_cao]').val();
-        var can_nang = $('input[name=txt_can_nang]').val();
-        var huyet_ap = $('input[name=txt_huyet_ap]').val();
-        var chuan_doan = $('textarea[name=text_chuan_doan]').val();
-        var ghi_chu = $('textarea[name=text_ghi_chu]').val();
-        
-        var basic = {};
-        basic['id_LK'] = id_LK;
-        basic['id_BN'] = id_BN;
-        basic['soTT'] = soTT;
-        basic['chieu_cao'] = chieu_cao;
-        basic['can_nang'] = can_nang;
-        basic['huyet_ap'] = huyet_ap;
-        basic['chuan_doan'] = chuan_doan;
-        basic['ghi_chu'] = ghi_chu;
-        data['basic'] = basic;
-
-        var xetnghiem = {};
-        $('#table_xet_nghiem tbody tr').each(function(e){
-            var row_index  =  $(this).index();
-            var xet_nghiem_tam = {};
-            xet_nghiem_tam['id_XN'] = $(this).attr('data-id_XN');
-            xet_nghiem_tam['tenXN'] = $(this).find('td:eq(0)').html();
-            xet_nghiem_tam['gioXN'] = $(this).find('td:eq(1)').html();
-            xet_nghiem_tam['lan_thu'] = $(this).find('td:eq(2)').html();
-            xet_nghiem_tam['ketqua'] = $(this).find('td:eq(3)').html();
-            xetnghiem[row_index] = xet_nghiem_tam;
-        });
-        data['xetnghiem'] = xetnghiem;
-
-        var thuoc = {};
-        $('#table_thuoc tbody tr').each(function(e){
-            var row_index  =  $(this).index();
-            var thuoc_tam = {};
-            thuoc_tam['id_Thuoc'] = $(this).attr('data-id_thuoc');
-            thuoc_tam['tenThuoc'] = $(this).find('td:eq(0)').html();
-            thuoc_tam['donvi'] = $(this).find('td:eq(1)').html();
-            thuoc_tam['soluong'] = $(this).find('td:eq(2)').html();
-            thuoc[row_index] = thuoc_tam;
-        });
-        data['thuoc'] = thuoc;
+    $('#btn_add_benh_an').on('click',function(){
         if($('#form-benh-an').valid() == true){
+            data = {};
+            data['nameRequest'] = 400;
+            var id_LK = $('input[name=id_LK]').val();
+            var id_BN = $('input[name=id_benh_nhan]').val();
+            var soTT = $('input[name=txt_soTT]').val();
+            var chieu_cao = $('input[name=text_chieu_cao]').val();
+            var can_nang = $('input[name=txt_can_nang]').val();
+            var huyet_ap = $('input[name=txt_huyet_ap]').val();
+            var chuan_doan = $('textarea[name=text_chuan_doan]').val();
+            var ghi_chu = $('textarea[name=text_ghi_chu]').val();
+            
+            var basic = {};
+            basic['id_LK'] = id_LK;
+            basic['id_BN'] = id_BN;
+            basic['soTT'] = soTT;
+            basic['chieu_cao'] = chieu_cao;
+            basic['can_nang'] = can_nang;
+            basic['huyet_ap'] = huyet_ap;
+            basic['chuan_doan'] = chuan_doan;
+            basic['ghi_chu'] = ghi_chu;
+            data['basic'] = basic;
+
+            var xetnghiem = {};
+            $('#table_xet_nghiem tbody tr').each(function(e){
+                var row_index  =  $(this).index();
+                var xet_nghiem_tam = {};
+                xet_nghiem_tam['id_XN'] = $(this).attr('data-id_XN');
+                xet_nghiem_tam['tenXN'] = $(this).find('td:eq(0)').html();
+                xet_nghiem_tam['gioXN'] = $(this).find('td:eq(1)').html();
+                xet_nghiem_tam['lan_thu'] = $(this).find('td:eq(2)').html();
+                xet_nghiem_tam['ketqua'] = $(this).find('td:eq(3)').html();
+                xetnghiem[row_index] = xet_nghiem_tam;
+            });
+            data['xetnghiem'] = xetnghiem;
+
+            var thuoc = {};
+            $('#table_thuoc tbody tr').each(function(e){
+                var row_index  =  $(this).index();
+                var thuoc_tam = {};
+                thuoc_tam['id_Thuoc'] = $(this).attr('data-id_thuoc');
+                thuoc_tam['tenThuoc'] = $(this).find('td:eq(0)').html();
+                thuoc_tam['donvi'] = $(this).find('td:eq(1)').html();
+                thuoc_tam['soluong'] = $(this).find('td:eq(2)').html();
+                thuoc[row_index] = thuoc_tam;
+            });
+            data['thuoc'] = thuoc;
+        
             $.ajax({
-                url:'/p-them-benh-an',
+                url:'/p-benh-an',
                 dataType:'JSON',
                 type:'POST',
                 data : data,
@@ -651,5 +656,77 @@ $(function(){
         return;
 
     });
+      /** Sủa Bệnh Án */
+    $('#btn_edit_benh_an').on('click',function(){
+        var validator = $('#form-benh-an').valid();
+        if( validator == true){
+            data = {};
+            data['nameRequest'] = 410;
+            var id_BN = $('input[name=id_benh_nhan]').val();
+            var id_BA = $('input[name=id_benh_an]').val();
+            var soTT = $('input[name=txt_soTT]').val();
+            var chieu_cao = $('input[name=text_chieu_cao]').val();
+            var can_nang = $('input[name=txt_can_nang]').val();
+            var huyet_ap = $('input[name=txt_huyet_ap]').val();
+            var chuan_doan = $('textarea[name=text_chuan_doan]').val();
+            var ghi_chu = $('textarea[name=text_ghi_chu]').val();
+            
+            var basic = {};
+            basic['id_BA'] = id_BA;
+            basic['soTT'] = soTT;
+            basic['chieu_cao'] = chieu_cao;
+            basic['can_nang'] = can_nang;
+            basic['huyet_ap'] = huyet_ap;
+            basic['chuan_doan'] = chuan_doan;
+            basic['ghi_chu'] = ghi_chu;
+            data['basic'] = basic;
 
+            var xetnghiem = {};
+            $('#table_xet_nghiem tbody tr').each(function(e){
+                var row_index  =  $(this).index();
+                var xet_nghiem_tam = {};
+                xet_nghiem_tam['id_XN'] = $(this).attr('data-id_XN');
+                xet_nghiem_tam['tenXN'] = $(this).find('td:eq(0)').html();
+                xet_nghiem_tam['gioXN'] = $(this).find('td:eq(1)').html();
+                xet_nghiem_tam['lan_thu'] = $(this).find('td:eq(2)').html();
+                xet_nghiem_tam['ketqua'] = $(this).find('td:eq(3)').html();
+                xetnghiem[row_index] = xet_nghiem_tam;
+            });
+            data['xetnghiem'] = xetnghiem;
+
+            var thuoc = {};
+            $('#table_thuoc tbody tr').each(function(e){
+                var row_index  =  $(this).index();
+                var thuoc_tam = {};
+                thuoc_tam['id_Thuoc'] = $(this).attr('data-id_thuoc');
+                thuoc_tam['tenThuoc'] = $(this).find('td:eq(0)').html();
+                thuoc_tam['donvi'] = $(this).find('td:eq(1)').html();
+                thuoc_tam['soluong'] = $(this).find('td:eq(2)').html();
+                thuoc[row_index] = thuoc_tam;
+            });
+            data['thuoc'] = thuoc;
+            
+            $.ajax({
+                url:'/p-benh-an',
+                dataType:'JSON',
+                type:'POST',
+                data : data,
+                success :function(result){
+                    if(result.status){
+                        $('#message-tao_benh_An').html(`<div class='alert alert-success alert-massage'>${result.message}</div>`);
+                        window.scrollTo(0,0);
+                        setTimeout(function(){ 
+                            window.location.href=href_benh_an;
+                        }, 1500);
+                    }else{
+                        $('#message-tao_benh_An').html(`<div class='alert alert-danger alert-massage'>${result.message}</div>`);
+                        window.scrollTo(0,0);
+                    }
+                }
+            });
+        }
+        return;
+
+    });
+ 
 })
