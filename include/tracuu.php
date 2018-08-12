@@ -88,6 +88,13 @@
                 exit();
             }
             else{
+                $sql = " SELECT * FROM tbldangkixetnghiem A , tblxetnghiem B WHERE A.idXetnghiem = B.id AND idXetnghiem = '{$id_XN}'  AND ngay = '{$ngay}' AND soTT = '{$id_time_XN}' ";
+                $result = mysqli_query($conn,$sql)->fetch_array(MYSQLI_ASSOC);
+                if( $result ){
+                    connection::_close($conn);
+                    echo json_encode(['status'=>false , 'message'=>"Đã có người đặt  lịch hẹn với  lúc <b>{$gio}</b> ngày  <b>{$new_ngay}</b> với phòng xét nghiệm . Vui lòng kiểm tra lại !"]);
+                    exit();
+                }
                 $sql = "INSERT INTO tbldangkixetnghiem (idBenhnhan,idXetnghiem,soTT,ngay,gio) VALUES('{$id_BN}','{$id_XN}','{$id_time_XN}','{$ngay}','{$gio}')";
                 $result = mysqli_query($conn,$sql);
                 connection::_close($conn);
